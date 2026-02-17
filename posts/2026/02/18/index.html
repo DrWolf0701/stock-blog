@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日美股新聞彙整 - 2026年2月18日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .date {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .market-summary {
+            background: #f8f9fa;
+            padding: 30px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .index-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .index-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .index-name {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .index-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #1a2980;
+            margin-bottom: 10px;
+        }
+        
+        .index-change {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        .change-up {
+            color: #28a745;
+        }
+        
+        .change-down {
+            color: #dc3545;
+        }
+        
+        .news-section {
+            padding: 40px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: #1a2980;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #26d0ce;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: #1a2980;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .news-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .news-header {
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            color: white;
+            padding: 20px;
+        }
+        
+        .news-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .news-content {
+            padding: 25px;
+        }
+        
+        .news-content p {
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #ffefba 0%, #ffffff 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .highlight-title {
+            font-weight: bold;
+            color: #1a2980;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .key-points {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .key-points li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .key-points li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background: #1a2980;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .disclaimer {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .stock-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stock-table th {
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .stock-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .stock-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .trend-indicator {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-right: 5px;
+        }
+        
+        .trend-up {
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 8px solid #28a745;
+        }
+        
+        .trend-down {
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 每日美股新聞彙整</h1>
+            <div class="date">2026年2月18日 星期二 | 台北時間 07:00</div>
+        </div>
+        
+        <div class="market-summary">
+            <h2 class="section-title">📊 市場概況</h2>
+            <div class="summary-grid">
+                <div class="index-card">
+                    <div class="index-name">道瓊工業指數</div>
+                    <div class="index-value">46,198.76</div>
+                    <div class="index-change change-down">▼ -0.20%</div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">標普500指數</div>
+                    <div class="index-value">6,640.90</div>
+                    <div class="index-change change-down">▼ -0.24%</div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">那斯達克指數</div>
+                    <div class="index-value">22,504.02</div>
+                    <div class="index-change change-down">▼ -0.31%</div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">費城半導體</div>
+                    <div class="index-value">6,293.97</div>
+                    <div class="index-change change-down">▼ -0.23%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="news-section">
+            <h2 class="section-title">🔥 今日重點新聞</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-category">市場分析</div>
+                        <h3 class="news-title">市場極度分化，科技股承壓</h3>
+                    </div>
+                    <div class="news-content">
+                        <p>根據BTIG分析，S&P 500自去年10月首次突破6,800點以來一直橫盤整理，市場出現極度分化現象。能源、材料、必需消費品和工業類股上漲，而金融、非必需消費品和科技股下跌。</p>
+                        <p>這種極端分化通常會導致廣泛的市場疲軟，因為強勢板塊會向弱勢板塊靠攏。半導體行業被視為關鍵觀察指標，將決定市場未來的走向。</p>
+                        <div class="highlight">
+                            <div class="highlight-title">📌 關鍵觀察</div>
+                            <p>市場分化程度達到極端水平，投資者需密切關注半導體板塊的表現，這將是市場方向的重要風向標。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-category">資金流向</div>
+                        <h3 class="news-title">基金經理人過度樂觀，觸發賣出訊號</h3>
+                    </div>
+                    <div class="news-content">
+                        <p>根據美國銀行最新基金經理人調查，投資者正在大量買入股票，觸發了反向賣出訊號。投資組合對股票的加碼程度達到2024年12月以來最高，對債券的減碼程度則是2022年9月以來最大。</p>
+                        <p>美銀的牛熊指標目前讀數為8.2，發出「賣出」訊號。市場樂觀情緒達到2021年6月以來最高水平，這可能意味著股票被高估。</p>
+                        <ul class="key-points">
+                            <li>投資組合股票加碼程度創15個月新高</li>
+                            <li>債券減碼程度達3年半最高</li>
+                            <li>牛熊指標觸發賣出訊號</li>
+                            <li>建議第一季降低風險</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-category">政策風險</div>
+                        <h3 class="news-title">政府關門風險升高，經濟數據可能延後</h3>
+                    </div>
+                    <div class="news-content">
+                        <p>政府關門風險升溫引發經濟數據真空憂慮。若政府資金出現中斷，勞工統計局將暫停運作，非農就業、消費者與生產者物價等關鍵數據將延後發布。</p>
+                        <p>先前初領失業金低於預期與GDP上修，已使市場對聯準會降息速度的樂觀略為降溫。市場普遍預估非農新增約4.3萬、失業率4.3%，若延後公布，波動來源可能轉向政策消息面。</p>
+                        <p>貿易政策不確定性也在增加，川普日前宣布新一輪關稅時程，並進一步提出對影視與家具商品的新關稅構想。</p>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-category">科技股動態</div>
+                        <h3 class="news-title">科技七巨頭財報季來臨，AI狂潮能否延續？</h3>
+                    </div>
+                    <div class="news-content">
+                        <p>2026年元月底進入美股超級財報周，科技七巨頭（微軟、Meta、蘋果等）將陸續公布財報。根據FactSet數據，分析師預期科技七巨頭Q4獲利年增20.3%，其餘493家S&P 500公司預期年增4.1%。</p>
+                        <p>若S&P 500整體達成預期的8.2%獲利成長，將是連續第四季實現正增長。市場關注AI投資是否能夠持續推動科技股盈利增長。</p>
+                        <table class="stock-table">
+                            <thead>
+                                <tr>
+                                    <th>公司</th>
+                                    <th>代號</th>
+                                    <th>預期獲利增長</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>微軟</td>
+                                    <td>MSFT</td>
+                                    <td><span class="trend-indicator trend-up"></span>+15-20%</td>
+                                </tr>
+                                <tr>
+                                    <td>Meta</td>
+                                    <td>META</td>
+                                    <td><span class="trend-indicator trend-up"></span>+25-30%</td>
+                                </tr>
+                                <tr>
+                                    <td>蘋果</td>
+                                    <td>AAPL</td>
+                                    <td><span class="trend-indicator trend-up"></span>+8-12%</td>
+                                </tr>
+                                <tr>
+                                    <td>亞馬遜</td>
+                                    <td>AMZN</td>
+                                    <td><span class="trend-indicator trend-up"></span>+20-25%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-category">個股表現</div>
+                        <h3 class="news-title">科技巨頭走勢分化，能源與半導體表現亮眼</h3>
+                    </div>
+                    <div class="news-content">
+                        <p>科技七雄多數走揚，其中Nvidia上漲約2.08%，Microsoft上漲0.69%，Amazon上漲0.91%，Meta小幅上漲0.06%，Tesla微漲0.32%，Apple下跌0.81%，Alphabet下跌0.53%。</p>
+                        <p>費城半導體指數上漲0.68%，顯示晶片與AI相關買盤仍在。能源類股承壓，國際油價盤中走弱約2.5%使油氣類股承壓。</p>
+                        <p>儲存與廣告科技題材走強，Western Digital大漲7.48%，受儲存與資料中心應用題材帶動；AppLovin上漲5.25%，受益於廣告技術商業化與獲利體質改善。</p>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-category">經濟數據</div>
+                        <h3 class="news-title">通膨數據優於預期，降息預期升溫</h3>
+                    </div>
+                    <div class="news-content">
+                        <p>美國1月CPI同比上漲2.4%，低於市場預期的2.5%和前值2.7%；環比上漲0.2%，低於市場預期的0.3%和前值0.3%。剔除食品和能源等波動較大項目的核心CPI同比上漲2.5%，符合市場預期。</p>
+                        <p>通膨數據優於預期使市場對聯準會降息的預期升溫。Fed理事Miran表示，Fed 2026年需要降息超過1%，目前的利率水準過於具限制性，通膨並非潛在的經濟問題。</p>
+                        <div class="highlight">
+                            <div class="highlight-title">📊 經濟數據摘要</div>
+                            <ul class="key-points">
+                                <li>1月CPI同比：2.4% (預期2.5%)</li>
+                                <li>1月CPI環比：0.2% (預期0.3%)</li>
+                                <li>核心CPI同比：2.5% (符合預期)</li>
+                                <li>Fed預期2026年降息超過1%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <h2 class="section-title">🎯 投資建議與策略</h2>
+                <div class="news-card">
+                    <div class="news-content">
+                        <p>基於當前市場環境，美銀投資策略師Michael Hartnett提出以下建議：</p>
+                        <ol style="padding-left: 20px; margin: 15px 0;">
+                            <li style="margin-bottom: 10px;"><strong>降低第一季風險</strong>：由於市場樂觀情緒過高，建議在第一季降低投資組合風險</li>
+                            <li style="margin-bottom: 10px;"><strong>配對交易策略</strong>：
+                                <ul style="margin-top: 5px; padding-left: 20px;">
+                                    <li>做多債券，做空黃金</li>
+                                    <li>做多美元，做空新興市場</li>
+                                    <li>做多科技股，做空銀行股</li>
+                                </ul>
+                            </li>
+                            <li style="margin-bottom: 10px;"><strong>關注半導體板塊</strong>：作為市場方向的重要指標，需密切關注半導體行業表現</li>
+                            <li><strong>分散投資</strong>：考慮能源、材料等表現相對強勢的板塊</li>
+                        </ol>
+                        <div class="highlight">
+                            <div class="highlight-title">⚠️ 風險提示</div>
+                            <p>市場面臨多重不確定性：政府關門風險、經濟數據可能延後發布、貿易政策不確定性增加、AI工具可能擠壓傳統軟體需求。投資者應保持謹慎，適當調整投資組合。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <h2 class="section-title">📅 本週重要事件</h2>
+                <div class="news-card">
+                    <div class="news-content">
+                        <table class="stock-table">
+                            <thead>
+                                <tr>
+                                    <th>日期</th>
+                                    <th>事件</th>
+                                    <th>重要性</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2月17日 (週二)</td>
+                                    <td>140家企業公布財報</td>
+                                    <td>高</td>
+                                </tr>
+                                <tr>
+                                    <td>2月18日 (週三)</td>
+                                    <td>FOMC會議紀要發布</td>
+                                    <td>高</td>
+                                </tr>
+                                <tr>
+                                    <td>2月19日 (週四)</td>
+                                    <td>165家企業公布財報</td>
+                                    <td>高</td>
+                                </tr>
+                                <tr>
+                                    <td>2月20日 (週五)</td>
+                                    <td>12月PCE通膨數據發布</td>
+                                    <td>極高</td>
+                                </tr>
+                                <tr>
+                                    <td>2月20日 (週五)</td>
+                                    <td>最高法院關稅政策裁決</td>
+                                    <td>高</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top: 15px;"><strong>注意：</strong>若政府關門，部分經濟數據可能延後發布，投資者需密切關注相關公告。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>每日美股新聞彙整</strong> | 自動生成報告 | 更新時間：2026年2月18日 07:00 (台北時間)</p>
+            <div class="disclaimer">
+                <p>⚠️ 免責聲明：本報告僅供參考，不構成投資建議。市場有風險，投資需謹慎。報告內容基於公開資訊整理，可能存在延遲或錯誤，使用者應自行核實資訊並承擔投資風險。</p>
+                <p>📧 本報告通過BCC（密件副本）發送至指定信箱，不顯示收件人資訊以保護隱私。</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 簡單的動畫效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 卡片進入動畫
+            const cards = document.querySelectorAll('.news-card, .index-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            
+            // 更新時間顯示
+            function updateTime() {
+                const now = new Date();
+                const options = { 
+                    timeZone: 'Asia/Taipei',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    weekday: 'long',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                };
+                const formatter = new Intl.DateTimeFormat('zh-TW', options);
+                const timeElement = document.querySelector('.date');
+                if (timeElement) {
+                    timeElement.textContent = formatter.format(now) + ' (台北時間)';
+                }
+            }
+            
+            // 每分鐘更新一次時間
+            updateTime();
+            setInterval(updateTime, 60000);
+            
+            // 懸停效果增強
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.2)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
