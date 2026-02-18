@@ -1,4 +1,4 @@
-# 美股投資部落格
+# 小熊抱美股投資部落格
 
 ![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Deployed-brightgreen)
 ![Last Updated](https://img.shields.io/badge/Last%20Updated-2026--02--18-blue)
