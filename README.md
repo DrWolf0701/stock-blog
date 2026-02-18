@@ -68,5 +68,5 @@ python3 -m http.server 8000
 ---
 
 **最後更新：** 2026年2月18日  
-**維護者：** Stock Blog Team  
-**聯絡方式：** user@example.com
+**維護者：** Bearhug-Invest Stock Blog Team  
+**聯絡方式：** s8824415@gmail.com
