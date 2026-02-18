@@ -3,159 +3,375 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📈 小熊抱美股投資分析部落格</title>
+    <title>美股投資部落格 | US Stock Market Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #283593;
+            --accent-color: #3949ab;
+            --light-color: #f5f5f5;
+            --dark-color: #212121;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', Roboto, sans-serif;
-            line-height: 1.7;
-            color: #2d3748;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-        
-        h1 {
-            color: #1a365d;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            color: #718096;
-            font-size: 1.2rem;
-        }
-        
-        .bear-emoji {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        
-        .post-list {
-            margin-top: 30px;
-        }
-        
-        .post-item {
-            background: #f7fafc;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-left: 4px solid #3182ce;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .post-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .post-date {
-            color: #718096;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        
-        .post-title {
-            color: #1a365d;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            text-decoration: none;
-            display: block;
-        }
-        
-        .post-title:hover {
-            color: #3182ce;
-        }
-        
-        .post-excerpt {
-            color: #4a5568;
+            font-family: 'Noto Sans TC', 'Roboto', sans-serif;
             line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: white;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Articles List */
+        .articles-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 12px;
+            font-size: 1.5rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .article-card {
+            background: var(--light-color);
+            border-radius: var(--radius);
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card:hover {
+            background: white;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-color);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .article-date {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
             margin-bottom: 15px;
         }
-        
+
+        .article-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark-color);
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
         .read-more {
             display: inline-block;
-            background: #3182ce;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
+            color: var(--accent-color);
             text-decoration: none;
             font-weight: 500;
-            transition: background 0.3s ease;
+            margin-top: 10px;
+            transition: all 0.3s ease;
         }
-        
+
         .read-more:hover {
-            background: #2c5282;
+            color: var(--primary-color);
+            text-decoration: underline;
         }
-        
-        footer {
+
+        /* Footer */
+        .footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #e2e8f0;
-            color: #718096;
+            padding: 30px;
+            color: #666;
             font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
         }
-        
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px;
+            .header h1 {
+                font-size: 2.2rem;
             }
             
-            h1 {
-                font-size: 2rem;
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav a {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="bear-emoji">🧸🤗📈</div>
-            <h1>小熊抱美股投資分析部落格</h1>
-            <p class="subtitle">每日美股市場分析與投資策略分享</p>
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-chart-line"></i> 美股投資部落格</h1>
+            <p class="subtitle">專業的美股市場分析、投資策略與財報解讀</p>
+            <p>每日更新最新市場動態與投資洞察</p>
         </header>
-        
-        <div class="post-list">
-            <article class="post-item">
-                <div class="post-date">📅 2026年02月18日 星期三</div>
-                <a href="posts/2026/02/18/index.html" class="post-title">📈 每日美股新聞彙整 - 2026年02月18日</a>
-                <p class="post-excerpt">美股市場在2月17日經歷劇烈波動後小幅收高，主要指數上漲0.1%。今日重點：科技股與AI焦慮拉鋸、Nvidia波動劇烈、通膨數據優於預期但食品價格仍高、消費必需品股承壓、媒體業併購熱潮。</p>
-                <a href="posts/2026/02/18/index.html" class="read-more">閱讀全文 →</a>
-            </article>
-            <article class="post-item">
-                <div class="post-date">📅 2026年02月17日 星期二</div>
-                <a href="posts/2026/02/17/index.html" class="post-title">📈 每日美股新聞彙整 - 2026年02月17日</a>
-                <p class="post-excerpt">美股市場重點新聞彙整與專業分析報告，包含市場概覽、重點新聞、投資建議與市場展望。今日重點：AI恐慌交易、聯準會政策預期、科技股與債券市場動態。</p>
-                <a href="posts/2026/02/17/index.html" class="read-more">閱讀全文 →</a>
-            </article>
-        </div>
-        
-        <footer>
-            <p>© 2026 小熊抱投資分析團隊 | 本網站僅供教育與參考用途，不構成投資建議</p>
-            <p>📧 聯絡我們：bearhug-invest@example.com</p>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="#"><i class="fas fa-home"></i> 首頁</a>
+            <a href="#"><i class="fas fa-newspaper"></i> 最新文章</a>
+            <a href="#"><i class="fas fa-chart-bar"></i> 市場分析</a>
+            <a href="#"><i class="fas fa-file-invoice-dollar"></i> 財報解讀</a>
+            <a href="#"><i class="fas fa-lightbulb"></i> 投資策略</a>
+            <a href="#"><i class="fas fa-info-circle"></i> 關於我們</a>
+        </nav>
+
+        <!-- Latest Articles -->
+        <section class="articles-section">
+            <h2 class="section-title"><i class="fas fa-newspaper"></i> 最新文章</h2>
+            
+            <div class="articles-grid">
+                <!-- Article 1 - Today's Article -->
+                <div class="article-card">
+                    <span class="article-date">2026年2月18日</span>
+                    <h3 class="article-title">美股新聞重點報告：AI波動下的市場新格局</h3>
+                    <p class="article-excerpt">最新市場動態顯示，AI技術的快速發展正在重塑美股格局。高盛警告AI顛覆風險，聯準會會議紀要即將公布，投資人關注通膨數據與利率路徑...</p>
+                    <a href="posts/2026/02/18/us-stock-news-2026-02-18.html" class="read-more">
+                        閱讀全文 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="article-card">
+                    <span class="article-date">2026年2月17日</span>
+                    <h3 class="article-title">半導體產業展望：AI需求推動記憶體價格飆漲</h3>
+                    <p class="article-excerpt">受AI伺服器需求強勁推動，DRAM價格在過去兩個月飆漲75%。美光、三星等記憶體大廠受益，產業鏈迎來新一輪成長週期...</p>
+                    <a href="#" class="read-more">
+                        閱讀全文 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="article-card">
+                    <span class="article-date">2026年2月16日</span>
+                    <h3 class="article-title">聯準會政策解析：2026年利率路徑預測</h3>
+                    <p class="article-excerpt">分析師預測聯準會將在2026年下半年開始降息，當前利率維持在3.50-3.75%區間。通膨數據將是決定降息時機的關鍵因素...</p>
+                    <a href="#" class="read-more">
+                        閱讀全文 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="article-card">
+                    <span class="article-date">2026年2月15日</span>
+                    <h3 class="article-title">網路安全股投資機會：AI時代的資安需求</h3>
+                    <p class="article-excerpt">Palo Alto Networks財報超預期，反映企業在AI時代對資安投資的持續增加。雲端資安成為高盛推薦的投資主題...</p>
+                    <a href="#" class="read-more">
+                        閱讀全文 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="articles-section">
+            <h2 class="section-title"><i class="fas fa-info-circle"></i> 關於本部落格</h2>
+            <p style="margin-bottom: 20px; line-height: 1.8;">
+                本部落格專注於美股市場分析，提供最新的財報解讀、市場動態與投資策略。我們的目標是幫助投資人做出更明智的投資決策，掌握市場先機。
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div style="text-align: center; padding: 20px; background: var(--light-color); border-radius: var(--radius);">
+                    <i class="fas fa-bolt" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 10px;"></i>
+                    <h3 style="margin-bottom: 10px;">即時更新</h3>
+                    <p>每日更新最新市場資訊</p>
+                </div>
+                <div style="text-align: center; padding: 20px; background: var(--light-color); border-radius: var(--radius);">
+                    <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 10px;"></i>
+                    <h3 style="margin-bottom: 10px;">專業分析</h3>
+                    <p>深度市場分析與洞察</p>
+                </div>
+                <div style="text-align: center; padding: 20px; background: var(--light-color); border-radius: var(--radius);">
+                    <i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 10px;"></i>
+                    <h3 style="margin-bottom: 10px;">風險提示</h3>
+                    <p>完整的風險評估與提示</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>本部落格內容僅供參考，不構成投資建議。投資有風險，入市需謹慎。</p>
+            <p>請根據自身風險承受能力做出投資決策。</p>
+            
+            <div style="margin-top: 20px;">
+                <a href="#" style="color: var(--accent-color); margin: 0 10px; text-decoration: none;">
+                    <i class="fas fa-envelope"></i> 聯絡我們
+                </a>
+                <a href="#" style="color: var(--accent-color); margin: 0 10px; text-decoration: none;">
+                    <i class="fas fa-rss"></i> 訂閱RSS
+                </a>
+                <a href="#" style="color: var(--accent-color); margin: 0 10px; text-decoration: none;">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 0.8rem; color: #999;">
+                <i class="far fa-copyright"></i> 2026 美股投資部落格 | 最後更新: 2026年2月18日
+            </p>
         </footer>
     </div>
+
+    <script>
+        // 簡單的互動效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 為文章卡片添加動畫
+            const articleCards = document.querySelectorAll('.article-card');
+            
+            articleCards.forEach((card, index) => {
+                // 延遲顯示動畫
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+                
+                // 初始狀態
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // 更新時間
+            function updateTime() {
+                const now = new Date();
+                const options = { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false,
+                    timeZone: 'Asia/Taipei'
+                };
+                const timeString = now.toLocaleDateString('zh-TW', options);
+                
+                const timeElement = document.querySelector('.footer p:last-child');
+                if (timeElement) {
+                    timeElement.innerHTML = `<i class="far fa-copyright"></i> 2026 美股投資部落格 | 最後更新: ${timeString}`;
+                }
+            }
+            
+            updateTime();
+        });
+    </script>
 </body>
 </html>
