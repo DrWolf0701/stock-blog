@@ -1,0 +1,36 @@
+# GitHub Pages 設定
+title: 美股投資部落格
+description: 專業的美股市場分析、投資策略與財報解讀
+baseurl: ""
+url: "https://drwolf0701.github.io/stock-blog"
+github_username: DrWolf0701
+
+# 建置設定
+markdown: kramdown
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# 自訂設定
+author:
+  name: Stock Blog Team
+  email: user@example.com
+
+# 導航
+nav:
+  - title: 首頁
+    url: /
+  - title: 最新文章
+    url: /posts/
+  - title: 關於
+    url: /about/
+
+# 預設值
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      permalink: /posts/:year/:month/:day/:title.html
