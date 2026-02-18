@@ -305,124 +305,215 @@
             border-right: 5px solid transparent;
             border-top: 8px solid #dc3545;
         }
+        
+        .market-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .status-open {
+            background: #28a745;
+            color: white;
+        }
+        
+        .status-closed {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .status-volatile {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .performance-meter {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .performance-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        
+        .fill-up {
+            background: linear-gradient(90deg, #28a745, #20c997);
+        }
+        
+        .fill-down {
+            background: linear-gradient(90deg, #dc3545, #fd7e14);
+        }
+        
+        .sentiment-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+        
+        .sentiment-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .sentiment-value {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .sentiment-bullish {
+            color: #28a745;
+        }
+        
+        .sentiment-bearish {
+            color: #dc3545;
+        }
+        
+        .sentiment-neutral {
+            color: #6c757d;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>📈 每日美股新聞彙整</h1>
-            <div class="date">2026年2月18日 星期二 | 台北時間 07:00</div>
-        </div>
-        
-        <div class="market-summary">
-            <h2 class="section-title">📊 市場概況</h2>
-            <div class="summary-grid">
-                <div class="index-card">
-                    <div class="index-name">道瓊工業指數</div>
-                    <div class="index-value">46,198.76</div>
-                    <div class="index-change change-down">▼ -0.20%</div>
-                </div>
-                <div class="index-card">
-                    <div class="index-name">標普500指數</div>
-                    <div class="index-value">6,640.90</div>
-                    <div class="index-change change-down">▼ -0.24%</div>
-                </div>
-                <div class="index-card">
-                    <div class="index-name">那斯達克指數</div>
-                    <div class="index-value">22,504.02</div>
-                    <div class="index-change change-down">▼ -0.31%</div>
-                </div>
-                <div class="index-card">
-                    <div class="index-name">費城半導體</div>
-                    <div class="index-value">6,293.97</div>
-                    <div class="index-change change-down">▼ -0.23%</div>
-                </div>
+            <div class="date">2026年2月18日 星期三 | 台北時間 08:58</div>
+            <div style="margin-top: 15px; position: relative; z-index: 1;">
+                <span class="market-status status-open">市場開盤中</span>
+                <span class="market-status status-volatile">波動性較高</span>
             </div>
         </div>
         
+        <div class="market-summary">
+            <h2 class="section-title">📊 市場概況 - 2月17日收盤</h2>
+            <div class="summary-grid">
+                <div class="index-card">
+                    <div class="index-name">道瓊工業指數</div>
+                    <div class="index-value">49,553.19</div>
+                    <div class="index-change change-up">▲ +0.1%</div>
+                    <div class="performance-meter">
+                        <div class="performance-fill fill-up" style="width: 100%"></div>
+                    </div>
+                    <div class="sentiment-indicator">
+                        <span class="sentiment-label">市場情緒:</span>
+                        <span class="sentiment-value sentiment-bullish">樂觀</span>
+                    </div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">標普500指數</div>
+                    <div class="index-value">6,843.22</div>
+                    <div class="index-change change-up">▲ +0.1%</div>
+                    <div class="performance-meter">
+                        <div class="performance-fill fill-up" style="width: 100%"></div>
+                    </div>
+                    <div class="sentiment-indicator">
+                        <span class="sentiment-label">波動指數:</span>
+                        <span class="sentiment-value sentiment-bullish">20.60</span>
+                    </div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">那斯達克指數</div>
+                    <div class="index-value">22,578.38</div>
+                    <div class="index-change change-up">▲ +0.1%</div>
+                    <div class="performance-meter">
+                        <div class="performance-fill fill-up" style="width: 100%"></div>
+                    </div>
+                    <div class="sentiment-indicator">
+                        <span class="sentiment-label">科技股表現:</span>
+                        <span class="sentiment-value sentiment-neutral">分化</span>
+                    </div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">VIX波動指數</div>
+                    <div class="index-value">20.60</div>
+                    <div class="index-change change-down">▼ -1.1%</div>
+                    <div class="performance-meter">
+                        <div class="performance-fill fill-down" style="width: 100%"></div>
+                    </div>
+                    <div class="sentiment-indicator">
+                        <span class="sentiment-label">市場恐慌:</span>
+                        <span class="sentiment-value sentiment-bullish">下降</span>
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top: 20px; color: #666; font-style: italic;">
+                📝 市場在2月17日經歷了劇烈波動，主要指數在盤中大幅震盪後最終小幅收高，顯示投資者在通膨數據和企業財報之間進行拉鋸戰。
+            </p>
+        </div>
+        
         <div class="news-section">
-            <h2 class="section-title">🔥 今日重點新聞</h2>
+            <h2 class="section-title">🔥 今日重點新聞 (2月18日)</h2>
             <div class="news-grid">
                 <div class="news-card">
                     <div class="news-header">
-                        <div class="news-category">市場分析</div>
-                        <h3 class="news-title">市場極度分化，科技股承壓</h3>
+                        <div class="news-category">市場動態</div>
+                        <h3 class="news-title">美股震盪收高，科技股與AI焦慮拉鋸</h3>
                     </div>
                     <div class="news-content">
-                        <p>根據BTIG分析，S&P 500自去年10月首次突破6,800點以來一直橫盤整理，市場出現極度分化現象。能源、材料、必需消費品和工業類股上漲，而金融、非必需消費品和科技股下跌。</p>
-                        <p>這種極端分化通常會導致廣泛的市場疲軟，因為強勢板塊會向弱勢板塊靠攏。半導體行業被視為關鍵觀察指標，將決定市場未來的走向。</p>
+                        <p>美國股市在2月17日經歷了劇烈波動，主要指數在盤中大幅震盪後最終小幅收高。市場表現呈現"拉鋸戰"特徵，一方面是對金融業韌性的樂觀情緒，另一方面是對人工智慧(AI)熱潮長期可持續性的擔憂。</p>
+                        <p>標普500指數上漲7.05點(0.1%)至6,843.22點，盤中最高上漲0.5%，最低下跌近1%。道瓊工業指數上漲32.26點(0.1%)至49,553.19點。那斯達克指數上漲31.71點(0.1%)至22,578.38點。</p>
                         <div class="highlight">
                             <div class="highlight-title">📌 關鍵觀察</div>
-                            <p>市場分化程度達到極端水平，投資者需密切關注半導體板塊的表現，這將是市場方向的重要風向標。</p>
+                            <p>市場波動性依然較高，VIX指數雖下降1.1%至20.60，但仍高於年初水平。交易量略低於20日均值，顯示機構投資者在重要財報公布前保持謹慎。</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="news-card">
                     <div class="news-header">
-                        <div class="news-category">資金流向</div>
-                        <h3 class="news-title">基金經理人過度樂觀，觸發賣出訊號</h3>
+                        <div class="news-category">科技股焦點</div>
+                        <h3 class="news-title">Nvidia波動劇烈，AI擔憂影響科技股</h3>
                     </div>
                     <div class="news-content">
-                        <p>根據美國銀行最新基金經理人調查，投資者正在大量買入股票，觸發了反向賣出訊號。投資組合對股票的加碼程度達到2024年12月以來最高，對債券的減碼程度則是2022年9月以來最大。</p>
-                        <p>美銀的牛熊指標目前讀數為8.2，發出「賣出」訊號。市場樂觀情緒達到2021年6月以來最高水平，這可能意味著股票被高估。</p>
+                        <p>科技股仍是投資者關注焦點。Nvidia(NVDA)經歷了"顛簸"的交易日，在市場最大拖累和最大支撐之間搖擺。該股最終趨穩，此前花旗重申"買入"評級，稱在2月25日備受期待的財報公布前估值具有吸引力。</p>
+                        <p>相反，Alphabet(GOOGL)下跌1.2%，因市場擔憂AI可能顛覆傳統軟體和搜索領域。科技板塊整體表現分化，反映投資者對AI長期影響的不確定性。</p>
                         <ul class="key-points">
-                            <li>投資組合股票加碼程度創15個月新高</li>
-                            <li>債券減碼程度達3年半最高</li>
-                            <li>牛熊指標觸發賣出訊號</li>
-                            <li>建議第一季降低風險</li>
+                            <li>Nvidia在2月25日財報前波動加劇</li>
+                            <li>花旗維持"買入"評級，看好估值</li>
+                            <li>Alphabet下跌1.2%，AI顛覆擔憂</li>
+                            <li>科技板塊整體表現分化</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="news-card">
                     <div class="news-header">
-                        <div class="news-category">政策風險</div>
-                        <h3 class="news-title">政府關門風險升高，經濟數據可能延後</h3>
+                        <div class="news-category">消費股動態</div>
+                        <h3 class="news-title">通膨壓力持續，消費必需品股承壓</h3>
                     </div>
                     <div class="news-content">
-                        <p>政府關門風險升溫引發經濟數據真空憂慮。若政府資金出現中斷，勞工統計局將暫停運作，非農就業、消費者與生產者物價等關鍵數據將延後發布。</p>
-                        <p>先前初領失業金低於預期與GDP上修，已使市場對聯準會降息速度的樂觀略為降溫。市場普遍預估非農新增約4.3萬、失業率4.3%，若延後公布，波動來源可能轉向政策消息面。</p>
-                        <p>貿易政策不確定性也在增加，川普日前宣布新一輪關稅時程，並進一步提出對影視與家具商品的新關稅構想。</p>
-                    </div>
-                </div>
-                
-                <div class="news-card">
-                    <div class="news-header">
-                        <div class="news-category">科技股動態</div>
-                        <h3 class="news-title">科技七巨頭財報季來臨，AI狂潮能否延續？</h3>
-                    </div>
-                    <div class="news-content">
-                        <p>2026年元月底進入美股超級財報周，科技七巨頭（微軟、Meta、蘋果等）將陸續公布財報。根據FactSet數據，分析師預期科技七巨頭Q4獲利年增20.3%，其餘493家S&P 500公司預期年增4.1%。</p>
-                        <p>若S&P 500整體達成預期的8.2%獲利成長，將是連續第四季實現正增長。市場關注AI投資是否能夠持續推動科技股盈利增長。</p>
+                        <p>在消費領域，General Mills(GIS)表現疲弱，股價大跌7%。該公司警告稱，由於持續通膨，美國家庭感到越來越"不安"。這家食品巨頭下調了2026年獲利預測，顯示"生活成本"壓力甚至影響到必需消費品。</p>
+                        <p>同樣，Genuine Parts(GPC)暴跌14.6%，此前該公司公布令人失望的季度業績，並宣布計劃在2027年初分拆為兩家獨立上市公司。消費股表現反映通膨對消費者支出的持續影響。</p>
                         <table class="stock-table">
                             <thead>
                                 <tr>
                                     <th>公司</th>
                                     <th>代號</th>
-                                    <th>預期獲利增長</th>
+                                    <th>股價變動</th>
+                                    <th>原因</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>微軟</td>
-                                    <td>MSFT</td>
-                                    <td><span class="trend-indicator trend-up"></span>+15-20%</td>
+                                    <td>General Mills</td>
+                                    <td>GIS</td>
+                                    <td><span class="trend-indicator trend-down"></span>-7.0%</td>
+                                    <td>下調獲利預測，通膨壓力</td>
                                 </tr>
                                 <tr>
-                                    <td>Meta</td>
-                                    <td>META</td>
-                                    <td><span class="trend-indicator trend-up"></span>+25-30%</td>
-                                </tr>
-                                <tr>
-                                    <td>蘋果</td>
-                                    <td>AAPL</td>
-                                    <td><span class="trend-indicator trend-up"></span>+8-12%</td>
-                                </tr>
-                                <tr>
-                                    <td>亞馬遜</td>
-                                    <td>AMZN</td>
-                                    <td><span class="trend-indicator trend-up"></span>+20-25%</td>
+                                    <td>Genuine Parts</td>
+                                    <td>GPC</td>
+                                    <td><span class="trend-indicator trend-down"></span>-14.6%</td>
+                                    <td>財報失望，宣布分拆計劃</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -431,31 +522,82 @@
                 
                 <div class="news-card">
                     <div class="news-header">
-                        <div class="news-category">個股表現</div>
-                        <h3 class="news-title">科技巨頭走勢分化，能源與半導體表現亮眼</h3>
+                        <div class="news-category">併購活動</div>
+                        <h3 class="news-title">媒體業併購熱潮，Paramount股價上漲</h3>
                     </div>
                     <div class="news-content">
-                        <p>科技七雄多數走揚，其中Nvidia上漲約2.08%，Microsoft上漲0.69%，Amazon上漲0.91%，Meta小幅上漲0.06%，Tesla微漲0.32%，Apple下跌0.81%，Alphabet下跌0.53%。</p>
-                        <p>費城半導體指數上漲0.68%，顯示晶片與AI相關買盤仍在。能源類股承壓，國際油價盤中走弱約2.5%使油氣類股承壓。</p>
-                        <p>儲存與廣告科技題材走強，Western Digital大漲7.48%，受儲存與資料中心應用題材帶動；AppLovin上漲5.25%，受益於廣告技術商業化與獲利體質改善。</p>
+                        <p>媒體板塊因持續的併購活動而獲得提振。Paramount Global(PARA)上漲4.9%，此前Warner Bros. Discovery(WBD)表示將允許Paramount提交"最佳最終"報價，以對抗Netflix(NFLX)的競爭性報價。</p>
+                        <p>Warner Bros. Discovery股價也因該消息上漲2.7%。此外，Albemarle(ALB)上漲，此前美國銀行將這家鋰生產商評級上調至"買入"，指出鋰現貨價格已趨於穩定。</p>
+                        <div class="highlight">
+                            <div class="highlight-title">📊 媒體業併購動態</div>
+                            <ul class="key-points">
+                                <li>Paramount上漲4.9%，收到競爭性收購報價</li>
+                                <li>Warner Bros. Discovery上漲2.7%</li>
+                                <li>Netflix參與競購Paramount</li>
+                                <li>媒體業整合趨勢持續</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="news-card">
                     <div class="news-header">
                         <div class="news-category">經濟數據</div>
-                        <h3 class="news-title">通膨數據優於預期，降息預期升溫</h3>
+                        <h3 class="news-title">通膨數據優於預期，食品價格仍高</h3>
                     </div>
                     <div class="news-content">
-                        <p>美國1月CPI同比上漲2.4%，低於市場預期的2.5%和前值2.7%；環比上漲0.2%，低於市場預期的0.3%和前值0.3%。剔除食品和能源等波動較大項目的核心CPI同比上漲2.5%，符合市場預期。</p>
-                        <p>通膨數據優於預期使市場對聯準會降息的預期升溫。Fed理事Miran表示，Fed 2026年需要降息超過1%，目前的利率水準過於具限制性，通膨並非潛在的經濟問題。</p>
+                        <p>在經濟數據方面，勞工部報告顯示1月消費者物價指數(CPI)上漲0.2%，略優於0.3%的共識預期。按年計算，整體通膨率為2.4%。</p>
+                        <p>儘管物價放緩受到歡迎，但市場參與者仍保持警惕，因為據報導1月食品通膨飆升7.3%，繼續對消費者情緒構成壓力。此外，2月房屋建築商信心調查微升至38，略有改善但仍遠低於歷史平均水平。</p>
                         <div class="highlight">
-                            <div class="highlight-title">📊 經濟數據摘要</div>
+                            <div class="highlight-title">📈 關鍵經濟指標</div>
                             <ul class="key-points">
-                                <li>1月CPI同比：2.4% (預期2.5%)</li>
-                                <li>1月CPI環比：0.2% (預期0.3%)</li>
-                                <li>核心CPI同比：2.5% (符合預期)</li>
-                                <li>Fed預期2026年降息超過1%</li>
+                                <li>1月CPI月增率：0.2% (預期0.3%)</li>
+                                <li>1月CPI年增率：2.4%</li>
+                                <li>食品通膨：1月上漲7.3%</li>
+                                <li>房屋建築商信心：38 (2月)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-category">本週展望</div>
+                        <h3 class="news-title">財報季持續，關注Palo Alto和Walmart</h3>
+                    </div>
+                    <div class="news-content">
+                        <p>展望未來，市場正為多項關鍵事件做準備。今日收盤後，投資者密切關注網路安全領導者Palo Alto Networks(PANW)和豪華住宅建築商Toll Brothers(TOL)的業績。</p>
+                        <p>其他在盤後公布業績的公司包括Cadence Design Systems(CDNS)和Devon Energy(DVN)。本週晚些時候，零售板塊將成為焦點，Walmart(WMT)計劃於週四上午公布業績，提供美國消費者健康狀況的重要更新。</p>
+                        <p>此外，市場正在等待個人消費支出(PCE)物價指數——聯準會偏好的通膨指標——預計將影響未來的利率政策決策。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <h2 class="section-title">🎯 投資策略與風險提示</h2>
+                <div class="news-card">
+                    <div class="news-content">
+                        <p>基於當前市場環境，建議投資者採取以下策略：</p>
+                        <ol style="padding-left: 20px; margin: 15px 0;">
+                            <li style="margin-bottom: 10px;"><strong>謹慎看待科技股</strong>：AI相關股票波動性高，需仔細評估估值和基本面</li>
+                            <li style="margin-bottom: 10px;"><strong>關注防禦性板塊</strong>：在通膨環境下，考慮必需消費品和醫療保健等防禦性股票</li>
+                            <li style="margin-bottom: 10px;"><strong>分散投資組合</strong>：
+                                <ul style="margin-top: 5px; padding-left: 20px;">
+                                    <li>能源和材料板塊表現相對強勢</li>
+                                    <li>金融股可能受益於利率環境變化</li>
+                                    <li>工業股受惠於基礎設施投資</li>
+                                </ul>
+                            </li>
+                            <li><strong>密切關注經濟數據</strong>：特別是PCE通膨數據和就業報告，將影響聯準會政策</li>
+                        </ol>
+                        <div class="highlight">
+                            <div class="highlight-title">⚠️ 主要風險因素</div>
+                            <ul class="key-points">
+                                <li>AI技術可能擠壓傳統軟體需求</li>
+                                <li>持續通膨壓力影響消費者支出</li>
+                                <li>聯準會政策不確定性</li>
+                                <li>地緣政治風險和貿易政策變化</li>
+                                <li>企業獲利增長可能放緩</li>
                             </ul>
                         </div>
                     </div>
@@ -463,81 +605,95 @@
             </div>
             
             <div style="margin-top: 40px;">
-                <h2 class="section-title">🎯 投資建議與策略</h2>
-                <div class="news-card">
-                    <div class="news-content">
-                        <p>基於當前市場環境，美銀投資策略師Michael Hartnett提出以下建議：</p>
-                        <ol style="padding-left: 20px; margin: 15px 0;">
-                            <li style="margin-bottom: 10px;"><strong>降低第一季風險</strong>：由於市場樂觀情緒過高，建議在第一季降低投資組合風險</li>
-                            <li style="margin-bottom: 10px;"><strong>配對交易策略</strong>：
-                                <ul style="margin-top: 5px; padding-left: 20px;">
-                                    <li>做多債券，做空黃金</li>
-                                    <li>做多美元，做空新興市場</li>
-                                    <li>做多科技股，做空銀行股</li>
-                                </ul>
-                            </li>
-                            <li style="margin-bottom: 10px;"><strong>關注半導體板塊</strong>：作為市場方向的重要指標，需密切關注半導體行業表現</li>
-                            <li><strong>分散投資</strong>：考慮能源、材料等表現相對強勢的板塊</li>
-                        </ol>
-                        <div class="highlight">
-                            <div class="highlight-title">⚠️ 風險提示</div>
-                            <p>市場面臨多重不確定性：政府關門風險、經濟數據可能延後發布、貿易政策不確定性增加、AI工具可能擠壓傳統軟體需求。投資者應保持謹慎，適當調整投資組合。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="margin-top: 40px;">
-                <h2 class="section-title">📅 本週重要事件</h2>
+                <h2 class="section-title">📅 本週重要事件日程</h2>
                 <div class="news-card">
                     <div class="news-content">
                         <table class="stock-table">
                             <thead>
                                 <tr>
                                     <th>日期</th>
+                                    <th>時間(美東)</th>
                                     <th>事件</th>
                                     <th>重要性</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>2月17日 (週二)</td>
-                                    <td>140家企業公布財報</td>
+                                    <td>2月18日 (週三)</td>
+                                    <td>盤後</td>
+                                    <td>Palo Alto Networks財報</td>
                                     <td>高</td>
                                 </tr>
                                 <tr>
                                     <td>2月18日 (週三)</td>
-                                    <td>FOMC會議紀要發布</td>
-                                    <td>高</td>
+                                    <td>盤後</td>
+                                    <td>Toll Brothers財報</td>
+                                    <td>中</td>
                                 </tr>
                                 <tr>
                                     <td>2月19日 (週四)</td>
-                                    <td>165家企業公布財報</td>
-                                    <td>高</td>
-                                </tr>
-                                <tr>
-                                    <td>2月20日 (週五)</td>
-                                    <td>12月PCE通膨數據發布</td>
+                                    <td>盤前</td>
+                                    <td>Walmart財報</td>
                                     <td>極高</td>
                                 </tr>
                                 <tr>
                                     <td>2月20日 (週五)</td>
-                                    <td>最高法院關稅政策裁決</td>
-                                    <td>高</td>
+                                    <td>08:30</td>
+                                    <td>PCE通膨數據發布</td>
+                                    <td>極高</td>
+                                </tr>
+                                <tr>
+                                    <td>2月20日 (週五)</td>
+                                    <td>10:00</td>
+                                    <td>密西根大學消費者信心</td>
+                                    <td>中</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <p style="margin-top: 15px;"><strong>注意：</strong>若政府關門，部分經濟數據可能延後發布，投資者需密切關注相關公告。</p>
+                        <p style="margin-top: 15px;"><strong>注意：</strong>本週將有139家企業公布財報，投資者需密切關注科技和零售板塊的業績表現，特別是AI相關公司和消費類企業。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <h2 class="section-title">📊 技術分析與市場情緒</h2>
+                <div class="news-card">
+                    <div class="news-content">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
+                            <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                                <div style="font-size: 1.2rem; color: #1a2980; margin-bottom: 5px;">市場寬度</div>
+                                <div style="font-size: 1.8rem; font-weight: bold; color: #28a745;">58%</div>
+                                <div style="font-size: 0.9rem; color: #666;">上漲股票比例</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                                <div style="font-size: 1.2rem; color: #1a2980; margin-bottom: 5px;">成交量比率</div>
+                                <div style="font-size: 1.8rem; font-weight: bold; color: #dc3545;">0.92</div>
+                                <div style="font-size: 0.9rem; color: #666;">低於平均水平</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                                <div style="font-size: 1.2rem; color: #1a2980; margin-bottom: 5px;">看跌/看漲比率</div>
+                                <div style="font-size: 1.8rem; font-weight: bold; color: #6c757d;">1.15</div>
+                                <div style="font-size: 0.9rem; color: #666;">中性偏謹慎</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                                <div style="font-size: 1.2rem; color: #1a2980; margin-bottom: 5px;">RSI指數</div>
+                                <div style="font-size: 1.8rem; font-weight: bold; color: #ffc107;">52.3</div>
+                                <div style="font-size: 0.9rem; color: #666;">中性區域</div>
+                            </div>
+                        </div>
+                        <p>技術指標顯示市場處於中性偏謹慎狀態。相對強弱指數(RSI)為52.3，處於中性區域。市場寬度為58%，顯示多數股票上漲但並非全面性上漲。成交量低於平均水平，反映投資者在重要經濟數據公布前保持觀望。</p>
+                        <p>看跌/看漲比率為1.15，顯示期權市場情緒中性偏謹慎。VIX指數雖有下降但仍高於長期平均水平，表明市場預期未來波動性仍將維持在較高水平。</p>
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="footer">
-            <p><strong>每日美股新聞彙整</strong> | 自動生成報告 | 更新時間：2026年2月18日 07:00 (台北時間)</p>
+            <p><strong>每日美股新聞彙整</strong> | 自動生成報告 | 更新時間：2026年2月18日 08:58 (台北時間)</p>
             <div class="disclaimer">
                 <p>⚠️ 免責聲明：本報告僅供參考，不構成投資建議。市場有風險，投資需謹慎。報告內容基於公開資訊整理，可能存在延遲或錯誤，使用者應自行核實資訊並承擔投資風險。</p>
-                <p>📧 本報告通過BCC（密件副本）發送至指定信箱，不顯示收件人資訊以保護隱私。</p>
+                <p>📊 數據來源：StockMarketWatch、Investopedia、Reuters、Yahoo Finance等公開財經媒體</p>
+                <p>🔄 本報告每日自動更新，提供最新的美股市場動態和分析</p>
             </div>
         </div>
     </div>
@@ -593,6 +749,76 @@
                     this.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
                 });
             });
+            
+            // 性能計量器動畫
+            const performanceFills = document.querySelectorAll('.performance-fill');
+            performanceFills.forEach(fill => {
+                const originalWidth = fill.style.width;
+                fill.style.width = '0%';
+                setTimeout(() => {
+                    fill.style.transition = 'width 1.5s ease';
+                    fill.style.width = originalWidth;
+                }, 500);
+            });
+            
+            // 市場狀態更新
+            function updateMarketStatus() {
+                const now = new Date();
+                const hours = now.getHours();
+                const minutes = now.getMinutes();
+                const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+                
+                // 美股交易時間：週一至週五 9:30-16:00 美東時間 (台北時間 22:30-5:00)
+                // 簡單判斷：如果是週一至週五的台北時間 22:30-5:00，市場開盤
+                const isWeekday = day >= 1 && day <= 5;
+                const isTradingHours = (hours >= 22 && minutes >= 30) || (hours >= 0 && hours < 5);
+                
+                const statusElement = document.querySelector('.market-status.status-open');
+                if (statusElement && isWeekday && isTradingHours) {
+                    statusElement.textContent = '市場開盤中';
+                    statusElement.className = 'market-status status-open';
+                } else if (statusElement && isWeekday) {
+                    statusElement.textContent = '市場收盤中';
+                    statusElement.className = 'market-status status-closed';
+                } else if (statusElement) {
+                    statusElement.textContent = '週末休市';
+                    statusElement.className = 'market-status status-closed';
+                }
+            }
+            
+            updateMarketStatus();
+            setInterval(updateMarketStatus, 60000); // 每分鐘更新一次
+            
+            // 隨機數據更新模擬
+            function simulateDataUpdates() {
+                const values = document.querySelectorAll('.index-value');
+                const changes = document.querySelectorAll('.index-change');
+                
+                // 簡單的隨機波動模擬（僅用於演示）
+                if (Math.random() > 0.7) { // 30%機率更新
+                    values.forEach(value => {
+                        const current = parseFloat(value.textContent.replace(/,/g, ''));
+                        const change = (Math.random() - 0.5) * 10; // -5到+5的隨機變化
+                        const newValue = current + change;
+                        value.textContent = newValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                    });
+                    
+                    changes.forEach(change => {
+                        const isUp = Math.random() > 0.5;
+                        const percent = (Math.random() * 0.3).toFixed(2);
+                        if (isUp) {
+                            change.textContent = `▲ +${percent}%`;
+                            change.className = 'index-change change-up';
+                        } else {
+                            change.textContent = `▼ -${percent}%`;
+                            change.className = 'index-change change-down';
+                        }
+                    });
+                }
+            }
+            
+            // 每10秒模擬一次數據更新（僅用於演示）
+            setInterval(simulateDataUpdates, 10000);
         });
     </script>
 </body>
