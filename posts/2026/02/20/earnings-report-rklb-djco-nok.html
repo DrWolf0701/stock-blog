@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股財報解讀 - RKLB、DJCO、NOK | 小熊抱投資部落格</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #283593;
+            --accent-color: #3949ab;
+            --success-color: #4caf50;
+            --danger-color: #f44336;
+            --warning-color: #ff9800;
+            --light-color: #f5f5f5;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans TC', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .header h1 { font-size: 2em; margin-bottom: 10px; }
+        .header p { opacity: 0.9; font-size: 1.1em; }
+        .report-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+        .stock-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .stock-name { font-size: 1.8em; font-weight: 700; color: var(--primary-color); }
+        .stock-ticker { 
+            background: var(--accent-color); 
+            color: white; 
+            padding: 8px 16px; 
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .metric {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .metric-label { font-size: 0.85em; color: #666; margin-bottom: 5px; }
+        .metric-value { font-size: 1.4em; font-weight: 700; color: var(--primary-color); }
+        .metric-value.positive { color: var(--success-color); }
+        .metric-value.negative { color: var(--danger-color); }
+        .section-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin: 20px 0 10px;
+            color: var(--secondary-color);
+        }
+        .analysis-box {
+            background: #e8eaf6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .analysis-box h4 { margin-bottom: 10px; color: var(--primary-color); }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .stock-header { flex-direction: column; gap: 10px; text-align: center; }
+            .metrics-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> 返回首頁</a>
+        
+        <div class="header">
+            <h1><i class="fas fa-chart-line"></i> 美股財報解讀</h1>
+            <p>RKLB · DJCO · NOK  最新季度財報分析</p>
+            <p style="margin-top:10px; font-size:0.9em; opacity:0.8;">2026年2月20日</p>
+        </div>
+
+        <!-- RKLB -->
+        <div class="report-card">
+            <div class="stock-header">
+                <div>
+                    <div class="stock-name">Rocket Lab</div>
+                    <div style="color:#666; margin-top:5px;">太空探索公司</div>
+                </div>
+                <div class="stock-ticker">RKLB</div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">Q3 2025 營收</div>
+                    <div class="metric-value positive">$155M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">營收年增</div>
+                    <div class="metric-value positive">+48%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Q4 營收預測</div>
+                    <div class="metric-value">$170-180M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">EPS</div>
+                    <div class="metric-value negative">-$0.08</div>
+                </div>
+            </div>
+
+            <div class="analysis-box">
+                <h4><i class="fas fa-chart-pie"></i> 財報分析</h4>
+                <p>• Rocket Lab Q3 2025 營收達 $155M，年增 48%，顯示太空發射服務需求強勁</p>
+                <p>• 毛利率 34-37%，優於業界平均水平</p>
+                <p>• Q4 營收指引 $170-180M，持續成長態勢</p>
+                <p>• EPS 為負值 (-$0.08)，反映持續的研發投資</p>
+                <p>• <strong>風險因素</strong>：Neutron 火箭開發延遲可能影響未來估值</p>
+            </div>
+            
+            <div class="analysis-box" style="background:#fff3e0; border-left-color:#ff9800;">
+                <h4><i class="fas fa-lightbulb"></i> 投資觀點</h4>
+                <p>短期中性偏多，長期取決於 Neutron 火箭進展。公司在中小型衛星發射市場地位穩固，但需關注執行風險。</p>
+            </div>
+        </div>
+
+        <!-- DJCO -->
+        <div class="report-card">
+            <div class="stock-header">
+                <div>
+                    <div class="stock-name">Daily Journal</div>
+                    <div style="color:#666; margin-top:5px;">報業及投資公司</div>
+                </div>
+                <div class="stock-ticker">DJCO</div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">Q1 FY2026 營收</div>
+                    <div class="metric-value positive">$19.5M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">營收年增</div>
+                    <div class="metric-value positive">+10%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">淨利潤</div>
+                    <div class="metric-value negative">-$8M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">有價證券價值</div>
+                    <div class="metric-value">$481.3M</div>
+                </div>
+            </div>
+
+            <div class="analysis-box">
+                <h4><i class="fas fa-chart-pie"></i> 財報分析</h4>
+                <p>• Q1 FY2026 (截至 2025/12/31) 營收 $19.5M，年增 10%，主要來自傳統媒體業務</p>
+                <p>• 淨虧損 $8M，營運現金流為 -$1.9M</p>
+                <p>• 有價證券市值 $481.3M，未實現收益達 $342.2M</p>
+                <p>• 每股虧損 $5.79</p>
+                <p>• <strong>亮點</strong>：投資部位未實現獲利豐厚，支撐公司價值</p>
+            </div>
+            
+            <div class="analysis-box" style="background:#fff3e0; border-left-color:#ff9800;">
+                <h4><i class="fas fa-lightbulb"></i> 投資觀點</h4>
+                <p>Daily Journal 的價值主要來自其投資部位（主要持有美國國債及股票），而非傳統報業。股價 $512.56 遠高於營收反映的價值，投資人主要看好其投資組合的長期回報。適合價值型投資者關注。</p>
+            </div>
+        </div>
+
+        <!-- NOK -->
+        <div class="report-card">
+            <div class="stock-header">
+                <div>
+                    <div class="stock-name">Nokia</div>
+                    <div style="color:#666; margin-top:5px;">芬蘭電信設備巨頭</div>
+                </div>
+                <div class="stock-ticker">NOK</div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">Q4 2025 營收</div>
+                    <div class="metric-value positive">€7.19B</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">營收年增</div>
+                    <div class="metric-value positive">+15.4%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">營業利潤</div>
+                    <div class="metric-value negative">€633.6M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">全年營收</div>
+                    <div class="metric-value">€19.9B</div>
+                </div>
+            </div>
+
+            <div class="analysis-box">
+                <h4><i class="fas fa-chart-pie"></i> 財報分析</h4>
+                <p>• Q4 2025 營收 €7.19B，年增 15.4%，優於市場預期</p>
+                <p>• 毛利 €3.23B，年增 12.4%</p>
+                <p>• 營業利潤 €633.6M，年減 29.3%，主要因研發費用增加</p>
+                <p>• 全年自由現金流 €0.2B，淨現金餘額 €3.4B，財務體質穩健</p>
+                <p>• 全年營收 €19.9B，年增 2% (固定匯率基礎)</p>
+            </div>
+            
+            <div class="analysis-box" style="background:#e8f5e9; border-left-color:#4caf50;">
+                <h4><i class="fas fa-lightbulb"></i> 投資觀點</h4>
+                <p>Nokia 在 5G 網路設備市場復甦，AI-RAN（AI 無線接入網路）策略獲得 Nvidia 合作青睞。營收成長但獲利下滑，反映公司在新技術上的積極投資。長期看好，但短期需注意電信資本支出放緩風險。建議關注 AI 網路設備訂單動態。</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><i class="fas fa-paw"></i> 小熊抱投資部落格 | 資料來源：公開財報資訊</p>
+            <p style="margin-top:10px; font-size:0.8em; color:#999;">本報告僅供參考，不構成投資建議</p>
+        </div>
+    </div>
+</body>
+</html>
