@@ -315,6 +315,81 @@
                     <canvas id="ism-chart"></canvas>
                 </div>
             </div>
+
+            <!-- 消費者信心指數 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-smile"></i> 消費者信心指數</span>
+                    <span class="status-dot status-neutral" id="cci-status"></span>
+                </div>
+                <div class="card-value" id="cci-value">--</div>
+                <div class="card-change" id="cci-change">
+                    <i class="fas fa-minus"></i> 月變化: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="cci-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- 零售銷售 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-store"></i> 零售銷售月增率</span>
+                    <span class="status-dot status-neutral" id="retail-status"></span>
+                </div>
+                <div class="card-value" id="retail-value">--</div>
+                <div class="card-change" id="retail-change">
+                    <i class="fas fa-minus"></i> 月變化: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="retail-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- PPI 生產者物價指數 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-box"></i> PPI 生產者物價指數</span>
+                    <span class="status-dot status-up" id="ppi-status"></span>
+                </div>
+                <div class="card-value" id="ppi-value">--</div>
+                <div class="card-change" id="ppi-change">
+                    <i class="fas fa-minus"></i> 年增率: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="ppi-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- 美元指數 DXY -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-dollar-sign"></i> 美元指數 DXY</span>
+                    <span class="status-dot status-neutral" id="dxy-status"></span>
+                </div>
+                <div class="card-value" id="dxy-value">--</div>
+                <div class="card-change" id="dxy-change">
+                    <i class="fas fa-minus"></i> 日變化: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="dxy-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- VIX 波動率指數 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-chart-pie"></i> VIX 波動率指數</span>
+                    <span class="status-dot status-neutral" id="vix-status"></span>
+                </div>
+                <div class="card-value" id="vix-value">--</div>
+                <div class="card-change" id="vix-change">
+                    <i class="fas fa-minus"></i> 日變化: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="vix-chart"></canvas>
+                </div>
+            </div>
         </div>
 
         <!-- 原物料價格 -->
@@ -365,6 +440,21 @@
                 </div>
             </div>
 
+            <!-- 鈀金 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-gem" style="color: #9c27b0;"></i> 鈀金 Palladium</span>
+                    <span class="status-dot status-neutral" id="palladium-status"></span>
+                </div>
+                <div class="card-value" id="palladium-value" style="color: #9c27b0;">--</div>
+                <div class="card-change" id="palladium-change">
+                    <i class="fas fa-minus"></i> 日變化: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="palladium-chart"></canvas>
+                </div>
+            </div>
+
             <!-- 原油 -->
             <div class="card">
                 <div class="card-header">
@@ -395,6 +485,21 @@
                 </div>
             </div>
 
+            <!-- 鋁 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-cube" style="color: #90a4ae;"></i> 鋁 Aluminum</span>
+                    <span class="status-dot status-neutral" id="aluminum-status"></span>
+                </div>
+                <div class="card-value" id="aluminum-value" style="color: #90a4ae;">--</div>
+                <div class="card-change" id="aluminum-change">
+                    <i class="fas fa-minus"></i> 日變化: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="aluminum-chart"></canvas>
+                </div>
+            </div>
+
             <!-- 天然氣 -->
             <div class="card">
                 <div class="card-header">
@@ -407,6 +512,100 @@
                 </div>
                 <div class="chart-container">
                     <canvas id="gas-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- 農產品 -->
+        <h2 class="section-title"><i class="fas fa-seedling"></i> 農產品與其他</h2>
+        <div class="dashboard-grid">
+            <!-- 小麥 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-bread-slice" style="color: #f5deb3;"></i> 小麥 Wheat</span>
+                    <span class="status-dot status-neutral" id="wheat-status"></span>
+                </div>
+                <div class="card-value" id="wheat-value" style="color: #f5deb3;">--</div>
+                <div class="card-change" id="wheat-change">
+                    <i class="fas fa-minus"></i> 日變化: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="wheat-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- 玉米 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-leaf" style="color: #ffd54f;"></i> 玉米 Corn</span>
+                    <span class="status-dot status-neutral" id="corn-status"></span>
+                </div>
+                <div class="card-value" id="corn-value" style="color: #ffd54f;">--</div>
+                <div class="card-change" id="corn-change">
+                    <i class="fas fa-minus"></i> 日變化: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="corn-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- 咖啡 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-coffee" style="color: #795548;"></i> 咖啡 Coffee</span>
+                    <span class="status-dot status-neutral" id="coffee-status"></span>
+                </div>
+                <div class="card-value" id="coffee-value" style="color: #795548;">--</div>
+                <div class="card-change" id="coffee-change">
+                    <i class="fas fa-minus"></i> 日變化: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="coffee-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- 棉花 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-cloud" style="color: #fff9c4;"></i> 棉花 Cotton</span>
+                    <span class="status-dot status-neutral" id="cotton-status"></span>
+                </div>
+                <div class="card-value" id="cotton-value" style="color: #fff9c4;">--</div>
+                <div class="card-change" id="cotton-change">
+                    <i class="fas fa-minus"></i> 日變化: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="cotton-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- 鋅 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-shield-alt" style="color: #78909c;"></i> 鋅 Zinc</span>
+                    <span class="status-dot status-neutral" id="zinc-status"></span>
+                </div>
+                <div class="card-value" id="zinc-value" style="color: #78909c;">--</div>
+                <div class="card-change" id="zinc-change">
+                    <i class="fas fa-minus"></i> 日變化: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="zinc-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- 鎳 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-star" style="color: #b0bec5;"></i> 鎳 Nickel</span>
+                    <span class="status-dot status-neutral" id="nickel-status"></span>
+                </div>
+                <div class="card-value" id="nickel-value" style="color: #b0bec5;">--</div>
+                <div class="card-change" id="nickel-change">
+                    <i class="fas fa-minus"></i> 日變化: --
+                </div>
+                <div class="chart-container">
+                    <canvas id="nickel-chart"></canvas>
                 </div>
             </div>
         </div>
@@ -445,18 +644,35 @@
     <script>
         // 預設數據（如果無法獲取API數據時使用）
         const defaultData = {
+            // 經濟指標
             gdp: { value: '2.8', change: '+0.2', period: '2025 Q4' },
             cpi: { value: '2.9', change: '+0.1', period: '2026年1月' },
             unemployment: { value: '4.0', change: '-0.1', period: '2026年1月' },
             fedrate: { value: '4.25', change: '-0.25', period: '2025年12月' },
             m2: { value: '21.3', change: '+0.5', period: '2026年1月' },
             ism: { value: '50.5', change: '+1.2', period: '2026年1月' },
+            cci: { value: '98.5', change: '+2.3', period: '2026年1月' },
+            retail: { value: '0.4', change: '+0.1', period: '2026年1月' },
+            ppi: { value: '3.2', change: '+0.2', period: '2026年1月' },
+            dxy: { value: '106.5', change: '-0.3', period: '2026年2月' },
+            vix: { value: '16.5', change: '-1.2', period: '2026年2月' },
+            // 貴金屬
             gold: { value: '2850.00', change: '+15.00', period: '2026年2月' },
             silver: { value: '32.50', change: '+0.25', period: '2026年2月' },
             platinum: { value: '980.00', change: '-5.00', period: '2026年2月' },
+            palladium: { value: '1050.00', change: '+25.00', period: '2026年2月' },
+            // 能源與工業金屬
             oil: { value: '72.50', change: '+1.20', period: '2026年2月' },
             copper: { value: '4.25', change: '+0.08', period: '2026年2月' },
-            gas: { value: '2.85', change: '-0.12', period: '2026年2月' }
+            aluminum: { value: '2650.00', change: '+15.00', period: '2026年2月' },
+            gas: { value: '2.85', change: '-0.12', period: '2026年2月' },
+            // 農產品
+            wheat: { value: '5.85', change: '+0.08', period: '2026年2月' },
+            corn: { value: '4.52', change: '-0.05', period: '2026年2月' },
+            coffee: { value: '3.25', change: '+0.15', period: '2026年2月' },
+            cotton: { value: '0.78', change: '+0.01', period: '2026年2月' },
+            zinc: { value: '2850.00', change: '+20.00', period: '2026年2月' },
+            nickel: { value: '16500.00', change: '-150.00', period: '2026年2月' }
         };
 
         // 48個月歷史數據（模擬數據）
@@ -468,32 +684,68 @@
                 const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
                 const monthStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
                 
-                // 產生一些模擬數據（帶有隨機波動）
+                // 經濟指標模擬數據
                 const baseGDP = 2.5 + Math.sin(i / 10) * 1.5;
                 const baseCPI = 3.0 + Math.sin(i / 8) * 1.5;
                 const baseUnemp = 3.8 + Math.sin(i / 12) * 1.0;
                 const baseFedrate = 4.5 + Math.sin(i / 6) * 2;
+                const baseCCI = 100 + Math.sin(i / 6) * 15 + Math.random() * 5;
+                const baseRetail = 0.3 + Math.sin(i / 8) * 0.3 + Math.random() * 0.1;
+                const basePPI = 3.0 + Math.sin(i / 8) * 1.5;
+                const baseDXY = 104 + Math.sin(i / 10) * 8 + Math.random() * 2;
+                const baseVIX = 15 + Math.sin(i / 4) * 8 + Math.random() * 3;
+
+                // 貴金屬模擬數據
                 const baseGold = 1800 + i * 20 + Math.sin(i / 5) * 200;
                 const baseSilver = 22 + i * 0.2 + Math.sin(i / 5) * 5;
                 const basePlatinum = 950 + i * 5 + Math.sin(i / 6) * 100;
+                const basePalladium = 900 + i * 8 + Math.sin(i / 6) * 150;
+
+                // 能源與工業金屬模擬數據
                 const baseOil = 65 + Math.sin(i / 4) * 20 + Math.random() * 10;
                 const baseCopper = 3.8 + i * 0.02 + Math.sin(i / 5) * 0.5;
+                const baseAluminum = 2200 + i * 15 + Math.sin(i / 5) * 300;
                 const baseGas = 2.5 + Math.sin(i / 8) * 1 + Math.random() * 0.5;
+
+                // 農產品模擬數據
+                const baseWheat = 5.5 + Math.sin(i / 6) * 1 + Math.random() * 0.3;
+                const baseCorn = 4.2 + Math.sin(i / 6) * 0.8 + Math.random() * 0.3;
+                const baseCoffee = 2.8 + Math.sin(i / 5) * 0.8 + Math.random() * 0.3;
+                const baseCotton = 0.75 + Math.sin(i / 8) * 0.15 + Math.random() * 0.05;
+                const baseZinc = 2400 + i * 12 + Math.sin(i / 6) * 400;
+                const baseNickel = 15000 + i * 80 + Math.sin(i / 6) * 3000;
 
                 data.push({
                     month: monthStr,
+                    // 經濟指標
                     gdp: (baseGDP + (Math.random() - 0.5) * 0.5).toFixed(1),
                     cpi: (baseCPI + (Math.random() - 0.5) * 0.3).toFixed(1),
                     unemployment: (baseUnemp + (Math.random() - 0.5) * 0.3).toFixed(1),
                     fedrate: (baseFedrate + (Math.random() - 0.5) * 0.25).toFixed(2),
                     m2: (21 + i * 0.05).toFixed(1),
                     ism: (50 + Math.sin(i / 6) * 5 + Math.random() * 2).toFixed(1),
+                    cci: (baseCCI + (Math.random() - 0.5) * 3).toFixed(1),
+                    retail: (baseRetail + (Math.random() - 0.5) * 0.1).toFixed(1),
+                    ppi: (basePPI + (Math.random() - 0.5) * 0.3).toFixed(1),
+                    dxy: (baseDXY + (Math.random() - 0.5) * 1).toFixed(1),
+                    vix: (baseVIX + (Math.random() - 0.5) * 2).toFixed(1),
+                    // 貴金屬
                     gold: (baseGold + (Math.random() - 0.5) * 30).toFixed(2),
                     silver: (baseSilver + (Math.random() - 0.5) * 2).toFixed(2),
                     platinum: (basePlatinum + (Math.random() - 0.5) * 20).toFixed(2),
+                    palladium: (basePalladium + (Math.random() - 0.5) * 30).toFixed(2),
+                    // 能源與工業金屬
                     oil: (baseOil + (Math.random() - 0.5) * 5).toFixed(2),
                     copper: (baseCopper + (Math.random() - 0.5) * 0.2).toFixed(2),
-                    gas: (baseGas + (Math.random() - 0.5) * 0.3).toFixed(2)
+                    aluminum: (baseAluminum + (Math.random() - 0.5) * 50).toFixed(2),
+                    gas: (baseGas + (Math.random() - 0.5) * 0.3).toFixed(2),
+                    // 農產品
+                    wheat: (baseWheat + (Math.random() - 0.5) * 0.2).toFixed(2),
+                    corn: (baseCorn + (Math.random() - 0.5) * 0.2).toFixed(2),
+                    coffee: (baseCoffee + (Math.random() - 0.5) * 0.2).toFixed(2),
+                    cotton: (baseCotton + (Math.random() - 0.5) * 0.05).toFixed(2),
+                    zinc: (baseZinc + (Math.random() - 0.5) * 50).toFixed(2),
+                    nickel: (baseNickel + (Math.random() - 0.5) * 300).toFixed(2)
                 });
             }
             return data;
@@ -612,21 +864,38 @@
             };
             document.getElementById('update-time').textContent = now.toLocaleDateString('zh-TW', options);
 
-            // 更新各項指標
+            // 更新經濟指標
             updateCard('gdp', defaultData.gdp.value + '%', defaultData.gdp.change + '% (' + defaultData.gdp.period + ')', null);
             updateCard('cpi', defaultData.cpi.value + '%', defaultData.cpi.change + '% (' + defaultData.cpi.period + ')', true);
             updateCard('unemployment', defaultData.unemployment.value + '%', defaultData.unemployment.change + '% (' + defaultData.unemployment.period + ')', false);
             updateCard('fedrate', defaultData.fedrate.value + '%', defaultData.fedrate.change + '% (' + defaultData.fedrate.period + ')', null);
             updateCard('m2', defaultData.m2.value + '兆', defaultData.m2.change + '% (' + defaultData.m2.period + ')', true);
             updateCard('ism', defaultData.ism.value, defaultData.ism.change + ' (' + defaultData.ism.period + ')', null);
+            updateCard('cci', defaultData.cci.value, defaultData.cci.change + ' (' + defaultData.cci.period + ')', null);
+            updateCard('retail', defaultData.retail.value + '%', defaultData.retail.change + '% (' + defaultData.retail.period + ')', null);
+            updateCard('ppi', defaultData.ppi.value + '%', defaultData.ppi.change + '% (' + defaultData.ppi.period + ')', true);
+            updateCard('dxy', defaultData.dxy.value, defaultData.dxy.change + ' (' + defaultData.dxy.period + ')', null);
+            updateCard('vix', defaultData.vix.value, defaultData.vix.change + ' (' + defaultData.vix.period + ')', null);
 
-            // 原物料
+            // 貴金屬
             updateCard('gold', defaultData.gold.value, defaultData.gold.change + ' (' + defaultData.gold.period + ')', null, '$');
             updateCard('silver', defaultData.silver.value, defaultData.silver.change + ' (' + defaultData.silver.period + ')', null, '$');
             updateCard('platinum', defaultData.platinum.value, defaultData.platinum.change + ' (' + defaultData.platinum.period + ')', null, '$');
+            updateCard('palladium', defaultData.palladium.value, defaultData.palladium.change + ' (' + defaultData.palladium.period + ')', null, '$');
+
+            // 能源與工業金屬
             updateCard('oil', defaultData.oil.value, defaultData.oil.change + ' (' + defaultData.oil.period + ')', null, '$');
             updateCard('copper', defaultData.copper.value, defaultData.copper.change + ' (' + defaultData.copper.period + ')', null, '$');
+            updateCard('aluminum', defaultData.aluminum.value, defaultData.aluminum.change + ' (' + defaultData.aluminum.period + ')', null, '$');
             updateCard('gas', defaultData.gas.value, defaultData.gas.change + ' (' + defaultData.gas.period + ')', null, '$');
+
+            // 農產品
+            updateCard('wheat', defaultData.wheat.value, defaultData.wheat.change + ' (' + defaultData.wheat.period + ')', null, '$');
+            updateCard('corn', defaultData.corn.value, defaultData.corn.change + ' (' + defaultData.corn.period + ')', null, '$');
+            updateCard('coffee', defaultData.coffee.value, defaultData.coffee.change + ' (' + defaultData.coffee.period + ')', null, '$');
+            updateCard('cotton', defaultData.cotton.value, defaultData.cotton.change + ' (' + defaultData.cotton.period + ')', null, '$');
+            updateCard('zinc', defaultData.zinc.value, defaultData.zinc.change + ' (' + defaultData.zinc.period + ')', null, '$');
+            updateCard('nickel', defaultData.nickel.value, defaultData.nickel.change + ' (' + defaultData.nickel.period + ')', null, '$');
 
             // 生成歷史數據
             const historyData = generateHistoryData();
@@ -686,6 +955,37 @@
                 historyData.slice(-12).map(d => d.ism), 
                 '#ffb74d', '指數', 'ISM'
             );
+            // 新經濟指標圖表
+            chartConfig(
+                document.getElementById('cci-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.cci), 
+                '#ab47bc', '指數', '消費者信心'
+            );
+            chartConfig(
+                document.getElementById('retail-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.retail), 
+                '#26a69a', '%', '零售銷售'
+            );
+            chartConfig(
+                document.getElementById('ppi-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.ppi), 
+                '#ef5350', '%', 'PPI'
+            );
+            chartConfig(
+                document.getElementById('dxy-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.dxy), 
+                '#42a5f5', '指數', '美元指數'
+            );
+            chartConfig(
+                document.getElementById('vix-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.vix), 
+                '#ffa726', '指數', 'VIX'
+            );
 
             // 原物料圖表
             chartConfig(
@@ -723,6 +1023,56 @@
                 labels, 
                 historyData.slice(-12).map(d => d.gas), 
                 '#4db6ac', '$', '天然氣'
+            );
+            chartConfig(
+                document.getElementById('aluminum-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.aluminum), 
+                '#90a4ae', '$', '鋁'
+            );
+
+            // 農產品圖表
+            chartConfig(
+                document.getElementById('wheat-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.wheat), 
+                '#f5deb3', '$', '小麥'
+            );
+            chartConfig(
+                document.getElementById('corn-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.corn), 
+                '#ffd54f', '$', '玉米'
+            );
+            chartConfig(
+                document.getElementById('coffee-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.coffee), 
+                '#795548', '$', '咖啡'
+            );
+            chartConfig(
+                document.getElementById('cotton-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.cotton), 
+                '#fff9c4', '$', '棉花'
+            );
+            chartConfig(
+                document.getElementById('zinc-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.zinc), 
+                '#78909c', '$', '鋅'
+            );
+            chartConfig(
+                document.getElementById('nickel-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.nickel), 
+                '#b0bec5', '$', '鎳'
+            );
+            chartConfig(
+                document.getElementById('palladium-chart'), 
+                labels, 
+                historyData.slice(-12).map(d => d.palladium), 
+                '#9c27b0', '$', '鈀金'
             );
         };
 
