@@ -475,7 +475,10 @@
                 const baseFedrate = 4.5 + Math.sin(i / 6) * 2;
                 const baseGold = 1800 + i * 20 + Math.sin(i / 5) * 200;
                 const baseSilver = 22 + i * 0.2 + Math.sin(i / 5) * 5;
+                const basePlatinum = 950 + i * 5 + Math.sin(i / 6) * 100;
                 const baseOil = 65 + Math.sin(i / 4) * 20 + Math.random() * 10;
+                const baseCopper = 3.8 + i * 0.02 + Math.sin(i / 5) * 0.5;
+                const baseGas = 2.5 + Math.sin(i / 8) * 1 + Math.random() * 0.5;
 
                 data.push({
                     month: monthStr,
@@ -483,43 +486,95 @@
                     cpi: (baseCPI + (Math.random() - 0.5) * 0.3).toFixed(1),
                     unemployment: (baseUnemp + (Math.random() - 0.5) * 0.3).toFixed(1),
                     fedrate: (baseFedrate + (Math.random() - 0.5) * 0.25).toFixed(2),
+                    m2: (21 + i * 0.05).toFixed(1),
+                    ism: (50 + Math.sin(i / 6) * 5 + Math.random() * 2).toFixed(1),
                     gold: (baseGold + (Math.random() - 0.5) * 30).toFixed(2),
                     silver: (baseSilver + (Math.random() - 0.5) * 2).toFixed(2),
-                    oil: (baseOil + (Math.random() - 0.5) * 5).toFixed(2)
+                    platinum: (basePlatinum + (Math.random() - 0.5) * 20).toFixed(2),
+                    oil: (baseOil + (Math.random() - 0.5) * 5).toFixed(2),
+                    copper: (baseCopper + (Math.random() - 0.5) * 0.2).toFixed(2),
+                    gas: (baseGas + (Math.random() - 0.5) * 0.3).toFixed(2)
                 });
             }
             return data;
         };
 
-        // 圖表配置
-        const chartConfig = (ctx, label, data, color) => {
+        // 圖表配置（帶單位的詳細版本）
+        const chartConfig = (ctx, label, data, color, yUnit = '', xLabel = '月份') => {
             return new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: label,
                     datasets: [{
+                        label: yUnit,
                         data: data,
                         borderColor: color,
                         backgroundColor: color + '20',
                         borderWidth: 2,
                         fill: true,
                         tension: 0.4,
-                        pointRadius: 0,
-                        pointHoverRadius: 4
+                        pointRadius: 2,
+                        pointHoverRadius: 6,
+                        pointBackgroundColor: color,
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 1
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { display: false }
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            titleColor: '#fff',
+                            bodyColor: '#fff',
+                            borderColor: color,
+                            borderWidth: 1,
+                            padding: 10,
+                            displayColors: false,
+                            callbacks: {
+                                title: (context) => `${xLabel}: ${context[0].label}`,
+                                label: (context) => `${yUnit ? yUnit + ': ' : ''}${context.parsed.y}`
+                            }
+                        }
                     },
                     scales: {
-                        x: { display: false },
+                        x: {
+                            display: true,
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { 
+                                color: '#a0aec0', 
+                                font: { size: 9 },
+                                maxRotation: 45,
+                                minRotation: 0,
+                                maxTicksLimit: 12
+                            },
+                            title: {
+                                display: true,
+                                text: xLabel,
+                                color: '#718096',
+                                font: { size: 10 }
+                            }
+                        },
                         y: { 
                             display: true,
                             grid: { color: 'rgba(255,255,255,0.1)' },
-                            ticks: { color: '#a0aec0', font: { size: 10 } }
+                            ticks: { 
+                                color: '#a0aec0', 
+                                font: { size: 10 },
+                                callback: (value) => {
+                                    if (yUnit === '$') return '$' + value;
+                                    if (yUnit === '%') return value + '%';
+                                    return value;
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: yUnit || '數值',
+                                color: '#718096',
+                                font: { size: 10 }
+                            }
                         }
                     }
                 }
@@ -591,81 +646,83 @@
                 </tr>
             `).join('');
 
-            // 生成圖表
-            const labels = historyData.slice(-12).map(d => d.month.slice(5));
+            // 生成圖表（顯示過去12個月）
+            const labels = historyData.slice(-12).map(d => d.month);
             
+            // 總體經濟指標圖表
             chartConfig(
                 document.getElementById('gdp-chart'), 
                 labels, 
                 historyData.slice(-12).map(d => d.gdp), 
-                '#667eea'
+                '#667eea', '%', 'GDP'
             );
             chartConfig(
                 document.getElementById('cpi-chart'), 
                 labels, 
                 historyData.slice(-12).map(d => d.cpi), 
-                '#f093fb'
+                '#f093fb', '%', 'CPI'
             );
             chartConfig(
                 document.getElementById('unemployment-chart'), 
                 labels, 
                 historyData.slice(-12).map(d => d.unemployment), 
-                '#ff5252'
+                '#ff5252', '%', '失業率'
             );
             chartConfig(
                 document.getElementById('fedrate-chart'), 
                 labels, 
                 historyData.slice(-12).map(d => d.fedrate), 
-                '#4fc3f7'
+                '#4fc3f7', '%', '利率'
             );
             chartConfig(
                 document.getElementById('m2-chart'), 
                 labels, 
                 historyData.slice(-12).map(d => d.m2), 
-                '#00e676'
+                '#00e676', '兆美元', 'M2'
             );
             chartConfig(
                 document.getElementById('ism-chart'), 
                 labels, 
                 historyData.slice(-12).map(d => d.ism), 
-                '#ffb74d'
+                '#ffb74d', '指數', 'ISM'
             );
 
+            // 原物料圖表
             chartConfig(
                 document.getElementById('gold-chart'), 
                 labels, 
                 historyData.slice(-12).map(d => d.gold), 
-                '#ffd700'
+                '#ffd700', '$', '黃金'
             );
             chartConfig(
                 document.getElementById('silver-chart'), 
                 labels, 
                 historyData.slice(-12).map(d => d.silver), 
-                '#c0c0c0'
+                '#c0c0c0', '$', '白銀'
             );
             chartConfig(
                 document.getElementById('platinum-chart'), 
                 labels, 
                 historyData.slice(-12).map(d => d.platinum), 
-                '#e5e4e2'
+                '#e5e4e2', '$', '白金'
             );
             chartConfig(
                 document.getElementById('oil-chart'), 
                 labels, 
                 historyData.slice(-12).map(d => d.oil), 
-                '#ff7043'
+                '#ff7043', '$', '原油'
             );
             chartConfig(
                 document.getElementById('copper-chart'), 
                 labels, 
                 historyData.slice(-12).map(d => d.copper), 
-                '#b87333'
+                '#b87333', '$', '銅'
             );
             chartConfig(
                 document.getElementById('gas-chart'), 
                 labels, 
                 historyData.slice(-12).map(d => d.gas), 
-                '#4db6ac'
+                '#4db6ac', '$', '天然氣'
             );
         };
 
