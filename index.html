@@ -728,37 +728,27 @@
             });
         });
 
-        // 訪客計數器 - 使用 CountAPI
+        // 訪客計數器 - 使用 localStorage + 模擬計數
         (function() {
-            const namespace = 'drwolf0701-stock-blog';
-            const key = 'page-views';
+            const storageKey = 'stock_blog_visit_count';
+            const sessionKey = 'stock_blog_session_count';
             
-            // 嘗試獲取現有計數
-            fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('page-views').textContent = data.value.toLocaleString();
-                })
-                .catch(() => {
-                    // 如果不存在，創建新的計數器
-                    fetch(`https://api.countapi.xyz/create?namespace=${namespace}&key=${key}&enable_reset=0`)
-                        .then(response => response.json())
-                        .then(data => {
-                            document.getElementById('page-views').textContent = data.value.toLocaleString();
-                        })
-                        .catch(err => {
-                            document.getElementById('page-views').textContent = '?';
-                            console.log('計數器錯誤:', err);
-                        });
-                });
+            // 檢查是否為同一 session（30分鐘內算同一訪問）
+            const lastVisit = localStorage.getItem('stock_blog_last_visit');
+            const now = Date.now();
+            const thirtyMinutes = 30 * 60 * 1000;
             
-            // 每次頁面載入都增加計數
-            fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('page-views').textContent = data.value.toLocaleString();
-                })
-                .catch(() => {});
+            let count = parseInt(localStorage.getItem(storageKey)) || 0;
+            
+            // 如果超過30分鐘，算新的訪問
+            if (!lastVisit || (now - parseInt(lastVisit)) > thirtyMinutes) {
+                count++;
+                localStorage.setItem(storageKey, count);
+                localStorage.setItem('stock_blog_last_visit', now);
+            }
+            
+            // 顯示計數
+            document.getElementById('page-views').textContent = count.toLocaleString();
         })();
     </script>
 </body>
