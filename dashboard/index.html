@@ -721,7 +721,7 @@
             nickel: { value: '16500.00', change: '-150.00', period: '2026年2月' }
         };
 
-        // 12個月歷史數據（使用 localStorage 缓存）
+        
         // 圖表配置（帶單位的詳細版本）
         const chartConfig = (ctx, label, data, color, yUnit = '', xLabel = '月份') => {
             return new Chart(ctx, {
@@ -899,7 +899,7 @@
             updateCard('zinc', useData.zinc.value, useData.zinc.change + ' (' + useData.zinc.period + ')', null, '$', false);
             updateCard('nickel', useData.nickel.value, useData.nickel.change + ' (' + useData.nickel.period + ')', null, '$', false);
 
-            // 生成歷史數據
+            
             
             // 總體經濟指標圖表
             chartConfig(
