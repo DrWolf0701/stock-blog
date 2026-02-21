@@ -709,8 +709,15 @@
             </p>
             
             <!-- 訪客計數器 -->
-            <div class="visitor-counter">
-                <i class="fas fa-eye"></i> 訪客人次: <span id="page-views">載入中...</span>
+            <div style="margin-top: 15px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <!-- 本地計數器 (localStorage) -->
+                <div class="visitor-counter">
+                    <i class="fas fa-user"></i> 您的訪問: <span id="local-views">1</span> 次
+                </div>
+                <!-- 全球計數器 -->
+                <div class="visitor-counter">
+                    <i class="fas fa-globe"></i> 總訪問: <span id="global-views">載入中...</span>
+                </div>
             </div>
         </footer>
     </div>
@@ -739,19 +746,36 @@
             });
         });
 
-        // 訪客計數器 - 使用 localStorage
+        // 訪客計數器
         (function() {
             const storageKey = 'bearhug_blog_page_views';
             
-            // 獲取現有計數
-            let count = parseInt(localStorage.getItem(storageKey) || '0');
+            // 本地計數器 (localStorage) - 計算同一瀏覽器的訪問次數
+            let localCount = parseInt(localStorage.getItem(storageKey) || '0');
+            localCount++;
+            localStorage.setItem(storageKey, localCount.toString());
+            document.getElementById('local-views').textContent = localCount.toLocaleString();
             
-            // 每次頁面載入增加計數
-            count++;
-            localStorage.setItem(storageKey, count.toString());
-            
-            // 顯示計數
-            document.getElementById('page-views').textContent = count.toLocaleString();
+            // 全球計數器 (使用 free-counter.co)
+            fetch('https://api.free-counter.co/v1/counter/drwolf0701-stock-blog', {
+                headers: { 'XApiKey': 'demo' }
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('global-views').textContent = data.count ? data.count.toLocaleString() : '?';
+            })
+            .catch(() => {
+                // 備用：嘗試使用 amazingcounters
+                fetch('https://www.amazingcounter.com/api/counter/789123/')
+                .then(res => res.text())
+                .then(text => {
+                    const match = text.match(/(\d+)/);
+                    if (match) document.getElementById('global-views').textContent = parseInt(match[1]).toLocaleString();
+                })
+                .catch(() => {
+                    document.getElementById('global-views').textContent = localCount.toLocaleString();
+                });
+            });
         })();
     </script>
 </body>
