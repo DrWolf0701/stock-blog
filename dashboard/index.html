@@ -742,8 +742,22 @@
             nickel: { value: '16500.00', change: '-150.00', period: '2026年2月' }
         };
 
-        // 12個月歷史數據（模擬數據）
+        // 12個月歷史數據（使用 localStorage 缓存）
         const generateHistoryData = () => {
+            const STORAGE_KEY = 'bearhug_dashboard_history';
+            const CACHE_DATE_KEY = 'bearhush_dashboard_date';
+            
+            // 檢查是否有緩存的數據
+            const cached = localStorage.getItem(STORAGE_KEY);
+            const cacheDate = localStorage.getItem(CACHE_DATE_KEY);
+            const today = new Date().toISOString().slice(0, 7); // YYYY-MM
+            
+            // 如果有緩存且是同一天，直接使用
+            if (cached && cacheDate === today) {
+                return JSON.parse(cached);
+            }
+            
+            // 沒有緩存，重新生成
             const data = [];
             const now = new Date();
             
@@ -816,6 +830,15 @@
                     nickel: (baseNickel + (Math.random() - 0.5) * 300).toFixed(2)
                 });
             }
+            
+            // 緩存數據到 localStorage
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                localStorage.setItem(CACHE_DATE_KEY, today);
+            } catch (e) {
+                console.log('localStorage save failed:', e);
+            }
+            
             return data;
         };
 
