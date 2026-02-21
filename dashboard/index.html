@@ -717,7 +717,7 @@
             nickel: { value: '16500.00', change: '-150.00', period: '2026年2月' }
         };
 
-        // 12個月歷史數據（使用 localStorage 缓存）
+        
         const generateHistoryData = () => {
             const STORAGE_KEY = 'bearhug_dashboard_history';
             const CACHE_DATE_KEY = 'bearhush_dashboard_date';
@@ -994,93 +994,75 @@
             updateCard('zinc', useData.zinc.value, useData.zinc.change + ' (' + useData.zinc.period + ')', null, '$', false);
             updateCard('nickel', useData.nickel.value, useData.nickel.change + ' (' + useData.nickel.period + ')', null, '$', false);
 
-            // 生成歷史數據
-            const historyData = generateHistoryData();
-            
-            // 更新表格
-            const tbody = document.getElementById('history-body');
-            tbody.innerHTML = historyData.slice(0, 12).map(row => `
-                <tr>
-                    <td>${row.month}</td>
-                    <td class="value ${parseFloat(row.gdp) > 3 ? 'positive' : (parseFloat(row.gdp) < 0 ? 'negative' : 'neutral')}">${row.gdp}%</td>
-                    <td class="value ${parseFloat(row.cpi) > 4 ? 'negative' : (parseFloat(row.cpi) < 2 ? 'positive' : 'neutral')}">${row.cpi}%</td>
-                    <td class="value ${parseFloat(row.unemployment) > 5 ? 'negative' : (parseFloat(row.unemployment) < 4 ? 'positive' : 'neutral')}">${row.unemployment}%</td>
-                    <td class="value">${row.fedrate}%</td>
-                    <td class="value" style="color: #ffd700;">$${row.gold}</td>
-                    <td class="value" style="color: #c0c0c0;">$${row.silver}</td>
-                    <td class="value" style="color: #ff7043;">$${row.oil}</td>
-                </tr>
-            `).join('');
-
             // 生成圖表（顯示過去12個月）
-            const labels = historyData.slice(-12).map(d => d.month);
+            const labels = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
             
             // 總體經濟指標圖表
             chartConfig(
                 document.getElementById('gdp-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.gdp), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#667eea', '%', 'GDP'
             );
             chartConfig(
                 document.getElementById('cpi-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.cpi), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#f093fb', '%', 'CPI'
             );
             chartConfig(
                 document.getElementById('unemployment-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.unemployment), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#ff5252', '%', '失業率'
             );
             chartConfig(
                 document.getElementById('fedrate-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.fedrate), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#4fc3f7', '%', '利率'
             );
             chartConfig(
                 document.getElementById('m2-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.m2), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#00e676', '兆美元', 'M2'
             );
             chartConfig(
                 document.getElementById('ism-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.ism), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#ffb74d', '指數', 'ISM'
             );
             // 新經濟指標圖表
             chartConfig(
                 document.getElementById('cci-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.cci), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#ab47bc', '指數', '消費者信心'
             );
             chartConfig(
                 document.getElementById('retail-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.retail), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#26a69a', '%', '零售銷售'
             );
             chartConfig(
                 document.getElementById('ppi-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.ppi), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#ef5350', '%', 'PPI'
             );
             chartConfig(
                 document.getElementById('dxy-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.dxy), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#42a5f5', '指數', '美元指數'
             );
             chartConfig(
                 document.getElementById('vix-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.vix), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#ffa726', '指數', 'VIX'
             );
 
@@ -1088,43 +1070,43 @@
             chartConfig(
                 document.getElementById('gold-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.gold), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#ffd700', '$', '黃金'
             );
             chartConfig(
                 document.getElementById('silver-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.silver), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#c0c0c0', '$', '白銀'
             );
             chartConfig(
                 document.getElementById('platinum-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.platinum), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#e5e4e2', '$', '白金'
             );
             chartConfig(
                 document.getElementById('oil-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.oil), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#ff7043', '$', '原油'
             );
             chartConfig(
                 document.getElementById('copper-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.copper), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#b87333', '$', '銅'
             );
             chartConfig(
                 document.getElementById('gas-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.gas), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#4db6ac', '$', '天然氣'
             );
             chartConfig(
                 document.getElementById('aluminum-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.aluminum), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#90a4ae', '$', '鋁'
             );
 
@@ -1132,43 +1114,43 @@
             chartConfig(
                 document.getElementById('wheat-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.wheat), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#f5deb3', '$', '小麥'
             );
             chartConfig(
                 document.getElementById('corn-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.corn), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#ffd54f', '$', '玉米'
             );
             chartConfig(
                 document.getElementById('coffee-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.coffee), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#795548', '$', '咖啡'
             );
             chartConfig(
                 document.getElementById('cotton-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.cotton), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#fff9c4', '$', '棉花'
             );
             chartConfig(
                 document.getElementById('zinc-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.zinc), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#78909c', '$', '鋅'
             );
             chartConfig(
                 document.getElementById('nickel-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.nickel), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#b0bec5', '$', '鎳'
             );
             chartConfig(
                 document.getElementById('palladium-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.palladium), 
+                [0,0,0,0,0,0,0,0,0,0,0,0], 
                 '#9c27b0', '$', '鈀金'
             );
         };
