@@ -756,28 +756,36 @@
             localStorage.setItem(storageKey, localCount.toString());
             document.getElementById('local-views').textContent = localCount.toLocaleString();
             
-            // 全球計數器 - 使用 freecounterstat
+            // 全球計數器 - 使用 freecounterstat (共用 ID)
             const globalContainer = document.getElementById('global-views');
-            globalContainer.innerHTML = '<span style="font-size:0.8em;">載入中...</span>';
             
-            // 嘗試載入 freecounterstat
-            const script = document.createElement('script');
-            script.src = 'https://counter2.optistats.ovh/private/counter.js?c=drwolf0701blog&down=async';
-            script.async = true;
-            script.onload = function() {
-                globalContainer.innerHTML = '';
-            };
-            script.onerror = function() {
-                globalContainer.textContent = localCount.toLocaleString() + '+ (估)';
-            };
-            document.head.appendChild(script);
+            // 嘗試載入 freecounterstat (共用示範 ID)
+            try {
+                // 方法1: 使用圖片載入
+                const img = document.createElement('img');
+                img.src = 'https://counter2.optistats.ovh/private/freecounterstat.php?c=y1ch262dj49m411rs59h684eh4zmw4el';
+                img.alt = 'hits';
+                img.style.verticalAlign = 'middle';
+                img.onload = function() { globalContainer.innerHTML = ''; globalContainer.appendChild(img); };
+                img.onerror = function() { globalContainer.textContent = '🌐 謝謝訪問'; };
+                
+                // 方法2: 使用 script (非同步)
+                const script = document.createElement('script');
+                script.src = 'https://counter2.optistats.ovh/private/counter.js?c=y1ch262dj49m411rs59h684eh4zmw4el&down=async';
+                script.async = true;
+                script.onload = function() { globalContainer.textContent = '🌐 謝謝訪問'; };
+                script.onerror = function() { globalContainer.textContent = '🌐 謝謝訪問'; };
+                document.head.appendChild(script);
+            } catch(e) {
+                globalContainer.textContent = '🌐 謝謝訪問';
+            }
             
-            // 備用方案：3秒後顯示估算
+            // 備用顯示
             setTimeout(() => {
-                if (globalContainer.textContent.includes('載入中')) {
-                    globalContainer.textContent = localCount.toLocaleString() + '+ (估)';
+                if (globalContainer.textContent === '載入中...') {
+                    globalContainer.textContent = '🌐 謝謝訪問';
                 }
-            }, 3000);
+            }, 2000);
         })();
     </script>
 </body>
