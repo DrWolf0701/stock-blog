@@ -213,10 +213,11 @@
                                 color: '#888', 
                                 font: { size: 9 },
                                 callback: (value) => {
-                                    if (config.unit === 'USD') return '$' + value;
-                                    if (config.unit === '兆美元') return value + '兆';
-                                    if (config.unit === '%') return value + '%';
-                                    return value;
+                                    const v = parseFloat(value).toFixed(1);
+                                    if (config.unit === 'USD') return '$' + v;
+                                    if (config.unit === '兆美元') return v + '兆';
+                                    if (config.unit === '%') return v + '%';
+                                    return v;
                                 }
                             },
                             grid: { color: 'rgba(255,255,255,0.05)' }
