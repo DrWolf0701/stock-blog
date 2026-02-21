@@ -739,37 +739,19 @@
             });
         });
 
-        // 訪客計數器 - 使用 CountAPI
+        // 訪客計數器 - 使用 localStorage
         (function() {
-            const namespace = 'drwolf0701-stock-blog';
-            const key = 'page-views';
+            const storageKey = 'bearhug_blog_page_views';
             
-            // 嘗試獲取現有計數
-            fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('page-views').textContent = data.value.toLocaleString();
-                })
-                .catch(() => {
-                    // 如果不存在，創建新的計數器
-                    fetch(`https://api.countapi.xyz/create?namespace=${namespace}&key=${key}&enable_reset=0`)
-                        .then(response => response.json())
-                        .then(data => {
-                            document.getElementById('page-views').textContent = data.value.toLocaleString();
-                        })
-                        .catch(err => {
-                            document.getElementById('page-views').textContent = '?';
-                            console.log('計數器錯誤:', err);
-                        });
-                });
+            // 獲取現有計數
+            let count = parseInt(localStorage.getItem(storageKey) || '0');
             
-            // 每次頁面載入都增加計數
-            fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('page-views').textContent = data.value.toLocaleString();
-                })
-                .catch(() => {});
+            // 每次頁面載入增加計數
+            count++;
+            localStorage.setItem(storageKey, count.toString());
+            
+            // 顯示計數
+            document.getElementById('page-views').textContent = count.toLocaleString();
         })();
     </script>
 </body>
