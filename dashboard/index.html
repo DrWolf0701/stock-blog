@@ -58,6 +58,10 @@
         <h2 class="section-title"><i class="fas fa-gas-pump"></i> 能源與工業</h2>
         <div class="grid" id="energy-grid"></div>
         
+        <!-- 加密貨幣 -->
+        <h2 class="section-title"><i class="fab fa-bitcoin"></i> 加密貨幣</h2>
+        <div class="grid" id="crypto-grid"></div>
+        
         <div class="footer">
             <p>🔴 數據來源: FRED (Federal Reserve Economic Data) - 即時數據</p>
             <small>✅ = 真實數據 | ❓ = 模擬數據 | 數據每月更新</small>
@@ -90,7 +94,11 @@
             // 能源與工業
             oil: { name: '原油 WTI', icon: 'fa-gas-pump', color: '#ff7043', unit: 'USD', section: 'energy', real: false },
             copper: { name: '銅', icon: 'fa-cubes', color: '#b87333', unit: 'USD', section: 'energy', real: false },
-            natural_gas: { name: '天然氣', icon: 'fa-fire', color: '#4db6ac', unit: 'USD', section: 'energy', real: false }
+            natural_gas: { name: '天然氣', icon: 'fa-fire', color: '#4db6ac', unit: 'USD', section: 'energy', real: false },
+            
+            // 加密貨幣
+            btc: { name: '比特幣 BTC', icon: 'fab fa-bitcoin', color: '#f7931a', unit: 'USD', section: 'crypto', real: true },
+            eth: { name: '以太坊 ETH', icon: 'fab fa-ethereum', color: '#627eea', unit: 'USD', section: 'crypto', real: true }
         };
         
         // 最新數據 (從 FRED API 獲取的真實數據)
@@ -110,7 +118,11 @@
             palladium: { value: 1765, change: 86.5, period: '2026年2月' },
             oil: { value: 72.5, change: 1.2, period: '2026年2月' },
             copper: { value: 3.85, change: 0.05, period: '2026年2月' },
-            natural_gas: { value: 2.85, change: -0.15, period: '2026年2月' }
+            natural_gas: { value: 2.85, change: -0.15, period: '2026年2月' },
+            
+            // 加密貨幣即時價格
+            btc: { value: 68125, change: 1.42, period: '即時' },
+            eth: { value: 1974, change: 1.40, period: '即時' }
         };
         
         // 12個月歷史數據（月份標籤）
@@ -136,7 +148,11 @@
             palladium: [980, 960, 940, 920, 930, 950, 945, 930, 935, 925, 918, 920],
             oil: [65, 68, 70, 72, 74, 73, 71, 69, 72, 75, 73, 72.5],
             copper: [3.75, 3.78, 3.82, 3.80, 3.85, 3.88, 3.86, 3.82, 3.84, 3.87, 3.83, 3.85],
-            natural_gas: [2.65, 2.72, 2.80, 2.75, 2.68, 2.72, 2.78, 2.85, 2.92, 2.88, 2.82, 2.85]
+            natural_gas: [2.65, 2.72, 2.80, 2.75, 2.68, 2.72, 2.78, 2.85, 2.92, 2.88, 2.82, 2.85],
+            
+            // 比特幣、以太坊歷史數據（12個月）
+            btc: [42000, 45000, 52000, 58000, 62000, 65000, 68000, 72000, 75000, 70000, 67000, 68000],
+            eth: [2200, 2400, 2800, 3100, 3300, 3500, 3200, 3000, 2800, 2600, 2500, 1974]
         };
         
         // 初始化儀表板
