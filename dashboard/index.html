@@ -751,16 +751,16 @@
                 const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
                 const monthStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
                 
-                // 經濟指標模擬數據
-                const baseGDP = 2.5 + Math.sin(i / 10) * 1.5;
-                const baseCPI = 3.0 + Math.sin(i / 8) * 1.5;
-                const baseUnemp = 3.8 + Math.sin(i / 12) * 1.0;
-                const baseFedrate = 4.5 + Math.sin(i / 6) * 2;
+                // 經濟指標模擬數據（以最新真實數據為基準）
+                const baseGDP = 1.4 + Math.sin(i / 10) * 1.5;  // 最新1.4%
+                const baseCPI = 2.4 + Math.sin(i / 8) * 1.5;    // 最新2.4%
+                const baseUnemp = 4.3 + Math.sin(i / 12) * 1.0; // 最新4.3%
+                const baseFedrate = 3.64 + Math.sin(i / 6) * 2; // 最新3.64%
                 const baseCCI = 100 + Math.sin(i / 6) * 15 + Math.random() * 5;
                 const baseRetail = 0.3 + Math.sin(i / 8) * 0.3 + Math.random() * 0.1;
                 const basePPI = 3.0 + Math.sin(i / 8) * 1.5;
                 const baseDXY = 104 + Math.sin(i / 10) * 8 + Math.random() * 2;
-                const baseVIX = 15 + Math.sin(i / 4) * 8 + Math.random() * 3;
+                const baseVIX = 20 + Math.sin(i / 4) * 8 + Math.random() * 3;  // 最新20
 
                 // 貴金屬模擬數據
                 const baseGold = 1800 + i * 20 + Math.sin(i / 5) * 200;
