@@ -839,12 +839,6 @@
                 console.log('localStorage save failed:', e);
             }
             
-            // 保存到 localStorage
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-                localStorage.setItem(CACHE_KEY, today);
-            } catch(e) {}
-            
             return data;
         };
 
