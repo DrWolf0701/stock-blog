@@ -659,15 +659,24 @@
         // 從FRED API獲取最新數據
         async function fetchFREDData(seriesId) {
             try {
-                const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${FRED_API_KEY}&file_type=json&limit=2&observation_start=2025-01-01`;
+                // 獲取最近12個月的數據
+                const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${FRED_API_KEY}&file_type=json&limit=12&sort_order=desc`;
                 const response = await fetch(url);
                 const data = await response.json();
                 
                 if (data.observations && data.observations.length >= 2) {
-                    const latest = data.observations[data.observations.length - 1];
-                    const previous = data.observations[data.observations.length - 2];
+                    // 從最新往回找有效的兩個數據點
+                    let latest = null, previous = null;
+                    for (const obs of data.observations) {
+                        if (obs.value !== '.' && !latest) {
+                            latest = obs;
+                        } else if (obs.value !== '.' && latest && !previous) {
+                            previous = obs;
+                            break;
+                        }
+                    }
                     
-                    if (latest.value !== '.' && previous.value !== '.') {
+                    if (latest && previous) {
                         return {
                             value: parseFloat(latest.value),
                             previousValue: parseFloat(previous.value),
