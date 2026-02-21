@@ -885,6 +885,8 @@
                                 callback: (value) => {
                                     if (yUnit === '$') return '$' + parseFloat(value).toFixed(1);
                                     if (yUnit === '%') return parseFloat(value).toFixed(1) + '%';
+                                    if (yUnit === '兆美元') return parseFloat(value).toFixed(1) + '兆';
+                                    if (yUnit === '指數') return parseFloat(value).toFixed(1);
                                     return value;
                                 }
                             },
