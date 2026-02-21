@@ -6,7 +6,6 @@
     <title>總體經濟與原物料儀表板 | Economic & Commodities Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary: #667eea;
@@ -236,9 +235,7 @@
                 <div class="card-change" id="gdp-change">
                     <i class="fas fa-minus"></i> 季增率: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="gdp-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- CPI 通膨 -->
@@ -251,9 +248,7 @@
                 <div class="card-change" id="cpi-change">
                     <i class="fas fa-minus"></i> 年增率: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="cpi-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 失業率 -->
@@ -266,9 +261,7 @@
                 <div class="card-change" id="unemployment-change">
                     <i class="fas fa-minus"></i> 月變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="unemployment-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 聯準會利率 -->
@@ -281,9 +274,7 @@
                 <div class="card-change" id="fedrate-change">
                     <i class="fas fa-minus"></i> 上次變動: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="fedrate-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- M2 貨幣供應量 -->
@@ -296,9 +287,7 @@
                 <div class="card-change" id="m2-change">
                     <i class="fas fa-minus"></i> 年增率: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="m2-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- ISM 製造業指數 -->
@@ -311,9 +300,7 @@
                 <div class="card-change" id="ism-change">
                     <i class="fas fa-minus"></i> 月變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="ism-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 消費者信心指數 -->
@@ -326,9 +313,7 @@
                 <div class="card-change" id="cci-change">
                     <i class="fas fa-minus"></i> 月變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="cci-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 零售銷售 -->
@@ -341,9 +326,7 @@
                 <div class="card-change" id="retail-change">
                     <i class="fas fa-minus"></i> 月變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="retail-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- PPI 生產者物價指數 -->
@@ -356,9 +339,7 @@
                 <div class="card-change" id="ppi-change">
                     <i class="fas fa-minus"></i> 年增率: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="ppi-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 美元指數 DXY -->
@@ -371,9 +352,7 @@
                 <div class="card-change" id="dxy-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="dxy-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- VIX 波動率指數 -->
@@ -386,9 +365,7 @@
                 <div class="card-change" id="vix-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="vix-chart"></canvas>
-                </div>
+                
             </div>
         </div>
 
@@ -405,9 +382,7 @@
                 <div class="card-change" id="gold-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="gold-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 白銀 -->
@@ -420,9 +395,7 @@
                 <div class="card-change" id="silver-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="silver-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 白金 -->
@@ -435,9 +408,7 @@
                 <div class="card-change" id="platinum-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="platinum-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 鈀金 -->
@@ -450,9 +421,7 @@
                 <div class="card-change" id="palladium-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="palladium-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 原油 -->
@@ -465,9 +434,7 @@
                 <div class="card-change" id="oil-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="oil-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 銅 -->
@@ -480,9 +447,7 @@
                 <div class="card-change" id="copper-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="copper-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 鋁 -->
@@ -495,9 +460,7 @@
                 <div class="card-change" id="aluminum-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="aluminum-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 天然氣 -->
@@ -510,9 +473,7 @@
                 <div class="card-change" id="gas-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="gas-chart"></canvas>
-                </div>
+                
             </div>
         </div>
 
@@ -529,9 +490,7 @@
                 <div class="card-change" id="wheat-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="wheat-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 玉米 -->
@@ -544,9 +503,7 @@
                 <div class="card-change" id="corn-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="corn-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 咖啡 -->
@@ -559,9 +516,7 @@
                 <div class="card-change" id="coffee-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="coffee-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 棉花 -->
@@ -574,9 +529,7 @@
                 <div class="card-change" id="cotton-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="cotton-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 鋅 -->
@@ -589,9 +542,7 @@
                 <div class="card-change" id="zinc-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="zinc-chart"></canvas>
-                </div>
+                
             </div>
 
             <!-- 鎳 -->
@@ -604,9 +555,7 @@
                 <div class="card-change" id="nickel-change">
                     <i class="fas fa-minus"></i> 日變化: --
                 </div>
-                <div class="chart-container">
-                    <canvas id="nickel-chart"></canvas>
-                </div>
+                
             </div>
         </div>
 
@@ -843,96 +792,6 @@
         };
 
         // 圖表配置（帶單位的詳細版本）
-        const chartConfig = (ctx, label, data, color, yUnit = '', xLabel = '月份') => {
-            return new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: label,
-                    datasets: [{
-                        label: yUnit,
-                        data: data,
-                        borderColor: color,
-                        backgroundColor: color + '20',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.4,
-                        pointRadius: 2,
-                        pointHoverRadius: 6,
-                        pointBackgroundColor: color,
-                        pointBorderColor: '#fff',
-                        pointBorderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            backgroundColor: 'rgba(0,0,0,0.8)',
-                            titleColor: '#fff',
-                            bodyColor: '#fff',
-                            borderColor: color,
-                            borderWidth: 1,
-                            padding: 10,
-                            displayColors: false,
-                            callbacks: {
-                                title: (context) => {
-                                    const label = context[0].label;
-                                    // 轉換為更易讀的格式 (2025-03 -> 2025年3月)
-                                    const [year, month] = label.split('-');
-                                    return `${year}年${parseInt(month)}月`;
-                                },
-                                label: (context) => {
-                                    const value = parseFloat(context.parsed.y).toFixed(1);
-                                    return yUnit ? `${yUnit}: ${value}` : value;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            display: true,
-                            grid: { color: 'rgba(255,255,255,0.05)' },
-                            ticks: { 
-                                color: '#a0aec0', 
-                                font: { size: 9 },
-                                maxRotation: 45,
-                                minRotation: 0,
-                                maxTicksLimit: 12
-                            },
-                            title: {
-                                display: true,
-                                text: xLabel,
-                                color: '#718096',
-                                font: { size: 10 }
-                            }
-                        },
-                        y: { 
-                            display: true,
-                            grid: { color: 'rgba(255,255,255,0.1)' },
-                            ticks: { 
-                                color: '#a0aec0', 
-                                font: { size: 10 },
-                                callback: (value) => {
-                                    if (yUnit === '$') return '$' + parseFloat(value).toFixed(1);
-                                    if (yUnit === '%') return parseFloat(value).toFixed(1) + '%';
-                                    if (yUnit === '兆美元') return parseFloat(value).toFixed(1) + '兆';
-                                    if (yUnit === '指數') return parseFloat(value).toFixed(1);
-                                    return value;
-                                }
-                            },
-                            title: {
-                                display: true,
-                                text: yUnit || '數值',
-                                color: '#718096',
-                                font: { size: 10 }
-                            }
-                        }
-                    }
-                }
-            });
-        };
 
         // 更新卡片顯示
         const updateCard = (id, value, change, isPositive, symbol = '', isReal = false) => {
