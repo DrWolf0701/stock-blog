@@ -889,7 +889,7 @@
         };
 
         // 更新卡片顯示
-        const updateCard = (id, value, change, isPositive, symbol = '') => {
+        const updateCard = (id, value, change, isPositive, symbol = '', isReal = false) => {
             const valueEl = document.getElementById(`${id}-value`);
             const changeEl = document.getElementById(`${id}-change`);
             const statusEl = document.getElementById(`${id}-status`);
@@ -898,7 +898,9 @@
             if (changeEl) {
                 const icon = isPositive ? 'fa-arrow-up' : (isPositive === null ? 'fa-minus' : 'fa-arrow-down');
                 const cls = isPositive ? 'positive' : (isPositive === null ? 'neutral' : 'negative');
-                changeEl.innerHTML = `<i class="fas ${icon}"></i> <span class="${cls}">${change}</span>`;
+                // 添加真假數據標記
+                const realMarker = isReal ? '<span style="color:#00e676;font-size:0.7em;margin-left:5px;" title="真實數據">✅</span>' : '<span style="color:#888;font-size:0.7em;margin-left:5px;" title="模擬數據">❓</span>';
+                changeEl.innerHTML = `<i class="fas ${icon}"></i> <span class="${cls}">${change}</span>${realMarker}`;
             }
             if (statusEl) {
                 statusEl.className = 'status-dot ' + (isPositive ? 'status-up' : (isPositive === null ? 'status-neutral' : 'status-down'));
@@ -959,37 +961,38 @@
             });
 
             // 更新經濟指標
-            updateCard('gdp', useData.gdp.value + '%', useData.gdp.change + '% (' + useData.gdp.period + ')', null);
-            updateCard('cpi', useData.cpi.value + '%', useData.cpi.change + '% (' + useData.cpi.period + ')', true);
-            updateCard('unemployment', useData.unemployment.value + '%', useData.unemployment.change + '% (' + useData.unemployment.period + ')', false);
-            updateCard('fedrate', useData.fedrate.value + '%', useData.fedrate.change + '% (' + useData.fedrate.period + ')', null);
-            updateCard('m2', useData.m2.value + '兆', useData.m2.change + '% (' + useData.m2.period + ')', true);
-            updateCard('ism', useData.ism.value, useData.ism.change + ' (' + useData.ism.period + ')', null);
-            updateCard('cci', useData.cci.value, useData.cci.change + ' (' + useData.cci.period + ')', null);
-            updateCard('retail', useData.retail.value + '%', useData.retail.change + '% (' + useData.retail.period + ')', null);
-            updateCard('ppi', useData.ppi.value + '%', useData.ppi.change + '% (' + useData.ppi.period + ')', true);
-            updateCard('dxy', useData.dxy.value, useData.dxy.change + ' (' + useData.dxy.period + ')', null);
-            updateCard('vix', useData.vix.value, useData.vix.change + ' (' + useData.vix.period + ')', null);
+            // 經濟指標 (從FRED API獲取)
+            updateCard('gdp', useData.gdp.value + '%', useData.gdp.change + '% (' + useData.gdp.period + ')', null, '', useData.gdp.isReal);
+            updateCard('cpi', useData.cpi.value + '%', useData.cpi.change + '% (' + useData.cpi.period + ')', true, '', useData.cpi.isReal);
+            updateCard('unemployment', useData.unemployment.value + '%', useData.unemployment.change + '% (' + useData.unemployment.period + ')', false, '', useData.unemployment.isReal);
+            updateCard('fedrate', useData.fedrate.value + '%', useData.fedrate.change + '% (' + useData.fedrate.period + ')', null, '', useData.fedrate.isReal);
+            updateCard('m2', useData.m2.value + '兆', useData.m2.change + '% (' + useData.m2.period + ')', true, '', useData.m2.isReal);
+            updateCard('ism', useData.ism.value, useData.ism.change + ' (' + useData.ism.period + ')', null, '', useData.ism.isReal);
+            updateCard('cci', useData.cci.value, useData.cci.change + ' (' + useData.cci.period + ')', null, '', useData.cci.isReal);
+            updateCard('retail', useData.retail.value + '%', useData.retail.change + '% (' + useData.retail.period + ')', null, '', useData.retail.isReal);
+            updateCard('ppi', useData.ppi.value + '%', useData.ppi.change + '% (' + useData.ppi.period + ')', true, '', useData.ppi.isReal);
+            updateCard('dxy', useData.dxy.value, useData.dxy.change + ' (' + useData.dxy.period + ')', null, '', useData.dxy.isReal);
+            updateCard('vix', useData.vix.value, useData.vix.change + ' (' + useData.vix.period + ')', null, '', useData.vix.isReal);
 
-            // 貴金屬
-            updateCard('gold', useData.gold.value, useData.gold.change + ' (' + useData.gold.period + ')', null, '$');
-            updateCard('silver', useData.silver.value, useData.silver.change + ' (' + useData.silver.period + ')', null, '$');
-            updateCard('platinum', useData.platinum.value, useData.platinum.change + ' (' + useData.platinum.period + ')', null, '$');
-            updateCard('palladium', useData.palladium.value, useData.palladium.change + ' (' + useData.palladium.period + ')', null, '$');
+            // 貴金屬 (模擬數據)
+            updateCard('gold', useData.gold.value, useData.gold.change + ' (' + useData.gold.period + ')', null, '$', false);
+            updateCard('silver', useData.silver.value, useData.silver.change + ' (' + useData.silver.period + ')', null, '$', false);
+            updateCard('platinum', useData.platinum.value, useData.platinum.change + ' (' + useData.platinum.period + ')', null, '$', false);
+            updateCard('palladium', useData.palladium.value, useData.palladium.change + ' (' + useData.palladium.period + ')', null, '$', false);
 
-            // 能源與工業金屬
-            updateCard('oil', useData.oil.value, useData.oil.change + ' (' + useData.oil.period + ')', null, '$');
-            updateCard('copper', useData.copper.value, useData.copper.change + ' (' + useData.copper.period + ')', null, '$');
-            updateCard('aluminum', useData.aluminum.value, useData.aluminum.change + ' (' + useData.aluminum.period + ')', null, '$');
-            updateCard('gas', useData.gas.value, useData.gas.change + ' (' + useData.gas.period + ')', null, '$');
+            // 能源與工業金屬 (模擬數據)
+            updateCard('oil', useData.oil.value, useData.oil.change + ' (' + useData.oil.period + ')', null, '$', false);
+            updateCard('copper', useData.copper.value, useData.copper.change + ' (' + useData.copper.period + ')', null, '$', false);
+            updateCard('aluminum', useData.aluminum.value, useData.aluminum.change + ' (' + useData.aluminum.period + ')', null, '$', false);
+            updateCard('gas', useData.gas.value, useData.gas.change + ' (' + useData.gas.period + ')', null, '$', false);
 
-            // 農產品
-            updateCard('wheat', useData.wheat.value, useData.wheat.change + ' (' + useData.wheat.period + ')', null, '$');
-            updateCard('corn', useData.corn.value, useData.corn.change + ' (' + useData.corn.period + ')', null, '$');
-            updateCard('coffee', useData.coffee.value, useData.coffee.change + ' (' + useData.coffee.period + ')', null, '$');
-            updateCard('cotton', useData.cotton.value, useData.cotton.change + ' (' + useData.cotton.period + ')', null, '$');
-            updateCard('zinc', useData.zinc.value, useData.zinc.change + ' (' + useData.zinc.period + ')', null, '$');
-            updateCard('nickel', useData.nickel.value, useData.nickel.change + ' (' + useData.nickel.period + ')', null, '$');
+            // 農產品 (模擬數據)
+            updateCard('wheat', useData.wheat.value, useData.wheat.change + ' (' + useData.wheat.period + ')', null, '$', false);
+            updateCard('corn', useData.corn.value, useData.corn.change + ' (' + useData.corn.period + ')', null, '$', false);
+            updateCard('coffee', useData.coffee.value, useData.coffee.change + ' (' + useData.coffee.period + ')', null, '$', false);
+            updateCard('cotton', useData.cotton.value, useData.cotton.change + ' (' + useData.cotton.period + ')', null, '$', false);
+            updateCard('zinc', useData.zinc.value, useData.zinc.change + ' (' + useData.zinc.period + ')', null, '$', false);
+            updateCard('nickel', useData.nickel.value, useData.nickel.change + ' (' + useData.nickel.period + ')', null, '$', false);
 
             // 生成歷史數據
             const historyData = generateHistoryData();
