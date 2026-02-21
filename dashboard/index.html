@@ -22,6 +22,7 @@
         .fake-marker { color: #888; font-size: 0.7em; margin-left: 5px; }
         .chart-box { margin-top: 20px; height: 150px; }
         .footer { text-align: center; margin-top: 40px; padding: 20px; color: #666; }
+        .axis-label { font-size: 10px; color: #888; }
     </style>
 </head>
 <body>
@@ -29,7 +30,6 @@
         <h1><i class="fas fa-chart-line"></i> 總體經濟儀表板</h1>
         
         <div class="grid" id="dashboard">
-            <!-- 數據會在這裡生成 -->
         </div>
         
         <div class="footer">
@@ -60,16 +60,16 @@
         const allData = { ...realData, ...fakeData };
 
         const indicators = [
-            { key: 'gdp', name: 'GDP 經濟成長率', icon: 'fa-building', color: '#667eea' },
-            { key: 'cpi', name: 'CPI 消費者物價', icon: 'fa-shopping-cart', color: '#f093fb' },
-            { key: 'unemployment', name: '失業率', icon: 'fa-user-minus', color: '#ff5252' },
-            { key: 'fedrate', name: '聯準會利率', icon: 'fa-percent', color: '#4fc3f7' },
-            { key: 'm2', name: 'M2 貨幣供給', icon: 'fa-money-bill', color: '#00e676' },
-            { key: 'ism', name: 'ISM 製造指數', icon: 'fa-industry', color: '#ffb74d' },
-            { key: 'vix', name: 'VIX 波動率', icon: 'fa-chart-area', color: '#ffa726' },
-            { key: 'gold', name: '黃金', icon: 'fa-coins', color: '#ffd700' },
-            { key: 'silver', name: '白銀', icon: 'fa-medal', color: '#c0c0c0' },
-            { key: 'oil', name: '原油', icon: 'fa-gas-pump', color: '#ff7043' }
+            { key: 'gdp', name: 'GDP 經濟成長率', icon: 'fa-building', color: '#667eea', unit: '%', xLabel: '月份', yLabel: '%' },
+            { key: 'cpi', name: 'CPI 消費者物價', icon: 'fa-shopping-cart', color: '#f093fb', unit: '%', xLabel: '月份', yLabel: '%' },
+            { key: 'unemployment', name: '失業率', icon: 'fa-user-minus', color: '#ff5252', unit: '%', xLabel: '月份', yLabel: '%' },
+            { key: 'fedrate', name: '聯準會利率', icon: 'fa-percent', color: '#4fc3f7', unit: '%', xLabel: '月份', yLabel: '%' },
+            { key: 'm2', name: 'M2 貨幣供給', icon: 'fa-money-bill', color: '#00e676', unit: '兆美元', xLabel: '月份', yLabel: '兆' },
+            { key: 'ism', name: 'ISM 製造指數', icon: 'fa-industry', color: '#ffb74d', unit: '指數', xLabel: '月份', yLabel: '指數' },
+            { key: 'vix', name: 'VIX 波動率', icon: 'fa-chart-area', color: '#ffa726', unit: '指數', xLabel: '月份', yLabel: 'VIX' },
+            { key: 'gold', name: '黃金', icon: 'fa-coins', color: '#ffd700', unit: 'USD', xLabel: '月份', yLabel: '美元' },
+            { key: 'silver', name: '白銀', icon: 'fa-medal', color: '#c0c0c0', unit: 'USD', xLabel: '月份', yLabel: '美元' },
+            { key: 'oil', name: '原油', icon: 'fa-gas-pump', color: '#ff7043', unit: 'USD', xLabel: '月份', yLabel: '美元' }
         ];
 
         // 初始化
@@ -116,10 +116,30 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
+                    plugins: { 
+                        legend: { display: false },
+                        title: { display: true, text: `${ind.xLabel} →`, color: '#888', font: { size: 10 } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${ind.yLabel}: ${context.parsed.y.toFixed(1)}`;
+                                }
+                            }
+                        }
+                    },
                     scales: {
-                        x: { display: false },
-                        y: { display: false }
+                        x: { 
+                            display: true,
+                            title: { display: true, text: ind.xLabel, color: '#888', font: { size: 10 } },
+                            ticks: { color: '#888', font: { size: 9 } },
+                            grid: { color: 'rgba(255,255,255,0.05)' }
+                        },
+                        y: { 
+                            display: true,
+                            title: { display: true, text: ind.yLabel, color: '#888', font: { size: 10 } },
+                            ticks: { color: '#888', font: { size: 9 } },
+                            grid: { color: 'rgba(255,255,255,0.05)' }
+                        }
                     }
                 }
             });
