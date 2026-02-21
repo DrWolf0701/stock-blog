@@ -756,7 +756,8 @@
                 const baseCPI = 2.4 + Math.sin(i / 8) * 1.5;    // 最新2.4%
                 const baseUnemp = 4.3 + Math.sin(i / 12) * 1.0; // 最新4.3%
                 const baseFedrate = 3.64 + Math.sin(i / 6) * 2; // 最新3.64%
-                const baseCCI = 100 + Math.sin(i / 6) * 15 + Math.random() * 5;
+                const baseM2 = 22.4 + i * 0.05;  // 最新22.4兆
+                const baseISM = 50.5 + Math.sin(i / 6) * 5 + Math.random() * 2;  // 最新50.5
                 const baseRetail = 0.3 + Math.sin(i / 8) * 0.3 + Math.random() * 0.1;
                 const basePPI = 3.0 + Math.sin(i / 8) * 1.5;
                 const baseDXY = 104 + Math.sin(i / 10) * 8 + Math.random() * 2;
@@ -789,8 +790,8 @@
                     cpi: (baseCPI + (Math.random() - 0.5) * 0.3).toFixed(1),
                     unemployment: (baseUnemp + (Math.random() - 0.5) * 0.3).toFixed(1),
                     fedrate: (baseFedrate + (Math.random() - 0.5) * 0.25).toFixed(2),
-                    m2: (21 + i * 0.05).toFixed(1),
-                    ism: (50 + Math.sin(i / 6) * 5 + Math.random() * 2).toFixed(1),
+                    m2: baseM2.toFixed(1),
+                    ism: baseISM.toFixed(1),
                     cci: (baseCCI + (Math.random() - 0.5) * 3).toFixed(1),
                     retail: (baseRetail + (Math.random() - 0.5) * 0.1).toFixed(1),
                     ppi: (basePPI + (Math.random() - 0.5) * 0.3).toFixed(1),
