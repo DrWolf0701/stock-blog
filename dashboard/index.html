@@ -879,18 +879,7 @@
             updateCard('nickel', useData.nickel.value, useData.nickel.change + ' (' + useData.nickel.period + ')', null, '$', false);
 
             // 生成歷史數據
-            const historyData = generateHistoryData();
-            
-            // 更新表格
-            const tbody = document.getElementById('history-body');
-            tbody.innerHTML = historyData.slice(0, 12).map(row => `
-                <tr>
-                    <td>${row.month}</td>
-                    <td class="value ${parseFloat(row.gdp) > 3 ? 'positive' : (parseFloat(row.gdp) < 0 ? 'negative' : 'neutral')}">${row.gdp}%</td>
-                    <td class="value ${parseFloat(row.cpi) > 4 ? 'negative' : (parseFloat(row.cpi) < 2 ? 'positive' : 'neutral')}">${row.cpi}%</td>
-                    <td class="value ${parseFloat(row.unemployment) > 5 ? 'negative' : (parseFloat(row.unemployment) < 4 ? 'positive' : 'neutral')}">${row.unemployment}%</td>
-                    <td class="value">${row.fedrate}%</td>
-                    <td class="value" style="color: #ffd700;">$${row.gold}</td>
+            ">$${row.gold}</td>
                     <td class="value" style="color: #c0c0c0;">$${row.silver}</td>
                     <td class="value" style="color: #ff7043;">$${row.oil}</td>
                 </tr>
