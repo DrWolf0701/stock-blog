@@ -463,6 +463,28 @@
             border-radius: 10px;
         }
 
+        .visitor-counter {
+            font-size: 0.9rem;
+            color: #a0aec0;
+            padding: 10px 20px;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 20px;
+            display: inline-block;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            margin-top: 15px;
+        }
+
+        .visitor-counter i {
+            color: #667eea;
+            margin-right: 5px;
+        }
+
+        .visitor-counter span {
+            color: #f093fb;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
@@ -685,6 +707,11 @@
             <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.5;">
                 <i class="far fa-copyright"></i> 2026 小熊抱美股投資部落格 | 最後更新: <span id="update-time"></span>
             </p>
+            
+            <!-- 訪客計數器 -->
+            <div class="visitor-counter">
+                <i class="fas fa-eye"></i> 訪客人次: <span id="page-views">載入中...</span>
+            </div>
         </footer>
     </div>
 
@@ -711,6 +738,39 @@
                 }
             });
         });
+
+        // 訪客計數器 - 使用 CountAPI
+        (function() {
+            const namespace = 'drwolf0701-stock-blog';
+            const key = 'page-views';
+            
+            // 嘗試獲取現有計數
+            fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('page-views').textContent = data.value.toLocaleString();
+                })
+                .catch(() => {
+                    // 如果不存在，創建新的計數器
+                    fetch(`https://api.countapi.xyz/create?namespace=${namespace}&key=${key}&enable_reset=0`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('page-views').textContent = data.value.toLocaleString();
+                        })
+                        .catch(err => {
+                            document.getElementById('page-views').textContent = '?';
+                            console.log('計數器錯誤:', err);
+                        });
+                });
+            
+            // 每次頁面載入都增加計數
+            fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('page-views').textContent = data.value.toLocaleString();
+                })
+                .catch(() => {});
+        })();
     </script>
 </body>
 </html>
