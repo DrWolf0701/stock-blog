@@ -1,0 +1,51 @@
+# Chrome 擴充功能連接測試步驟
+
+## 1. 確認擴充功能已載入
+- 打開 Chrome
+- 訪問：chrome://extensions
+- 確認「OpenClaw Browser Relay」擴充功能已啟用
+- 確認「開發人員模式」已開啟
+
+## 2. 檢查擴充功能狀態
+- 點擊擴充功能圖示
+- 查看徽章顯示：
+  - `...`：連接中
+  - `!`：服務未運行
+  - `ON`：✅ 已連接
+
+## 3. 連接標籤頁
+1. 打開新標籤頁，訪問：https://yahoo.com
+2. 點擊工具列的 OpenClaw 擴充功能圖示
+3. 等待徽章變成 `ON`
+
+## 4. 疑難排解
+如果徽章顯示 `!`：
+1. 重啟 OpenClaw Gateway：
+   ```bash
+   openclaw gateway restart
+   ```
+2. 重新載入擴充功能：
+   - chrome://extensions
+   - 找到 OpenClaw Browser Relay
+   - 點擊「重新載入」
+
+## 5. 測試連接
+連接成功後，我可以：
+1. 擷取網頁截圖
+2. 控制滑鼠和鍵盤
+3. 填寫表單
+4. 點擊按鈕
+
+## 6. 快速測試指令
+```bash
+# 檢查服務狀態
+openclaw browser status
+
+# 列出標籤頁
+openclaw browser --browser-profile chrome tabs
+
+# 擷取截圖
+openclaw browser --browser-profile chrome snapshot
+```
+
+請完成步驟 1-3，然後告訴我擴充功能徽章顯示什麼？

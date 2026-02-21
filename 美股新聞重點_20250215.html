@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股新聞重點彙整 - 2025年2月15日</title>
+    <style>
+        /* 極簡設計，超大邊距，可靠字體 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Helvetica Neue", Arial, "PingFang TC", "Microsoft JhengHei", sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 80px;
+            margin-bottom: 60px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        
+        .date {
+            font-size: 24px;
+            color: #7f8c8d;
+            font-weight: 400;
+        }
+        
+        .news-section {
+            margin-bottom: 100px;
+        }
+        
+        h2 {
+            font-size: 36px;
+            color: #3498db;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e9ecef;
+            font-weight: 600;
+        }
+        
+        .news-item {
+            margin-bottom: 70px;
+            padding: 40px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 6px solid #3498db;
+        }
+        
+        .news-item:nth-child(2) {
+            border-left-color: #2ecc71;
+        }
+        
+        .news-item:nth-child(3) {
+            border-left-color: #e74c3c;
+        }
+        
+        .news-item:nth-child(4) {
+            border-left-color: #f39c12;
+        }
+        
+        .news-item:nth-child(5) {
+            border-left-color: #9b59b6;
+        }
+        
+        .news-item:nth-child(6) {
+            border-left-color: #1abc9c;
+        }
+        
+        .news-item:nth-child(7) {
+            border-left-color: #34495e;
+        }
+        
+        h3 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .news-content {
+            font-size: 22px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .news-details {
+            font-size: 20px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .news-impact {
+            font-size: 20px;
+            color: #2c3e50;
+            background-color: #e8f4fc;
+            padding: 25px;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+            margin-top: 25px;
+        }
+        
+        .news-impact strong {
+            color: #2980b9;
+        }
+        
+        .market-summary {
+            background-color: #f8f9fa;
+            padding: 50px;
+            border-radius: 8px;
+            margin-top: 60px;
+        }
+        
+        .market-summary h2 {
+            color: #2c3e50;
+        }
+        
+        .market-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .market-item {
+            background-color: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .market-item h4 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .market-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .market-change {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .positive {
+            color: #27ae60;
+        }
+        
+        .negative {
+            color: #e74c3c;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #e9ecef;
+            color: #7f8c8d;
+            font-size: 20px;
+        }
+        
+        .disclaimer {
+            font-size: 18px;
+            color: #95a5a6;
+            margin-top: 30px;
+            font-style: italic;
+        }
+        
+        /* 確保文字清晰，防止重疊 */
+        p, h1, h2, h3, h4, div {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+        
+        /* 超大邊距確保可讀性 */
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 20px;
+            }
+            
+            .container {
+                padding: 40px 30px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            h2 {
+                font-size: 28px;
+            }
+            
+            h3 {
+                font-size: 24px;
+            }
+            
+            .news-content {
+                font-size: 20px;
+            }
+            
+            .news-item {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>美股新聞重點彙整</h1>
+            <div class="date">2025年2月15日 | 最新市場動態</div>
+        </div>
+        
+        <div class="news-section">
+            <h2>📈 今日重點新聞</h2>
+            
+            <div class="news-item">
+                <h3>1. 汽車製造商CEO對中國競爭發出警告</h3>
+                <div class="news-content">
+                    西方汽車製造商警告，如果國內生產得不到保護，中國汽車製造商將對其生存構成威脅。主要汽車製造商CEO表示，中國汽車產業的快速發展正在對全球汽車市場造成壓力。
+                </div>
+                <div class="news-details">來源：Yahoo Finance | 9小時前 | 相關股票：RIVN (+26.64%), F (+1.95%)</div>
+                <div class="news-impact">
+                    <strong>市場影響：</strong> 汽車產業面臨結構性挑戰，電動車轉型加速，傳統車廠需加快創新步伐以應對中國競爭。
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <h3>2. 美國牛群減少導致牛肉價格上漲15%</h3>
+                <div class="news-content">
+                    美國牛群數量持續下降，導致牛肉供應緊張，價格在過去一年上漲了15%。乾旱、飼料成本上升和生產者減少是主要原因。
+                </div>
+                <div class="news-details">來源：Bloomberg | 15小時前 | 相關商品：活牛期貨(LC=F -0.66%), TSN (+1.00%)</div>
+                <div class="news-impact">
+                    <strong>市場影響：</strong> 食品通脹壓力持續，消費者支出可能轉向替代蛋白質，影響食品零售和餐飲業。
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <h3>3. 亞馬遜計劃2000億美元AI投資以重振AWS</h3>
+                <div class="news-content">
+                    亞馬遜CEO Andy Jassy計劃在未來幾年投入2000億美元用於人工智慧投資，旨在重振亞馬遜雲服務(AWS)的增長。這項大規模投資將用於AI基礎設施、研發和人才招聘。
+                </div>
+                <div class="news-details">來源：Financial Times | 8小時前 | 相關股票：AMZN (-0.41%), GOOG (-1.08%)</div>
+                <div class="news-impact">
+                    <strong>市場影響：</strong> 雲計算和AI軍備競賽加劇，科技巨頭資本支出增加，可能帶動半導體和基礎設施相關產業。
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <h3>4. AI泡沫擔憂催生新衍生品</h3>
+                <div class="news-content">
+                    隨著對AI股票泡沫的擔憂加劇，華爾街正在創建新的衍生產品，讓投資者能夠對沖AI相關股票的風險。這些產品包括AI指數期權和結構性票據。
+                </div>
+                <div class="news-details">來源：Bloomberg | 10小時前 | 相關股票：GOOG (-1.08%), ORCL (+2.34%)</div>
+                <div class="news-impact">
+                    <strong>市場影響：</strong> 衍生品市場創新反映市場對AI估值擔憂，可能增加市場波動性，但也提供新的風險管理工具。
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <h3>5. 六位華爾街銀行CEO 2025年總薪酬達2.5億美元</h3>
+                <div class="news-content">
+                    2025年，六位主要華爾街銀行的首席執行官總共獲得了2.5億美元的薪酬。這一數字反映了在市場波動和監管挑戰下，銀行業高管的薪酬仍然保持高位。
+                </div>
+                <div class="news-details">來源：Financial Times | 16小時前 | 相關股票：GS (+0.07%), JPM (-0.03%)</div>
+                <div class="news-impact">
+                    <strong>市場影響：</strong> 高管薪酬問題可能引發監管和股東關注，影響銀行業的公司治理和社會形象。
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <h3>6. 麥當勞準備應對減肥藥影響</h3>
+                <div class="news-content">
+                    麥當勞CEO表示，公司正在準備應對GLP-1減肥藥更廣泛採用可能帶來的消費者行為變化。公司正在研究如何調整菜單和營銷策略。
+                </div>
+                <div class="news-details">來源：Yahoo Finance | 11小時前 | 相關股票：MCD (-1.36%), PEP (-0.75%)</div>
+                <div class="news-impact">
+                    <strong>市場影響：</strong> 減肥藥普及可能改變食品消費模式，快餐和包裝食品公司需要適應新的健康趨勢。
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <h3>7. 醫療成本侵蝕社會安全支票</h3>
+                <div class="news-content">
+                    不斷上漲的醫療保健成本正在侵蝕退休人員的社會安全支票價值。醫療保險費用的增長速度超過了社會安全生活成本調整。
+                </div>
+                <div class="news-details">來源：Yahoo Finance | 9小時前</div>
+                <div class="news-impact">
+                    <strong>市場影響：</strong> 醫療通脹持續，可能影響消費者支出和退休規劃，醫療保險和製藥公司面臨定價壓力。
+                </div>
+            </div>
+        </div>
+        
+        <div class="market-summary">
+            <h2>📊 今日市場概覽</h2>
+            <div class="market-data">
+                <div class="market-item">
+                    <h4>S&P 500 指數</h4>
+                    <div class="market-value">6,836.17</div>
+                    <div class="market-change positive">+3.41 (+0.05%)</div>
+                </div>
+                
+                <div class="market-item">
+                    <h4>道瓊工業指數</h4>
+                    <div class="market-value">49,500.93</div>
+                    <div class="market-change positive">+48.95 (+0.10%)</div>
+                </div>
+                
+                <div class="market-item">
+                    <h4>納斯達克指數</h4>
+                    <div class="market-value">22,546.67</div>
+                    <div class="market-change negative">-50.48 (-0.22%)</div>
+                </div>
+                
+                <div class="market-item">
+                    <h4>羅素2000指數</h4>
+                    <div class="market-value">2,646.70</div>
+                    <div class="market-change positive">+30.87 (+1.18%)</div>
+                </div>
+                
+                <div class="market-item">
+                    <h4>恐慌指數(VIX)</h4>
+                    <div class="market-value">20.60</div>
+                    <div class="market-change negative">-0.22 (-1.06%)</div>
+                </div>
+                
+                <div class="market-item">
+                    <h4>黃金價格</h4>
+                    <div class="market-value">5,046.30</div>
+                    <div class="market-change positive">+97.90 (+1.98%)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>美股新聞重點彙整 | 資料來源：Yahoo Finance, Bloomberg, Financial Times</p>
+            <p>更新時間：2025年2月15日 14:30 (GMT+8)</p>
+            <div class="disclaimer">
+                免責聲明：本報告僅供參考，不構成投資建議。市場數據可能延遲，投資前請諮詢專業財務顧問。
+            </div>
+        </div>
+    </div>
+</body>
+</html>

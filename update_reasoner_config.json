@@ -1,0 +1,19 @@
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "deepseek/deepseek-chat",
+        "fallbacks": [
+          "deepseek/deepseek-reasoner"
+        ]
+      },
+      "models": {
+        "openai/gpt-5.1-codex": {
+          "alias": "GPT"
+        },
+        "deepseek/deepseek-chat": {},
+        "deepseek/deepseek-reasoner": {}
+      }
+    }
+  }
+}

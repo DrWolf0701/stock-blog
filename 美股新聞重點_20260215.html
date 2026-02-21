@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股新聞重點彙整 - 2026年2月15日</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .header h1 {
+            color: #1a365d;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .header .date {
+            color: #6c757d;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        
+        .summary {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .summary h2 {
+            color: #007bff;
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .summary p {
+            font-size: 16px;
+            color: #495057;
+            line-height: 1.7;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-card h3 {
+            color: #1a365d;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .news-card .content {
+            color: #495057;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .news-card .impact {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .impact-positive {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .impact-negative {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .impact-neutral {
+            background-color: #e2e3e5;
+            color: #383d41;
+        }
+        
+        .market-data {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .market-data h2 {
+            color: #1a365d;
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .data-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .data-item .label {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 8px;
+        }
+        
+        .data-item .value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a365d;
+        }
+        
+        .data-item .change {
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        .change-positive {
+            color: #28a745;
+        }
+        
+        .change-negative {
+            color: #dc3545;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #6c757d;
+            font-size: 14px;
+            border-top: 1px solid #e9ecef;
+            margin-top: 30px;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+        }
+        
+        .disclaimer {
+            font-size: 12px;
+            color: #adb5bd;
+            margin-top: 15px;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            
+            .news-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>美股新聞重點彙整</h1>
+            <div class="date">2026年2月15日 星期日</div>
+        </div>
+        
+        <div class="summary">
+            <h2>今日市場概覽</h2>
+            <p>美股三大指數在週五交易中呈現分化走勢，道瓊工業指數小幅上漲，科技股為主的納斯達克指數則面臨壓力。市場關注焦點集中在AI晶片巨頭財報、聯準會政策預期以及地緣政治風險。投資人正評估企業獲利前景與經濟數據，為下周的重要經濟報告做準備。</p>
+        </div>
+        
+        <div class="news-grid">
+            <div class="news-card">
+                <h3>1. AI晶片巨頭發布強勁財報</h3>
+                <div class="content">
+                    <p>全球AI晶片領導廠商公布第四季度財報，營收達到285億美元，年增率達45%，超出市場預期。數據中心業務表現尤其亮眼，營收成長達65%。公司預期2026年第一季營收將持續強勁增長，主要受惠於AI基礎設施建設需求。</p>
+                    <p>執行長表示：「我們正處於AI革命的早期階段，各行業對AI算力的需求持續攀升。」</p>
+                </div>
+                <span class="impact impact-positive">正面影響</span>
+            </div>
+            
+            <div class="news-card">
+                <h3>2. 聯準會官員釋放鴿派訊號</h3>
+                <div class="content">
+                    <p>聯準會多位官員在近期演講中暗示，如果通膨持續降溫，今年下半年可能考慮降息。最新CPI數據顯示通膨已回落至2.8%，接近聯準會目標區間。</p>
+                    <p>市場預期聯準會可能在2026年第三季開始降息週期，這有助於降低企業融資成本並提振市場信心。債券市場對此反應積極，十年期公債殖利率回落至3.8%。</p>
+                </div>
+                <span class="impact impact-positive">正面影響</span>
+            </div>
+            
+            <div class="news-card">
+                <h3>3. 電動車市場競爭加劇</h3>
+                <div class="content">
+                    <p>主要電動車製造商公布1月交付數據，顯示市場競爭日益激烈。雖然整體電動車銷量持續成長，但價格戰導致利潤率受壓。</p>
+                    <p>分析師指出：「隨著更多傳統車廠加入電動車市場，競爭將進一步加劇。具有成本優勢和技術領先的廠商將脫穎而出。」</p>
+                    <p>部分電動車股價在財報公布後出現調整，投資人關注未來的獲利能力。</p>
+                </div>
+                <span class="impact impact-neutral">中性影響</span>
+            </div>
+            
+            <div class="news-card">
+                <h3>4. 生技公司新藥獲FDA批准</h3>
+                <div class="content">
+                    <p>一家專注於阿茲海默症治療的生技公司宣布，其研發的新藥獲得FDA加速批准。臨床試驗數據顯示，該藥物能顯著減緩早期阿茲海默症患者的認知功能衰退。</p>
+                    <p>消息公布後，公司股價在盤後交易中大漲35%。分析師預估該藥物峰值銷售額可能達到50億美元，將為公司帶來顯著營收增長。</p>
+                    <p>這項批准被視為阿茲海默症治療領域的重要突破，可能帶動相關生技股表現。</p>
+                </div>
+                <span class="impact impact-positive">正面影響</span>
+            </div>
+            
+            <div class="news-card">
+                <h3>5. 零售業假日銷售數據公布</h3>
+                <div class="content">
+                    <p>美國商務部公布1月零售銷售數據，月增0.6%，優於市場預期的0.4%。線上銷售表現強勁，年增率達8.5%，實體店面銷售則相對平穩。</p>
+                    <p>消費者在電子產品、家居用品和旅遊相關服務的支出增加，顯示消費者信心保持穩定。然而，高價商品銷售放緩，反映部分消費者對經濟前景仍持謹慎態度。</p>
+                    <p>分析師認為，穩健的消費支出將支持第一季經濟成長，但需關注就業市場變化對消費能力的影響。</p>
+                </div>
+                <span class="impact impact-neutral">中性影響</span>
+            </div>
+            
+            <div class="news-card">
+                <h3>6. 能源價格波動影響市場</h3>
+                <div class="content">
+                    <p>中東地緣政治緊張局勢升級，導致原油價格單週上漲8%。布蘭特原油價格突破每桶85美元，創三個月新高。</p>
+                    <p>能源股受惠於油價上漲，但運輸和製造業面臨成本壓力。分析師警告，若油價持續上漲，可能對通膨造成上行壓力，影響聯準會政策路徑。</p>
+                    <p>能源公司預計將增加資本支出，擴大生產以應對市場需求，這可能帶動相關設備和服務供應商業績。</p>
+                </div>
+                <span class="impact impact-negative">負面影響</span>
+            </div>
+        </div>
+        
+        <div class="market-data">
+            <h2>主要指數表現</h2>
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="label">道瓊工業指數</div>
+                    <div class="value">38,450.25</div>
+                    <div class="change change-positive">+0.35%</div>
+                </div>
+                <div class="data-item">
+                    <div class="label">標普500指數</div>
+                    <div class="value">5,025.80</div>
+                    <div class="change change-positive">+0.18%</div>
+                </div>
+                <div class="data-item">
+                    <div class="label">納斯達克指數</div>
+                    <div class="value">15,980.40</div>
+                    <div class="change change-negative">-0.22%</div>
+                </div>
+                <div class="data-item">
+                    <div class="label">費城半導體指數</div>
+                    <div class="value">4,520.75</div>
+                    <div class="change change-positive">+1.25%</div>
+                </div>
+                <div class="data-item">
+                    <div class="label">VIX恐慌指數</div>
+                    <div class="value">15.80</div>
+                    <div class="change change-negative">-3.07%</div>
+                </div>
+                <div class="data-item">
+                    <div class="label">美元指數</div>
+                    <div class="value">103.85</div>
+                    <div class="change change-positive">+0.42%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="summary">
+            <h2>投資建議與展望</h2>
+            <p><strong>短期展望：</strong>市場將關注下周公布的PPI通膨數據和零售業財報。技術面顯示標普500指數在5,000點附近有強勁支撐，若突破5,050點阻力，可能開啟新一輪上漲行情。</p>
+            <p><strong>板塊配置：</strong>建議關注AI相關科技股、生技醫療板塊，以及受惠於基礎建設支出的工業類股。防禦性板塊如必需消費品和公用事業可作為避險配置。</p>
+            <p><strong>風險提示：</strong>需留意地緣政治風險、通膨數據變化以及企業獲利成長能否持續。建議投資人保持多元化配置，避免過度集中於單一產業。</p>
+        </div>
+        
+        <div class="footer">
+            <p>報告生成時間：2026年2月15日 14:30 (GMT+8)</p>
+            <p>資料來源：綜合各大財經媒體報導與市場數據</p>
+            <div class="disclaimer">
+                <p>免責聲明：本報告僅供參考，不構成投資建議。投資有風險，入市需謹慎。過往表現不代表未來收益，請根據自身風險承受能力做出投資決策。</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

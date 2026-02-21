@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>ai.openclaw.gateway</string>
+    
+    <key>Comment</key>
+    <string>OpenClaw Gateway (v2026.2.9) - 自動重啟優化版</string>
+    
+    <!-- 自動啟動設定 -->
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <!-- 自動重啟設定 -->
+    <key>KeepAlive</key>
+    <dict>
+      <!-- 崩潰後自動重啟 -->
+      <key>Crashed</key>
+      <true/>
+      
+      <!-- 成功退出後不重啟 -->
+      <key>SuccessfulExit</key>
+      <false/>
+      
+      <!-- 網路服務可用性檢查 -->
+      <key>NetworkState</key>
+      <true/>
+      
+      <!-- 其他進程依賴 -->
+      <key>OtherJobEnabled</key>
+      <string>com.apple.airplay</string>
+    </dict>
+    
+    <!-- 重啟限制：防止快速重啟循環 -->
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+    
+    <!-- 退出時的信號處理 -->
+    <key>ExitTimeOut</key>
+    <integer>30</integer>
+    
+    <!-- 進程參數 -->
+    <key>ProgramArguments</key>
+    <array>
+      <string>/opt/homebrew/bin/node</string>
+      <string>/opt/homebrew/lib/node_modules/openclaw/dist/index.js</string>
+      <string>gateway</string>
+      <string>--port</string>
+      <string>18789</string>
+    </array>
+    
+    <!-- 工作目錄 -->
+    <key>WorkingDirectory</key>
+    <string>/Users/yu-tsehsiao/.openclaw</string>
+    
+    <!-- 環境變數 -->
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>HOME</key>
+      <string>/Users/yu-tsehsiao</string>
+      <key>PATH</key>
+      <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+      <key>NODE_ENV</key>
+      <string>production</string>
+      <key>OPENCLAW_GATEWAY_PORT</key>
+      <string>18789</string>
+      <key>OPENCLAW_LAUNCHD_LABEL</key>
+      <string>ai.openclaw.gateway</string>
+      <key>OPENCLAW_SYSTEMD_UNIT</key>
+      <string>openclaw-gateway.service</string>
+      <key>OPENCLAW_SERVICE_MARKER</key>
+      <string>openclaw</string>
+      <key>OPENCLAW_SERVICE_KIND</key>
+      <string>gateway</string>
+      <key>OPENCLAW_SERVICE_VERSION</key>
+      <string>2026.2.9</string>
+    </dict>
+    
+    <!-- 標準輸出和錯誤 -->
+    <key>StandardOutPath</key>
+    <string>/Users/yu-tsehsiao/.openclaw/logs/gateway.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/yu-tsehsiao/.openclaw/logs/gateway.err.log</string>
+    
+    <!-- 日誌輪轉 -->
+    <key>HardResourceLimits</key>
+    <dict>
+      <key>NumberOfFiles</key>
+      <integer>1024</integer>
+    </dict>
+    
+    <!-- 進程優先級 -->
+    <key>ProcessType</key>
+    <string>Interactive</string>
+    
+    <!-- 會話類型 -->
+    <key>LimitLoadToSessionType</key>
+    <array>
+      <string>Aqua</string>
+      <string>Background</string>
+      <string>LoginWindow</string>
+    </array>
+    
+    <!-- 啟動後延遲 -->
+    <key>StartInterval</key>
+    <integer>0</integer>
+    
+    <!-- 啟動後檢查 -->
+    <key>WatchPaths</key>
+    <array>
+      <string>/Users/yu-tsehsiao/.openclaw</string>
+    </array>
+    
+    <!-- 崩潰報告 -->
+    <key>AbandonProcessGroup</key>
+    <false/>
+    
+    <!-- 資源限制 -->
+    <key>SoftResourceLimits</key>
+    <dict>
+      <key>NumberOfFiles</key>
+      <integer>1024</integer>
+      <key>Core</key>
+      <integer>0</integer>
+    </dict>
+    
+    <!-- 退出信號 -->
+    <key>SignalToKill</key>
+    <integer>15</integer>
+    
+    <!-- 啟動成功條件 -->
+    <key>LaunchOnlyOnce</key>
+    <false/>
+    
+    <!-- 啟用調試 -->
+    <key>EnableTransactions</key>
+    <true/>
+    
+    <!-- 服務質量 -->
+    <key>ServiceIPC</key>
+    <false/>
+  </dict>
+</plist>

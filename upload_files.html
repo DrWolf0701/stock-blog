@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub 檔案上傳助手</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .step {
+            background: #f5f7fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 4px solid #3182ce;
+        }
+        .code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        .button {
+            background: #3182ce;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        .button:hover {
+            background: #2c5282;
+        }
+        .success {
+            color: #38a169;
+            font-weight: bold;
+        }
+        .warning {
+            color: #d69e2e;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧸🤗 GitHub 檔案上傳助手</h1>
+    
+    <div class="step">
+        <h2>📋 步驟 1: 創建 GitHub 倉庫</h2>
+        <p>點擊按鈕打開 GitHub 創建頁面：</p>
+        <button class="button" onclick="window.open('https://github.com/new', '_blank')">打開 GitHub 創建頁面</button>
+        
+        <p>填寫資訊：</p>
+        <div class="code">
+Repository name: <strong>stock-blog</strong>
+Description: <strong>美股新聞每日分析報告</strong>
+選擇: <strong>Public</strong>
+不要初始化 README、.gitignore、license
+        </div>
+    </div>
+    
+    <div class="step">
+        <h2>📤 步驟 2: 上傳檔案</h2>
+        <p>創建倉庫後，點擊按鈕打開上傳頁面：</p>
+        <button class="button" onclick="window.open('https://github.com/DrWolf0701/stock-blog/upload/main', '_blank')">打開上傳頁面</button>
+        
+        <p>需要上傳的檔案（在 <code>/tmp/stock-blog-gh-pages/</code>）：</p>
+        <div class="code">
+index.html      - 部落格主頁面
+report.md       - Markdown 報告
+report.pdf      - PDF 完整報告
+404.html        - 錯誤頁面
+README.md       - 說明文件
+.nojekyll       - 禁用 Jekyll
+        </div>
+        
+        <p>上傳方法：將所有檔案拖曳到上傳區域，然後點擊 <strong>Commit changes</strong>。</p>
+    </div>
+    
+    <div class="step">
+        <h2>🌐 步驟 3: 啟用 GitHub Pages</h2>
+        <p>上傳完成後，點擊按鈕打開 Pages 設定：</p>
+        <button class="button" onclick="window.open('https://github.com/DrWolf0701/stock-blog/settings/pages', '_blank')">打開 Pages 設定</button>
+        
+        <p>設定：</p>
+        <div class="code">
+Source: Deploy from a branch
+Branch: main
+Folder: / (root)
+點擊: Save
+        </div>
+    </div>
+    
+    <div class="step">
+        <h2>🎉 步驟 4: 訪問你的部落格</h2>
+        <p>等待1-2分鐘，然後訪問：</p>
+        <div class="code success">
+https://drwolf0701.github.io/stock-blog/
+        </div>
+        <button class="button" onclick="window.open('https://drwolf0701.github.io/stock-blog/', '_blank')">打開部落格</button>
+    </div>
+    
+    <div class="step">
+        <h2>📁 檔案位置</h2>
+        <p>所有檔案已準備在：</p>
+        <div class="code">
+/tmp/stock-blog-gh-pages/
+├── index.html
+├── report.md
+├── report.pdf
+├── 404.html
+├── README.md
+└── .nojekyll
+        </div>
+        <button class="button" onclick="window.open('file:///tmp/stock-blog-gh-pages/index.html', '_blank')">打開本地預覽</button>
+    </div>
+    
+    <script>
+        // 自動打開第一個步驟
+        window.onload = function() {
+            setTimeout(function() {
+                window.open('https://github.com/new', '_blank');
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日美股新聞彙整 - 2026年2月16日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: float 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-30px, -30px) rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .date {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .market-status {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #4CAF50;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .market-status h2 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .status-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .status-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .news-section {
+            padding: 30px;
+        }
+        
+        .news-section h2 {
+            color: #1a237e;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .news-header {
+            background: linear-gradient(135deg, #2196F3 0%, #21CBF3 100%);
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .news-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .news-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .news-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .news-content {
+            padding: 25px;
+        }
+        
+        .news-content p {
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .impact {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .impact-positive {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+        
+        .impact-negative {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+        
+        .impact-neutral {
+            background: #FFF3E0;
+            color: #EF6C00;
+        }
+        
+        .key-stats {
+            background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
+            color: white;
+            padding: 30px;
+            margin: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .key-stats h2 {
+            margin-bottom: 25px;
+            font-size: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .footer {
+            background: #1a237e;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-top: 5px solid #4CAF50;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .disclaimer {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 每日美股新聞彙整</h1>
+            <div class="date">2026年2月16日 星期一</div>
+        </div>
+        
+        <div class="market-status">
+            <h2>🏛️ 今日市場狀態</h2>
+            <div class="status-item">
+                <div class="status-icon" style="background: #FF5722;">🇺🇸</div>
+                <div>
+                    <strong>美國市場：</strong> 今日休市（總統日假期）
+                </div>
+            </div>
+            <div class="status-item">
+                <div class="status-icon" style="background: #4CAF50;">⏰</div>
+                <div>
+                    <strong>交易時間：</strong> 正常交易將於2月17日恢復
+                </div>
+            </div>
+            <div class="status-item">
+                <div class="status-icon" style="background: #2196F3;">📊</div>
+                <div>
+                    <strong>上週表現：</strong> 科技股震盪，市場關注利率前景
+                </div>
+            </div>
+        </div>
+        
+        <div class="news-section">
+            <h2>📰 今日重點新聞（5項）</h2>
+            
+            <div class="news-grid">
+                <!-- 新聞1 -->
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-number">1</div>
+                        <h3>科技股面臨壓力，AI擔憂加劇</h3>
+                        <div class="news-category">科技產業</div>
+                    </div>
+                    <div class="news-content">
+                        <p>上週美股經歷2026年以來最差的一週表現，科技股因AI相關擔憂而大幅震盪。投資者對AI技術的過度炒作和實際盈利能力的擔憂導致科技七巨頭面臨拋售壓力。</p>
+                        <p>分析師指出，市場正在重新評估AI相關股票的估值，部分投資者開始轉向價值股和防禦性板塊。</p>
+                        <div class="impact impact-negative">負面影響</div>
+                    </div>
+                </div>
+                
+                <!-- 新聞2 -->
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-number">2</div>
+                        <h3>Rivian財報超預期，股價大漲23%</h3>
+                        <div class="news-category">電動車產業</div>
+                    </div>
+                    <div class="news-content">
+                        <p>電動車製造商Rivian (RIVN) 上週四公布第四季度財報，營收和盈利均超出華爾街預期。公司宣布產能提升和成本控制措施見效，推動股價在盤後交易中飆升超過23%。</p>
+                        <p>Rivian預計2026年交付量將增長40%，並宣布新的電池技術合作夥伴關係。</p>
+                        <div class="impact impact-positive">正面影響</div>
+                    </div>
+                </div>
+                
+                <!-- 新聞3 -->
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-number">3</div>
+                        <h3>Pinterest營收未達標，股價暴跌20%</h3>
+                        <div class="news-category">社交媒體</div>
+                    </div>
+                    <div class="news-content">
+                        <p>圖片分享平台Pinterest (PINS) 因第四季度營收未達分析師預期，加上對AI投資回報的擔憂，股價單日暴跌超過20%。公司警告廣告收入增長可能放緩。</p>
+                        <p>執行長表示將重新調整AI投資策略，專注於更具商業價值的應用場景。</p>
+                        <div class="impact impact-negative">負面影響</div>
+                    </div>
+                </div>
+                
+                <!-- 新聞4 -->
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-number">4</div>
+                        <h3>聯準會官員暗示2026年需降息超過1%</h3>
+                        <div class="news-category">總體經濟</div>
+                    </div>
+                    <div class="news-content">
+                        <p>聯準會理事Miran近日表示，當前利率水平過於限制性，2026年可能需要降息超過1個百分點。她指出通膨已非主要經濟問題，適當的貨幣政策調整有助於經濟軟著陸。</p>
+                        <p>市場預期聯準會可能在第二季度開始降息週期，債券市場對此反應積極。</p>
+                        <div class="impact impact-positive">正面影響</div>
+                    </div>
+                </div>
+                
+                <!-- 新聞5 -->
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-number">5</div>
+                        <h3>沃爾瑪、迪爾公司本週公布財報</h3>
+                        <div class="news-category">財報季</div>
+                    </div>
+                    <div class="news-content">
+                        <p>本週將迎來重要財報公布，包括零售巨頭沃爾瑪和工業設備製造商迪爾公司。分析師將密切關注這些公司的業績，作為衡量消費者支出和工業活動的重要指標。</p>
+                        <p>沃爾瑪的財報被視為美國消費經濟的健康指標，而迪爾公司的業績則反映農業和建築業的需求狀況。</p>
+                        <div class="impact impact-neutral">中性影響</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="key-stats">
+            <h2>📊 關鍵市場數據</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">-1.8%</div>
+                    <div class="stat-label">那斯達克指數上週跌幅</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">+23%</div>
+                    <div class="stat-label">Rivian財報後股價漲幅</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">-20%</div>
+                    <div class="stat-label">Pinterest單日股價跌幅</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">>1%</div>
+                    <div class="stat-label">聯準會預期降息幅度</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📧 本報告將自動發送至：s8824415@hotmail.com 和 Linbojing@hotmail.com</p>
+            <p>🕒 生成時間：2026年2月16日 12:30 (台北時間)</p>
+            <p>📱 數據來源：CNBC、Reuters、Investopedia、Yahoo Finance 等財經媒體</p>
+            <div class="disclaimer">
+                <p>免責聲明：本報告僅供參考，不構成投資建議。市場數據可能延遲，投資前請諮詢專業財務顧問。</p>
+                <p>報告由小熊抱AI助手自動生成 🧸🤗</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

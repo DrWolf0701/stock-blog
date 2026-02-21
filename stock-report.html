@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股每日新聞 - 2026年2月20日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(145deg, #0f3460, #16213e);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #fff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .date {
+            color: #e94560;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .summary-card {
+            background: linear-gradient(145deg, #0f3460, #1a1a2e);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            border-left: 4px solid #e94560;
+        }
+        .summary-card.sp { border-left-color: #4ecca3; }
+        .summary-card.dow { border-left-color: #ffd369; }
+        .summary-card.nasdaq { border-left-color: #00d9ff; }
+        .summary-card h3 {
+            color: #aaa;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .summary-card .value {
+            color: #fff;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .summary-card .change {
+            color: #e94560;
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        .summary-card .change.up { color: #4ecca3; }
+        
+        .section {
+            background: linear-gradient(145deg, #0f3460, #16213e);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        }
+        .section h2 {
+            color: #e94560;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e94560;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section h2 .icon {
+            font-size: 1.2em;
+        }
+        .news-item {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .news-item h3 {
+            color: #fff;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        .news-item p {
+            color: #ccc;
+            line-height: 1.7;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-right: 8px;
+        }
+        .tag.ai { background: #9b59b6; }
+        .tag.energy { background: #e67e22; }
+        .tag.fed { background: #3498db; }
+        .tag.retail { background: #2ecc71; }
+        
+        .stock-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .stock-item {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .stock-item .name {
+            color: #fff;
+            font-weight: bold;
+        }
+        .stock-item .change {
+            font-weight: bold;
+        }
+        .stock-item .change.up { color: #4ecca3; }
+        .stock-item .change.down { color: #e94560; }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .summary-card .value { font-size: 1.5em; }
+            .section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧸 美股每日新聞</h1>
+            <div class="date">2026年2月20日 星期四</div>
+        </header>
+        
+        <div class="summary">
+            <div class="summary-card sp">
+                <h3>S&P 500</h3>
+                <div class="value">6,861.89</div>
+                <div class="change">▼ 0.3%</div>
+            </div>
+            <div class="summary-card dow">
+                <h3>道瓊</h3>
+                <div class="value">49,395</div>
+                <div class="change">▼ 267 點</div>
+            </div>
+            <div class="summary-card nasdaq">
+                <h3>納斯達克</h3>
+                <div class="value">22,682</div>
+                <div class="change">▼ 0.3%</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">📰</span> 三大必讀要聞</h2>
+            
+            <div class="news-item">
+                <h3><span class="tag ai">AI 恐慌</span> AI 擔憂持續衝擊科技股</h3>
+                <p>投資人對 AI 威脅的擔憂持續發酵，Booking Holdings 重挫 6.1%，今年以來市值蒸發近 25%。私人信貸公司也受到波及，Blue Owl Capital 大跌 5.9%、Apollo Global Management 下跌 5.2%。分析師形容這是「先射擊後問問題」的心態。</p>
+            </div>
+            
+            <div class="news-item">
+                <h3><span class="tag energy">🌍 地緣政治</span> 美伊衝突升級，油價飆升至 6 個月高點</h3>
+                <p>川普政府持續施壓伊朗，擔憂其核計畫。原油價格大漲 1.9% 至每桶 $66.43，創 6 個月新高。能源股大漲，Occidental Petroleum 飆升 9.4%。若衝突加劇，全球石油供應可能受阻。</p>
+            </div>
+            
+            <div class="news-item">
+                <h3><span class="tag fed">🏦 聯準會</span> 失業救濟申請下降，Fed 維持利率觀望</h3>
+                <p>上週失業救濟申請人數下降，顯示勞動市場放緩。聯準會官員表示需要看到通膨進一步下降才會考慮降息。若油價持續上漲，可能推升通膨，延後 Fed 降息時間表。10年期國債殖利率維持在 4.07%。</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">📈</span> 個股焦點</h2>
+            <div class="stock-list">
+                <div class="stock-item">
+                    <span class="name">Walmart</span>
+                    <span class="change down">▼ 1.4%</span>
+                </div>
+                <div class="stock-item">
+                    <span class="name">Deere</span>
+                    <span class="change up">▲ 11.6%</span>
+                </div>
+                <div class="stock-item">
+                    <span class="name">Occidental</span>
+                    <span class="change up">▲ 9.4%</span>
+                </div>
+                <div class="stock-item">
+                    <span class="name">Booking</span>
+                    <span class="change down">▼ 6.1%</span>
+                </div>
+                <div class="stock-item">
+                    <span class="name">Carvana</span>
+                    <span class="change down">▼ 7.9%</span>
+                </div>
+                <div class="stock-item">
+                    <span class="name">Blue Owl</span>
+                    <span class="change down">▼ 5.9%</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">📊</span> 經濟數據</h2>
+            <div class="news-item">
+                <h3>昨日公佈數據</h3>
+                <p>• 失業救濟申請：降至 20.8 萬人，優於預期<br>
+                • 費城製造業指數：升至 5.2，顯示製造景氣回暖<br>
+                • 貿易赤字：12 月擴大至 $703 億美元，高於預期<br>
+                • 新屋銷售：1 月意外下滑</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>🧸 小熊抱每日美股新聞 | 資料來源：AP News, CNBC, Bloomberg</p>
+            <p>Generated on 2026-02-20</p>
+        </footer>
+    </div>
+</body>
+</html>

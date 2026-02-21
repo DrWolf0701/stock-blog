@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>ai.openclaw.gateway</string>
+    
+    <key>Comment</key>
+    <string>OpenClaw Gateway (v2026.2.9) - 修正版</string>
+    
+    <!-- 自動啟動設定 -->
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <!-- 自動重啟設定 - 使用簡單的 true 讓 doctor 通過 -->
+    <key>KeepAlive</key>
+    <true/>
+    
+    <!-- 進程參數 -->
+    <key>ProgramArguments</key>
+    <array>
+      <string>/opt/homebrew/bin/node</string>
+      <string>/opt/homebrew/lib/node_modules/openclaw/dist/index.js</string>
+      <string>gateway</string>
+      <string>--port</string>
+      <string>18789</string>
+    </array>
+    
+    <!-- 工作目錄 -->
+    <key>WorkingDirectory</key>
+    <string>/Users/yu-tsehsiao/.openclaw</string>
+    
+    <!-- 環境變數 -->
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>HOME</key>
+      <string>/Users/yu-tsehsiao</string>
+      <key>PATH</key>
+      <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+      <key>NODE_ENV</key>
+      <string>production</string>
+      <key>OPENCLAW_GATEWAY_PORT</key>
+      <string>18789</string>
+    </dict>
+    
+    <!-- 標準輸出和錯誤 -->
+    <key>StandardOutPath</key>
+    <string>/Users/yu-tsehsiao/.openclaw/logs/gateway.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/yu-tsehsiao/.openclaw/logs/gateway.err.log</string>
+    
+    <!-- 會話類型 -->
+    <key>LimitLoadToSessionType</key>
+    <array>
+      <string>Aqua</string>
+      <string>Background</string>
+      <string>LoginWindow</string>
+    </array>
+    
+    <!-- 進程類型 -->
+    <key>ProcessType</key>
+    <string>Interactive</string>
+    
+    <!-- 啟動後延遲 -->
+    <key>StartInterval</key>
+    <integer>0</integer>
+    
+    <!-- 崩潰報告 -->
+    <key>AbandonProcessGroup</key>
+    <false/>
+    
+    <!-- 退出信號 -->
+    <key>SignalToKill</key>
+    <integer>15</integer>
+  </dict>
+</plist>

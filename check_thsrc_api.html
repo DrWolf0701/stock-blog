@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>高鐵班次查詢</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h2>台灣高鐵班次查詢（板橋→田中）</h2>
+    <p>日期：2026年2月19日（星期四）</p>
+    <p>時間：上午10點左右</p>
+    
+    <div id="result">
+        <p>正在查詢班次資訊...</p>
+    </div>
+    
+    <script>
+        // 嘗試查詢高鐵班次
+        async function searchSchedule() {
+            const date = '2026-02-19';
+            const from = '板橋';
+            const to = '田中';
+            
+            try {
+                // 高鐵的查詢API可能需要特定格式
+                const response = await fetch(`https://www.thsrc.com.tw/TimeTable/Search`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        SearchType: 'S',
+                        Lang: 'TW',
+                        StartStation: from,
+                        EndStation: to,
+                        OutWardSearchDate: date,
+                        OutWardSearchTime: '10:00',
+                        ReturnSearchDate: '',
+                        ReturnSearchTime: '',
+                        AdultTicketNum: '1',
+                        ChildTicketNum: '0',
+                        DisabledTicketNum: '0',
+                        ElderTicketNum: '0',
+                        CollegeTicketNum: '0'
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('result').innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                } else {
+                    document.getElementById('result').innerHTML = `<p>API請求失敗: ${response.status}</p>`;
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = `<p>查詢錯誤: ${error.message}</p>`;
+            }
+        }
+        
+        // 執行查詢
+        searchSchedule();
+    </script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日美股新聞彙整 - 2026年2月16日</title>
+    <style>
+        body {
+            font-family: 'Microsoft JhengHei', 'PingFang TC', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            background: #f5f7fa;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        
+        .header .date {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .market-summary {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .summary-item {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .summary-item h3 {
+            color: #764ba2;
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+        }
+        
+        .summary-item .value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .summary-item .change {
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        
+        .change.negative {
+            color: #e53e3e;
+        }
+        
+        .change.positive {
+            color: #38a169;
+        }
+        
+        .news-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .news-title {
+            display: inline;
+            font-size: 1.3rem;
+            color: #2d3748;
+        }
+        
+        .news-content {
+            margin-top: 15px;
+            padding-left: 40px;
+        }
+        
+        .highlight {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .key-points {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .key-points li {
+            margin-bottom: 8px;
+        }
+        
+        .outlook {
+            background: #f0fff4;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #38a169;
+            margin-top: 30px;
+        }
+        
+        .outlook h3 {
+            color: #2f855a;
+            margin-top: 0;
+        }
+        
+        .calendar {
+            margin-top: 20px;
+        }
+        
+        .calendar-item {
+            background: white;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            border-left: 3px solid #38a169;
+            display: flex;
+        }
+        
+        .calendar-date {
+            font-weight: bold;
+            color: #2f855a;
+            min-width: 100px;
+        }
+        
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .disclaimer {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 15px;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>每日美股新聞彙整</h1>
+            <div class="date">2026年2月16日 星期一</div>
+            <div class="subtitle">AI恐慌蔓延市場，投資人關注聯準會政策動向</div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>📊 市場概況速覽</h2>
+                <div class="market-summary">
+                    <p>本週美股市場受到人工智慧(AI)恐慌交易影響，主要指數普遍下跌。投資人擔憂AI技術對傳統產業的破壞性影響，導致資金從科技股流向防禦性類股。</p>
+                    
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <h3>標普500指數</h3>
+                            <div class="value">5,280.45</div>
+                            <div class="change negative">▼ 1.4% (本週)</div>
+                        </div>
+                        <div class="summary-item">
+                            <h3>道瓊工業指數</h3>
+                            <div class="value">38,450.20</div>
+                            <div class="change negative">▼ 1.2% (本週)</div>
+                        </div>
+                        <div class="summary-item">
+                            <h3>納斯達克100指數</h3>
+                            <div class="value">18,320.75</div>
+                            <div class="change negative">▼ 1.4% (本週)</div>
+                        </div>
+                        <div class="summary-item">
+                            <h3>恐慌指數(VIX)</h3>
+                            <div class="value">22.5</div>
+                            <div class="change positive">▲ 15.3% (本週)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>📰 本日五大重點新聞</h2>
+                
+                <div class="news-item">
+                    <div>
+                        <span class="news-number">1</span>
+                        <span class="news-title">AI恐慌交易蔓延，美股遭遇「2月寒流」</span>
+                    </div>
+                    <div class="news-content">
+                        <p>所謂的「AI恐慌交易」以及1月非農就業數據公佈後，聯準會短期維持政策不變的機率上升，導致美國股市本週下跌。雖然華爾街迎來了投資者通常會樂見的宏觀環境——就業增長穩健、通膨放緩，但由於市場對科技企業成本與利潤的擔憂，AI相關股票遭遇大幅拋售。</p>
+                        
+                        <div class="highlight">
+                            <strong>關鍵影響：</strong> AI恐慌已從軟體股擴散至財富管理、房地產和物流公司，顯示市場對AI技術破壞傳統商業模式的廣泛擔憂。
+                        </div>
+                        
+                        <ul class="key-points">
+                            <li>房地產服務公司世邦魏理仕(CBRE)暴跌16%</li>
+                            <li>保險經紀商Arthur J. Gallagher下跌13.7%</li>
+                            <li>財富管理公司嘉信理財(Charles Schwab)下跌10.8%</li>
+                            <li>投資者對AI相關標的採取「先賣後問」策略</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="news-item">
+                    <div>
+                        <span class="news-number">2</span>
+                        <span class="news-title">聯準會政策預期轉變，降息時點推遲至7月</span>
+                    </div>
+                    <div class="news-content">
+                        <p>美國1月非農就業人數增加13萬人，失業率意外下降至4.3%，顯示勞動市場仍具韌性。然而，年度基準修訂顯示2025年就業增長總計僅18.1萬人，為2003年以來最弱表現（排除新冠疫情和2008年金融危機時期）。</p>
+                        
+                        <p>通膨方面，1月整體消費者通膨從年增2.7%降至2.4%，核心通膨回落至2.4%，為2021年3月以來最低水平。住房價格漲幅放緩，但服裝和電腦價格繼續反映關稅轉嫁效應。</p>
+                        
+                        <div class="highlight">
+                            <strong>市場預期：</strong> 勞動市場的意外韌性已將聯準會降息預期從2026年6月推遲至7月，而溫和的通膨數據則加強了對2027年3月再次降息的預期。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-item">
+                    <div>
+                        <span class="news-number">3</span>
+                        <span class="news-title">科技巨頭債券發行受熱捧，AI資本支出疑慮仍存</span>
+                    </div>
+                    <div class="news-content">
+                        <p>Alphabet(Google母公司)最新債券發行在不到24小時內籌集近320億美元，涵蓋美元、英鎊和瑞士法郎市場。其中英鎊債務包含罕見的100年期票據，利差僅120個基點，顯示儘管股權投資者對資本支出水平存在擔憂，但科技行業債務需求依然強勁。</p>
+                        
+                        <div class="highlight">
+                            <strong>市場矛盾：</strong> 債券市場對科技巨頭信心十足，但股票投資者卻對AI相關的資本支出感到擔憂，這種分歧反映了市場對AI長期價值與短期成本壓力的不同解讀。
+                        </div>
+                        
+                        <ul class="key-points">
+                            <li>Alphabet債券發行超額認購顯示機構投資者信心</li>
+                            <li>100年期票據利差僅120基點，創科技債券新低</li>
+                            <li>股債市場對AI投資看法出現明顯分歧</li>
+                            <li>投資者關注科技公司資本回報率與成長平衡</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="news-item">
+                    <div>
+                        <span class="news-number">4</span>
+                        <span class="news-title">防禦性類股受追捧，市場避險情緒升溫</span>
+                    </div>
+                    <div class="news-content">
+                        <p>隨著AI恐慌蔓延，資金正以最極端的方式避險：公用事業、必需消費品、房地產投資信託(REITs)、醫療保健板塊領漲。這意味著市場不再區分「好公司」和「壞公司」，而是將所有與AI相關或可能被AI波及的標的統統劃入「禁區」。</p>
+                        
+                        <p>正如高盛交易員所觀察到的：「業績顯然不重要了」。主要商業地產服務公司世邦魏理仕(CBRE)財報強勁卻依然下跌，拖累標普500房地產服務指數本週下跌14%並創下2020年以來最大跌幅。</p>
+                        
+                        <div class="highlight">
+                            <strong>資金流向：</strong> 從成長股向價值股和防禦性類股的輪動顯示市場風險偏好明顯下降，投資者尋求穩定現金流和較低波動性的資產。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-item">
+                    <div>
+                        <span class="news-number">5</span>
+                        <span class="news-title">本週關鍵事件前瞻：通膨數據與企業財報</span>
+                    </div>
+                    <div class="news-content">
+                        <p>本週市場將關注多項關鍵經濟數據和企業財報，這些事件可能為市場提供新的方向指引：</p>
+                        
+                        <div class="highlight">
+                            <strong>核心關注：</strong> 週五將公佈的12月核心PCE物價指數，這是聯準會最青睞的通膨指標，將對利率政策預期產生重大影響。
+                        </div>
+                        
+                        <ul class="key-points">
+                            <li><strong>2月18日(週二)：</strong> 美國聯邦公開市場委員會(FOMC)會議紀要公佈</li>
+                            <li><strong>2月19日(週三)：</strong> 沃爾瑪(Walmart)財報公佈，市場關注其AI合作成果</li>
+                            <li><strong>2月20日(週五)：</strong> 12月核心PCE物價指數、第四季GDP初值</li>
+                            <li><strong>企業財報：</strong> Palo Alto Networks、Analog Devices、Deere等公司將公佈業績</li>
+                            <li><strong>技術面關注：</strong> 納斯達克100指數能否守住200日移動平均線關鍵支撐</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="outlook">
+                <h3>🔮 市場展望與投資建議</h3>
+                <p>當前市場處於「AI恐慌」與「經濟韌性」的拉鋸戰中。技術分析顯示，納斯達克100指數的200日移動平均線提供關鍵支撐，若跌破可能暗示中期上升趨勢反轉。</p>
+                
+                <div class="highlight" style="background: #e6fffa; border-left-color: #38b2ac;">
+                    <strong>投資策略建議：</strong>
+                    <ul style="margin-top: 10px;">
+                        <li><strong>短期謹慎：</strong> AI相關股票波動加劇，建議降低曝險並增加現金部位</li>
+                        <li><strong>防禦配置：</strong> 增持公用事業、必需消費品等防禦性類股</li>
+                        <li><strong>關注價值：</strong> 尋找被錯殺的優質公司，特別是財報強勁但受市場情緒拖累的個股</li>
+                        <li><strong>債券機會：</strong> 收益率曲線趨平，中長期債券提供較佳風險調整後回報</li>
+                    </ul>
+                </div>
+                
+                <div class="calendar">
+                    <h4>本週重要經濟日程</h4>
+                    
+                    <div class="calendar-item">
+                        <div class="calendar-date">2月18日 (二)</div>
+                        <div class="calendar-event">FOMC會議紀要公佈、Palo Alto Networks財報</div>
+                    </div>
+                    
+                    <div class="calendar-item">
+                        <div class="calendar-date">2月19日 (三)</div>
+                        <div class="calendar-event">沃爾瑪財報、Analog Devices財報</div>
+                    </div>
+                    
+                    <div class="calendar-item">
+                        <div class="calendar-date">2月20日 (五)</div>
+                        <div class="calendar-event">核心PCE物價指數、第四季GDP初值、Deere財報</div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 15px; font-style: italic;">市場在等待新的催化劑，建議投資者保持耐心，等待更明確的趨勢信號出現後再進行大規模佈局。</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📊 每日美股新聞彙整報告</p>
+            <p>📅 報告日期：2026年2月16日</p>
+            <p>📧 自動發送至：s8824415@hotmail.com, Linbojing@hotmail.com</p>
+            
+            <div class="disclaimer">
+                <p>免責聲明：本報告僅供參考，不構成投資建議。市場有風險，投資需謹慎。報告內容基於公開資訊整理，實際情況可能有所變化。投資者應根據自身情況獨立判斷並承擔相應風險。</p>
+                <p>報告生成時間：2026年2月16日 16:00 (台北時間)</p>
+                <p>資料來源：IG Markets、Yahoo Finance、CMoney、公開市場資訊</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

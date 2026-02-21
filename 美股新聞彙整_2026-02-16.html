@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股新聞重點彙整 - 2026年2月16日</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .date-info {
+            background: #2a5298;
+            padding: 15px;
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #1e3c72;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2a5298;
+            font-weight: 600;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e1e8ed;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #2a5298, #1e3c72);
+        }
+        
+        .news-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 10px rgba(42, 82, 152, 0.3);
+        }
+        
+        .news-title {
+            font-size: 1.4rem;
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            padding-right: 50px;
+        }
+        
+        .news-content {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .news-highlight {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #2a5298;
+            margin: 15px 0;
+        }
+        
+        .news-highlight h4 {
+            color: #1e3c72;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .market-data {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .data-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .data-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .data-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+        
+        .data-change {
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .positive { color: #28a745; }
+        .negative { color: #dc3545; }
+        
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .footer p {
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+        
+        .disclaimer {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .print-only {
+            display: none;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .header {
+                background: #1e3c72 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .news-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            
+            .print-only {
+                display: block;
+                text-align: center;
+                margin-top: 20px;
+                font-size: 0.9rem;
+                color: #666;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>美股新聞重點彙整</h1>
+            <div class="subtitle">2026年2月16日 最新市場動態與分析</div>
+        </div>
+        
+        <div class="date-info">
+            報告生成時間：2026年2月16日 12:30 (GMT+8) | 資料來源：多家財經媒體彙整
+        </div>
+        
+        <div class="content">
+            <div class="section-title">📊 本日市場概覽</div>
+            <div class="market-data">
+                <p>美國股市在2026年2月13日（週五）展現韌性，主要指數普遍上漲，主要受到通膨數據降溫的激勵，市場對聯準會降息的預期升溫。</p>
+                
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-label">S&P 500指數</div>
+                        <div class="data-value">6,500-7,000</div>
+                        <div class="data-change positive">嘗試收復50日均線</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">道瓊工業指數</div>
+                        <div class="data-value">+150點</div>
+                        <div class="data-change positive">藍籌股領漲</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">納斯達克指數</div>
+                        <div class="data-value">+0.4%</div>
+                        <div class="data-change positive">半導體與軟體股帶動</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">CPI年增率</div>
+                        <div class="data-value">2.4%</div>
+                        <div class="data-change positive">2024年初以來最低</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">🔥 五大重點新聞分析</div>
+            
+            <div class="news-grid">
+                <!-- 新聞1 -->
+                <div class="news-card">
+                    <div class="news-number">1</div>
+                    <h3 class="news-title">通膨降溫激勵市場，聯準會降息預期升溫</h3>
+                    <div class="news-content">
+                        <p>2026年1月消費者物價指數(CPI)數據顯示通膨持續降溫，月增率僅0.2%，低於預期的0.3%。年增率降至2.4%，為2024年初以來最低水平。</p>
+                        
+                        <div class="news-highlight">
+                            <h4>市場影響</h4>
+                            <p>投資人預期聯準會可能提前結束緊縮政策，降息預期推動股市上漲。交易員目前預估2026年降息機率大幅提高。</p>
+                        </div>
+                        
+                        <p>此「金髮女孩」經濟數據（通膨溫和、經濟成長穩健）為股市創造有利環境，藍籌股和科技股同步受益。</p>
+                    </div>
+                </div>
+                
+                <!-- 新聞2 -->
+                <div class="news-card">
+                    <div class="news-number">2</div>
+                    <h3 class="news-title">Nvidia財報前瞻：2月25日揭曉，市場期待強勁指引</h3>
+                    <div class="news-content">
+                        <p>Nvidia將於2月25日公布2026財年第四季財報，市場高度關注其業績表現和未來成長指引。</p>
+                        
+                        <div class="news-highlight">
+                            <h4>關鍵看點</h4>
+                            <ul>
+                                <li>對中國晶片出口可能重啟，帶來營收增長機會</li>
+                                <li>新Rubin晶片架構效能提升，成本效益更佳</li>
+                                <li>大型科技公司巨額資本支出計劃顯示AI需求強勁</li>
+                            </ul>
+                        </div>
+                        
+                        <p>分析師指出，儘管Nvidia股價已處高位，但從前瞻性本益比來看仍屬合理。若股價上漲20%，將達到30倍前瞻本益比的合理估值水平。</p>
+                    </div>
+                </div>
+                
+                <!-- 新聞3 -->
+                <div class="news-card">
+                    <div class="news-number">3</div>
+                    <h3 class="news-title">AI需求引爆「記憶體末日」，DRAM價格飆升75%</h3>
+                    <div class="news-content">
+                        <p>AI巨頭搶購記憶體產能導致DRAM供應嚴重短缺，價格在短期內飆升75%，打亂全球供應鏈。</p>
+                        
+                        <div class="news-highlight">
+                            <h4>產業衝擊</h4>
+                            <p>聯想集團執行長楊元慶警告，這種供需結構性失衡非短期波動，供應緊縮至少持續到2026年底。</p>
+                        </div>
+                        
+                        <p>遊戲產業受到嚴重影響，索尼考慮將下一代PlayStation發表時間推遲至2028-2029年。記憶體短缺正威脅整條產品線的獲利能力，打亂企業長期規劃。</p>
+                    </div>
+                </div>
+                
+                <!-- 新聞4 -->
+                <div class="news-card">
+                    <div class="news-number">4</div>
+                    <h3 class="news-title">SaaS產業震盪，AI威脅傳統軟體商業模式</h3>
+                    <div class="news-content">
+                        <p>2026年2月初，軟體產業出現大幅震盪，SaaS企業市值蒸發約3,000億美元。</p>
+                        
+                        <div class="news-highlight">
+                            <h4>受影響企業</h4>
+                            <p>Salesforce、Adobe、ServiceNow等知名SaaS企業股價普遍下跌，反映市場對AI可能顛覆傳統軟體商業模式的擔憂。</p>
+                        </div>
+                        
+                        <p>Figma案例具代表性：2025年7月以33美元IPO，翌日飆升至143美元，但2026年2月初跌至22-24美元，較高點下跌83-85%。時價總額從600億美元縮減至105億美元。</p>
+                    </div>
+                </div>
+                
+                <!-- 新聞5 -->
+                <div class="news-card">
+                    <div class="news-number">5</div>
+                    <h3 class="news-title">本週關鍵經濟數據與央行動向</h3>
+                    <div class="news-content">
+                        <p>投資人本週將密切關注美、日GDP與通膨數據，以及各國央行政策會議紀錄。</p>
+                        
+                        <div class="news-highlight">
+                            <h4>重要事件時間表</h4>
+                            <ul>
+                                <li>美國Q4 GDP初步估計（預期+2.8%，前值+4.4%）</li>
+                                <li>12月核心PCE物價指數（預期3.0%年增率）</li>
+                                <li>聯準會會議紀要公布</li>
+                                <li>日本經濟數據與央行政策動向</li>
+                            </ul>
+                        </div>
+                        
+                        <p>市場關注經濟成長趨勢是否持續分化，特別是美國經濟增長是否放緩，以及歐洲與日本是否展現更強勁復甦動能。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">📈 投資策略建議</div>
+            <div class="market-data">
+                <h3 style="color: #1e3c72; margin-bottom: 15px;">市場展望與操作建議</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #28a745;">
+                        <h4 style="color: #1e3c72; margin-bottom: 10px;">🟢 積極因素</h4>
+                        <ul style="color: #555; line-height: 1.6;">
+                            <li>通膨持續降溫，聯準會政策可能轉向</li>
+                            <li>AI長期成長趨勢不變，基礎設施需求強勁</li>
+                            <li>企業資本支出計劃顯示對未來信心</li>
+                            <li>科技創新持續推動生產力提升</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #dc3545;">
+                        <h4 style="color: #1e3c72; margin-bottom: 10px;">🔴 風險因素</h4>
+                        <ul style="color: #555; line-height: 1.6;">
+                            <li>AI資本支出過高可能壓縮企業獲利</li>
+                            <li>記憶體等關鍵零組件供應短缺</li>
+                            <li>SaaS產業面臨AI顛覆性挑戰</li>
+                            <li>地緣政治風險與貿易限制</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 25px; padding: 20px; background: linear-gradient(135deg, #fff8e1, #ffecb3); border-radius: 10px; border: 1px solid #ffd54f;">
+                    <h4 style="color: #1e3c72; margin-bottom: 15px;">💡 操作建議</h4>
+                    <ol style="color: #555; line-height: 1.6; padding-left: 20px;">
+                        <li><strong>關注Nvidia財報：</strong>2月25日財報可能成為科技股重要催化劑</li>
+                        <li><strong>布局記憶體相關標的：</strong>DRAM短缺可能使相關公司受益</li>
+                        <li><strong>謹慎看待SaaS股：</strong>等待產業調整完成再考慮進場</li>
+                        <li><strong>關注經濟數據：</strong>GDP與PCE數據將影響聯準會政策預期</li>
+                        <li><strong>分散投資：</strong>在AI主題與傳統價值股間取得平衡</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="section-title">📋 重要公司動態</div>
+            <div style="background: white; padding: 25px; border-radius: 15px; border: 1px solid #e1e8ed; margin: 20px 0;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: linear-gradient(135deg, #1e3c72, #2a5298); color: white;">
+                            <th style="padding: 15px; text-align: left; border-radius: 8px 0 0 0;">公司</th>
+                            <th style="padding: 15px; text-align: left;">代號</th>
+                            <th style="padding: 15px; text-align: left;">最新動態</th>
+                            <th style="padding: 15px; text-align: left; border-radius: 0 8px 0 0;">影響</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #e1e8ed;">
+                            <td style="padding: 15px; font-weight: 500;">Nvidia</td>
+                            <td style="padding: 15px;">NVDA</td>
+                            <td style="padding: 15px;">2月25日公布Q4財報，市場期待強勁指引</td>
+                            <td style="padding: 15px;"><span style="color: #28a745; font-weight: 500;">正面</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e1e8ed; background: #f8f9fa;">
+                            <td style="padding: 15px; font-weight: 500;">Salesforce</td>
+                            <td style="padding: 15px;">CRM</td>
+                            <td style="padding: 15px;">SaaS產業震盪，股價受AI威脅影響</td>
+                            <td style="padding: 15px;"><span style="color: #dc3545; font-weight: 500;">負面</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e1e8ed;">
+                            <td style="padding: 15px; font-weight: 500;">美光科技</td>
+                            <td style="padding: 15px;">MU</td>
+                            <td style="padding: 15px;">DRAM價格飆升75%，受益於AI需求</td>
+                            <td style="padding: 15px;"><span style="color: #28a745; font-weight: 500;">正面</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e1e8ed; background: #f8f9fa;">
+                            <td style="padding: 15px; font-weight: 500;">Figma</td>
+                            <td style="padding: 15px;">FIGM</td>
+                            <td style="padding: 15px;">股價較IPO高點下跌83-85%</td>
+                            <td style="padding: 15px;"><span style="color: #dc3545; font-weight: 500;">負面</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; font-weight: 500;">索尼</td>
+                            <td style="padding: 15px;">SONY</td>
+                            <td style="padding: 15px;">考慮延遲下一代PlayStation發布</td>
+                            <td style="padding: 15px;"><span style="color: #ffc107; font-weight: 500;">中性偏負</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="print-only">
+                <p>本報告生成於：2026年2月16日 12:30 (GMT+8)</p>
+                <p>資料來源：StockMarketWatch、鉅亨網、Forecastock等財經媒體</p>
+                <p>投資有風險，入市需謹慎。本報告僅供參考，不構成投資建議。</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📊 <strong>美股新聞重點彙整報告</strong></p>
+            <p>生成日期：2026年2月16日 | 版本：1.0</p>
+            <p>資料來源：多家國際財經媒體即時新聞彙整</p>
+            <p>分析師：OpenClaw財經分析團隊</p>
+            
+            <div class="disclaimer">
+                <p><strong>免責聲明：</strong>本報告基於公開資訊整理，僅供參考之用。報告內容不構成任何投資建議，投資者應根據自身情況獨立判斷並承擔投資風險。市場有風險，投資需謹慎。</p>
+                <p>報告中提及的股票、指數或其他金融產品僅為資訊展示，不代表推薦買賣。</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 簡單的互動效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 新聞卡片點擊效果
+            const newsCards = document.querySelectorAll('.news-card');
+            newsCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // 更新實時時間
+            function updateTime() {
+                const now = new Date();
+                const options = { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    timeZone: 'Asia/Taipei'
+                };
+                const timeString = now.toLocaleDateString('zh-TW', options);
+                
+                const timeElement = document.querySelector('.date-info');
+                if (timeElement) {
+                    timeElement.innerHTML = `報告生成時間：${timeString} | 資料來源：多家財經媒體彙整`;
+                }
+            }
+            
+            // 每分鐘更新一次時間
+            updateTime();
+            setInterval(updateTime, 60000);
+        });
+    </script>
+</body>
+</html>

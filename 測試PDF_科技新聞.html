@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科技新聞測試 - PDF檢查標準驗證</title>
+    <style>
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+            line-height: 1.8;
+            margin: 2.5cm;
+            color: #333;
+            background: white;
+        }
+        
+        h1 {
+            color: #1e3a8a;
+            text-align: center;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 26px;
+            word-wrap: break-word;
+        }
+        
+        .test-info {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 40px;
+            font-size: 16px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+        
+        .checklist {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #3b82f6;
+        }
+        
+        .checklist h2 {
+            color: #1e3a8a;
+            margin-top: 0;
+        }
+        
+        .checklist ul {
+            margin: 0;
+            padding-left: 25px;
+        }
+        
+        .checklist li {
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .checklist .checked {
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .content-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+        
+        .section-title {
+            color: #1e3a8a;
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .news-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 6px;
+            border-left: 4px solid #10b981;
+        }
+        
+        .news-title {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            word-wrap: break-word;
+        }
+        
+        .news-content {
+            font-size: 15px;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        
+        .numbers-test {
+            background: #fef3c7;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 1px solid #f59e0b;
+        }
+        
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .number-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .number-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin: 10px 0;
+        }
+        
+        .number-label {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .long-text-test {
+            background: #fce7f3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 1px solid #db2777;
+        }
+        
+        .long-text {
+            font-size: 14px;
+            line-height: 1.7;
+            column-count: 2;
+            column-gap: 30px;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 2px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+        .test-summary {
+            background: #dcfce7;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px solid #10b981;
+        }
+        
+        @media print {
+            body {
+                margin: 2cm;
+            }
+            .news-item {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>📋 PDF品質檢查標準測試文件</h1>
+    
+    <div class="test-info">
+        測試時間：2026年2月15日 13:05 GMT+8<br>
+        測試目的：驗證PDF檢查標準的完整性與正確性
+    </div>
+    
+    <div class="checklist">
+        <h2>✅ PDF檢查標準清單（必須全部通過）</h2>
+        <ul>
+            <li class="checked">1. 文字清晰無重疊</li>
+            <li class="checked">2. 格式簡單正確</li>
+            <li class="checked">3. 中文字體正常</li>
+            <li class="checked">4. 內容完整顯示</li>
+            <li class="checked">5. 確保文字清晰可讀</li>
+            <li class="checked">6. 文字不能被截斷無法顯示</li>
+            <li class="checked">7. 文字或數字也不能重疊</li>
+        </ul>
+    </div>
+    
+    <div class="content-section">
+        <div class="section-title">📰 科技新聞測試內容</div>
+        
+        <div class="news-item">
+            <div class="news-title">人工智慧突破：新型神經網絡效率提升300%</div>
+            <div class="news-content">
+                研究團隊今日宣布開發出新型高效神經網絡架構，在相同硬體條件下，推理速度提升300%，能耗降低45%。這項突破將大幅推動邊緣AI設備的發展，預計在醫療診斷、自動駕駛等領域產生深遠影響。技術細節將在即將舉行的國際AI會議上正式發表。
+            </div>
+        </div>
+        
+        <div class="news-item">
+            <div class="news-title">量子計算里程碑：1000量子位元系統穩定運行</div>
+            <div class="news-content">
+                量子科技公司宣布其1000量子位元系統已連續穩定運行100小時，錯誤率控制在0.01%以下。這是量子計算領域的重要里程碑，標誌著實用量子計算機的可行性大幅提升。該系統已成功解決多個複雜優化問題，展現出超越傳統超級計算機的潛力。
+            </div>
+        </div>
+    </div>
+    
+    <div class="numbers-test">
+        <h3>🔢 數字顯示測試（檢查數字不重疊）</h3>
+        <p>測試各種數字格式的顯示情況：</p>
+        <div class="numbers-grid">
+            <div class="number-item">
+                <div class="number-label">營收增長</div>
+                <div class="number-value">+24.75%</div>
+                <div class="number-label">年增率</div>
+            </div>
+            <div class="number-item">
+                <div class="number-label">用戶數量</div>
+                <div class="number-value">3,847,291</div>
+                <div class="number-label">活躍用戶</div>
+            </div>
+            <div class="number-item">
+                <div class="number-label">股價變動</div>
+                <div class="number-value">$245.67</div>
+                <div class="number-label">今日收盤</div>
+            </div>
+            <div class="number-item">
+                <div class="number-label">市值規模</div>
+                <div class="number-value">2.5T</div>
+                <div class="number-label">美元</div>
+            </div>
+            <div class="number-item">
+                <div class="number-label">研發投入</div>
+                <div class="number-value">¥15,800M</div>
+                <div class="number-label">人民幣</div>
+            </div>
+            <div class="number-item">
+                <div class="number-label">專利數量</div>
+                <div class="number-value">1,234</div>
+                <div class="number-label">項</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="long-text-test">
+        <h3>📝 長文本測試（檢查文字不被截斷）</h3>
+        <div class="long-text">
+            這是一個長文本測試段落，目的是檢查PDF轉換過程中文字是否會被截斷無法完整顯示。我們需要確保所有文字內容都能完整呈現，包括標點符號和特殊字符。測試內容包含各種長度的句子和段落，以驗證換行和分頁功能正常運作。技術文件通常包含大量專業術語和數據，PDF生成工具必須妥善處理這些內容。中文排版尤其需要注意字間距和行距，避免字符重疊或截斷。良好的PDF輸出應該保持原文的格式和可讀性，無論是在螢幕上閱讀還是列印出來。我們也測試數字和文字的混合排版，確保財務數據和統計數字清晰可辨。最終目標是產生高品質的PDF文件，適合正式報告和文件歸檔使用。
+        </div>
+    </div>
+    
+    <div class="test-summary">
+        <h3>🧪 測試項目總結</h3>
+        <p><strong>已測試項目：</strong></p>
+        <ul>
+            <li>標題文字完整性測試</li>
+            <li>段落文字換行測試</li>
+            <li>數字顯示清晰度測試</li>
+            <li>長文本不被截斷測試</li>
+            <li>中文字體正常顯示測試</li>
+            <li>格式一致性測試</li>
+            <li>文字與數字間距測試</li>
+        </ul>
+        <p><strong>預期結果：</strong>所有文字清晰可讀，無重疊無截斷，格式正確完整。</p>
+    </div>
+    
+    <div class="footer">
+        <p><strong>測試文件編號：</strong> PDF-TEST-20260215-001</p>
+        <p><strong>生成時間：</strong> 2026年2月15日 13:05 GMT+8</p>
+        <p><strong>測試執行者：</strong> 小熊抱 AI助手 🧸🤗</p>
+        <p><strong>檢查標準：</strong> 7項PDF品質檢查標準</p>
+        <div style="font-size: 12px; color: #9ca3af; margin-top: 20px;">
+            <p>⚠️ 此為測試文件，用於驗證PDF生成品質檢查流程。</p>
+            <p>所有內容均為測試數據，僅供驗證使用。</p>
+        </div>
+    </div>
+</body>
+</html>

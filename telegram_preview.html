@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股新聞報告預覽</title>
+    <style>
+        body {
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #007acc;
+        }
+        
+        h1 {
+            color: #1a365d;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .date {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .preview-section {
+            margin-bottom: 25px;
+        }
+        
+        h2 {
+            color: #2d3748;
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .news-summary {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        
+        .news-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            background-color: #f8fafc;
+            border-left: 3px solid #007acc;
+            border-radius: 4px;
+        }
+        
+        .news-title {
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+        
+        .news-content {
+            color: #4a5568;
+            font-size: 14px;
+        }
+        
+        .impact {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        
+        .positive { background-color: #d4edda; color: #155724; }
+        .negative { background-color: #f8d7da; color: #721c24; }
+        
+        .market-data {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .data-box {
+            padding: 12px;
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .data-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2d3748;
+        }
+        
+        .data-label {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 5px;
+        }
+        
+        .up { color: #38a169; }
+        .down { color: #e53e3e; }
+        
+        .download-info {
+            background-color: #e6fffa;
+            border: 1px solid #81e6d9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 25px;
+            text-align: center;
+        }
+        
+        .file-info {
+            font-size: 14px;
+            color: #234e52;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #718096;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 美股新聞報告預覽</h1>
+            <div class="date">2026年2月15日 | 報告預覽</div>
+        </div>
+        
+        <div class="preview-section">
+            <h2>📊 報告摘要</h2>
+            <div class="news-summary">
+                <p>本報告包含6項最新美股新聞重點，涵蓋科技、金融、零售、能源等產業動態，並提供市場指數表現與投資建議。</p>
+            </div>
+        </div>
+        
+        <div class="preview-section">
+            <h2>🔥 重點新聞預覽</h2>
+            
+            <div class="news-item">
+                <div class="news-title">1. NVIDIA公布強勁財報</div>
+                <div class="news-content">營收年增68%達$280億，AI晶片需求火熱，股價盤後漲8%。</div>
+                <span class="impact positive">正面影響</span>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">2. 聯準會鷹派立場</div>
+                <div class="news-content">會議紀要顯示通膨風險仍存，3月降息機率下調至25%。</div>
+                <span class="impact negative">負面影響</span>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">3. 零售銷售優於預期</div>
+                <div class="news-content">1月零售銷售月增0.8%，消費者支出依然強勁。</div>
+                <span class="impact positive">正面影響</span>
+            </div>
+        </div>
+        
+        <div class="preview-section">
+            <h2>📈 市場數據預覽</h2>
+            <div class="market-data">
+                <div class="data-box">
+                    <div class="data-value up">38,542.15</div>
+                    <div class="data-label">道瓊指數 (+0.85%)</div>
+                </div>
+                <div class="data-box">
+                    <div class="data-value up">15,823.67</div>
+                    <div class="data-label">納斯達克 (+1.42%)</div>
+                </div>
+                <div class="data-box">
+                    <div class="data-value up">5,028.91</div>
+                    <div class="data-label">標普500 (+0.98%)</div>
+                </div>
+                <div class="data-box">
+                    <div class="data-value down">2.85%</div>
+                    <div class="data-label">10年美債 (-0.12%)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="download-info">
+            <h3>📥 完整報告下載</h3>
+            <p class="file-info">完整PDF報告已生成，包含：</p>
+            <ul style="text-align: left; padding-left: 20px;">
+                <li>6項詳細新聞分析</li>
+                <li>產業表現數據</li>
+                <li>市場展望與風險提示</li>
+                <li>投資建議</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>檔案名稱：</strong>美股新聞報告_簡化版_2026-02-15.pdf</p>
+            <p><strong>檔案大小：</strong>347 KB</p>
+            <p><strong>頁數：</strong>2頁</p>
+        </div>
+        
+        <div class="footer">
+            <p>美股新聞自動報告系統 | 預覽生成時間: 2026-02-15 13:20 GMT+8</p>
+            <p>報告將自動發送至: s8824415@hotmail.com</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "nvidia/kimi-2.5",
+        "fallbacks": [
+          "openai/gpt-4o",
+          "deepseek/deepseek-chat"
+        ]
+      },
+      "models": {
+        "nvidia/kimi-2.5": {
+          "alias": "NVIDIA Kimi",
+          "provider": "openai",
+          "endpoint": "https://integrate.api.nvidia.com/v1",
+          "apiKey": "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"
+        },
+        "openai/gpt-4o": {
+          "alias": "OpenAI GPT",
+          "provider": "openai",
+          "apiKey": "sk-iqrll7SIaF81Vf01zyneQ98jDuoR2vgnCKi1GLagzwLCI4mn"
+        },
+        "deepseek/deepseek-chat": {
+          "alias": "DeepSeek",
+          "provider": "deepseek"
+        }
+      }
+    }
+  }
+}

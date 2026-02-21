@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{setspace}
+
+% 設定中文字體
+\setCJKmainfont{PingFang TC}
+\setCJKsansfont{PingFang TC}
+\setCJKmonofont{PingFang TC}
+
+% 設定英文字體
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+
+% 頁面設定
+\geometry{a4paper, margin=2.5cm}
+
+% 標題格式
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% 行距設定
+\onehalfspacing
+
+% 超連結設定
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={美股新聞重點彙整 - 2026年2月15日},
+    pdfauthor={OpenClaw Assistant},
+    pdfsubject={美股市場分析},
+    pdfkeywords={美股, 財經, 新聞, 市場分析}
+}
+
+% 頁首頁尾
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{美股新聞重點彙整}
+\fancyhead[C]{2026年2月15日}
+\fancyhead[R]{第 \thepage\ 頁，共 \pageref{LastPage} 頁}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+
+$body$
+
+\end{document}

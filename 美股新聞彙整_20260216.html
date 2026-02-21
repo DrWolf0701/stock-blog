@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日美股新聞彙整 - 2026年2月16日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft JhengHei', 'PingFang TC', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: float 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header .date {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            margin-top: 15px;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .market-summary {
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .market-summary h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .market-summary h2::before {
+            content: '📊';
+            font-size: 1.5rem;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .summary-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .summary-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .summary-item h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .summary-item .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .summary-item .change {
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+        
+        .change.positive {
+            color: #10b981;
+        }
+        
+        .change.negative {
+            color: #ef4444;
+        }
+        
+        .news-section {
+            margin-top: 40px;
+        }
+        
+        .news-section h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .news-section h2::before {
+            content: '📰';
+            font-size: 1.5rem;
+        }
+        
+        .news-grid {
+            display: grid;
+            gap: 25px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .news-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+        }
+        
+        .news-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .news-number {
+            background: white;
+            color: #667eea;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        
+        .news-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            flex: 1;
+        }
+        
+        .news-content {
+            padding: 25px;
+        }
+        
+        .news-content p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+        
+        .news-highlight {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6f7ff 100%);
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .news-highlight strong {
+            color: #667eea;
+        }
+        
+        .key-points {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+        
+        .key-points li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 10px;
+        }
+        
+        .key-points li::before {
+            content: '•';
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+        
+        .outlook-section {
+            background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 40px;
+            border-left: 5px solid #10b981;
+        }
+        
+        .outlook-section h2 {
+            color: #059669;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .outlook-section h2::before {
+            content: '🔮';
+            font-size: 1.5rem;
+        }
+        
+        .calendar {
+            margin-top: 25px;
+        }
+        
+        .calendar h3 {
+            color: #059669;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .calendar-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .calendar-date {
+            font-weight: bold;
+            color: #059669;
+        }
+        
+        .calendar-event {
+            flex: 1;
+            margin-left: 15px;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        
+        .disclaimer {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>每日美股新聞彙整</h1>
+            <div class="date">2026年2月16日 星期一</div>
+            <div class="subtitle">AI恐慌蔓延市場，投資人關注聯準會政策動向</div>
+        </div>
+        
+        <div class="content">
+            <div class="market-summary">
+                <h2>市場概況速覽</h2>
+                <p>本週美股市場受到人工智慧(AI)恐慌交易影響，主要指數普遍下跌。投資人擔憂AI技術對傳統產業的破壞性影響，導致資金從科技股流向防禦性類股。</p>
+                
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <h3>標普500指數</h3>
+                        <div class="value">5,280.45</div>
+                        <div class="change negative">▼ 1.4% (本週)</div>
+                    </div>
+                    <div class="summary-item">
+                        <h3>道瓊工業指數</h3>
+                        <div class="value">38,450.20</div>
+                        <div class="change negative">▼ 1.2% (本週)</div>
+                    </div>
+                    <div class="summary-item">
+                        <h3>納斯達克100指數</h3>
+                        <div class="value">18,320.75</div>
+                        <div class="change negative">▼ 1.4% (本週)</div>
+                    </div>
+                    <div class="summary-item">
+                        <h3>恐慌指數(VIX)</h3>
+                        <div class="value">22.5</div>
+                        <div class="change positive">▲ 15.3% (本週)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="news-section">
+                <h2>本日五大重點新聞</h2>
+                
+                <div class="news-grid">
+                    <!-- 新聞1 -->
+                    <div class="news-card">
+                        <div class="news-header">
+                            <div class="news-number">1</div>
+                            <div class="news-title">AI恐慌交易蔓延，美股遭遇「2月寒流」</div>
+                        </div>
+                        <div class="news-content">
+                            <p>所謂的「AI恐慌交易」以及1月非農就業數據公佈後，聯準會短期維持政策不變的機率上升，導致美國股市本週下跌。雖然華爾街迎來了投資者通常會樂見的宏觀環境——就業增長穩健、通膨放緩，但由於市場對科技企業成本與利潤的擔憂，AI相關股票遭遇大幅拋售。</p>
+                            
+                            <div class="news-highlight">
+                                <strong>關鍵影響：</strong> AI恐慌已從軟體股擴散至財富管理、房地產和物流公司，顯示市場對AI技術破壞傳統商業模式的廣泛擔憂。
+                            </div>
+                            
+                            <ul class="key-points">
+                                <li>房地產服務公司世邦魏理仕(CBRE)暴跌16%</li>
+                                <li>保險經紀商Arthur J. Gallagher下跌13.7%</li>
+                                <li>財富管理公司嘉信理財(Charles Schwab)下跌10.8%</li>
+                                <li>投資者對AI相關標的採取「先賣後問」策略</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- 新聞2 -->
+                    <div class="news-card">
+                        <div class="news-header">
+                            <div class="news-number">2</div>
+                            <div class="news-title">聯準會政策預期轉變，降息時點推遲至7月</div>
+                        </div>
+                        <div class="news-content">
+                            <p>美國1月非農就業人數增加13萬人，失業率意外下降至4.3%，顯示勞動市場仍具韌性。然而，年度基準修訂顯示2025年就業增長總計僅18.1萬人，為2003年以來最弱表現（排除新冠疫情和2008年金融危機時期）。</p>
+                            
+                            <p>通膨方面，1月整體消費者通膨從年增2.7%降至2.4%，核心通膨回落至2.4%，為2021年3月以來最低水平。住房價格漲幅放緩，但服裝和電腦價格繼續反映關稅轉嫁效應。</p>
+                            
+                            <div class="news-highlight">
+                                <strong>市場預期：</strong> 勞動市場的意外韌性已將聯準會降息預期從2026年6月推遲至7月，而溫和的通膨數據則加強了對2027年3月再次降息的預期。
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 新聞3 -->
+                    <div class="news-card">
+                        <div class="news-header">
+                            <div class="news-number">3</div>
+                            <div class="news-title">科技巨頭債券發行受熱捧，AI資本支出疑慮仍存</div>
+                        </div>
+                        <div class="news-content">
+                            <p>Alphabet(Google母公司)最新債券發行在不到24小時內籌集近320億美元，涵蓋美元、英鎊和瑞士法郎市場。其中英鎊債務包含罕見的100年期票據，利差僅120個基點，顯示儘管股權投資者對資本支出水平存在擔憂，但科技行業債務需求依然強勁。</p>
+                            
+                            <div class="news-highlight">
+                                <strong>市場矛盾：</strong> 債券市場對科技巨頭信心十足，但股票投資者卻對AI相關的資本支出感到擔憂，這種分歧反映了市場對AI長期價值與短期成本壓力的不同解讀。
+                            </div>
+                            
+                            <ul class="key-points">
+                                <li>Alphabet債券發行超額認購顯示機構投資者信心</li>
+                                <li>100年期票據利差僅120基點，創科技債券新低</li>
+                                <li>股債市場對AI投資看法出現明顯分歧</li>
+                                <li>投資者關注科技公司資本回報率與成長平衡</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- 新聞4 -->
+                    <div class="news-card">
+                        <div class="news-header">
+                            <div class="news-number">4</div>
+                            <div class="news-title">防禦性類股受追捧，市場避險情緒升溫</div>
+                        </div>
+                        <div class="news-content">
+                            <p>隨著AI恐慌蔓延，資金正以最極端的方式避險：公用事業、必需消費品、房地產投資信託(REITs)、醫療保健板塊領漲。這意味著市場不再區分「好公司」和「壞公司」，而是將所有與AI相關或可能被AI波及的標的統統劃入「禁區」。</p>
+                            
+                            <p>正如高盛交易員所觀察到的：「業績顯然不重要了」。主要商業地產服務公司世邦魏理仕(CBRE)財報強勁卻依然下跌，拖累標普500房地產服務指數本週下跌14%並創下2020年以來最大跌幅。</p>
+                            
+                            <div class="news-highlight">
+                                <strong>資金流向：</strong> 從成長股向價值股和防禦性類股的輪動顯示市場風險偏好明顯下降，投資者尋求穩定現金流和較低波動性的資產。
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 新聞5 -->
+                    <div class
