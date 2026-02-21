@@ -611,7 +611,7 @@
         </div>
 
         <!-- 歷史數據表格 -->
-        <h2 class="section-title"><i class="fas fa-history"></i> 過去48個月數據總覽</h2>
+        <h2 class="section-title"><i class="fas fa-history"></i> 過去12個月數據總覽</h2>
         <div class="card">
             <div style="overflow-x: auto;">
                 <table class="data-table" id="history-table">
@@ -990,7 +990,7 @@
             
             // 更新表格
             const tbody = document.getElementById('history-body');
-            tbody.innerHTML = historyData.slice(0, 24).map(row => `
+            tbody.innerHTML = historyData.slice(0, 12).map(row => `
                 <tr>
                     <td>${row.month}</td>
                     <td class="value ${parseFloat(row.gdp) > 3 ? 'positive' : (parseFloat(row.gdp) < 0 ? 'negative' : 'neutral')}">${row.gdp}%</td>
