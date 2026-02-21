@@ -884,7 +884,7 @@
                                 font: { size: 10 },
                                 callback: (value) => {
                                     if (yUnit === '$') return '$' + value;
-                                    if (yUnit === '%') return value + '%';
+                                    if (yUnit === '%') return parseFloat(value).toFixed(1) + '%';
                                     return value;
                                 }
                             },
