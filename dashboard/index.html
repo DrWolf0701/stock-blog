@@ -854,8 +854,16 @@
                             padding: 10,
                             displayColors: false,
                             callbacks: {
-                                title: (context) => `${xLabel}: ${context[0].label}`,
-                                label: (context) => `${yUnit ? yUnit + ': ' : ''}${context.parsed.y}`
+                                title: (context) => {
+                                    const label = context[0].label;
+                                    // 轉換為更易讀的格式 (2025-03 -> 2025年3月)
+                                    const [year, month] = label.split('-');
+                                    return `${year}年${parseInt(month)}月`;
+                                },
+                                label: (context) => {
+                                    const value = parseFloat(context.parsed.y).toFixed(1);
+                                    return yUnit ? `${yUnit}: ${value}` : value;
+                                }
                             }
                         }
                     },
