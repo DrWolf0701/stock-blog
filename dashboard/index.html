@@ -610,27 +610,6 @@
             </div>
         </div>
 
-        <!-- 歷史數據表格 -->
-        <h2 class="section-title"><i class="fas fa-history"></i> 過去12個月數據總覽</h2>
-        <div class="card">
-            <div style="overflow-x: auto;">
-                <table class="data-table" id="history-table">
-                    <thead>
-                        <tr>
-                            <th>月份</th>
-                            <th>GDP (%)</th>
-                            <th>CPI (%)</th>
-                            <th>失業率 (%)</th>
-                            <th>利率 (%)</th>
-                            <th>黃金 (USD)</th>
-                            <th>白銀 (USD)</th>
-                            <th>原油 (USD)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="history-body">
-                        <tr><td colspan="8" class="loading"><i class="fas fa-spinner fa-spin"></i> 載入歷史數據中...</td></tr>
-                    </tbody>
-                </table>
             </div>
         </div>
 
@@ -742,105 +721,7 @@
             nickel: { value: '16500.00', change: '-150.00', period: '2026年2月' }
         };
 
-        // 12個月歷史數據（使用 localStorage 缓存）
-        const generateHistoryData = () => {
-            const STORAGE_KEY = 'bearhug_dashboard_history';
-            const CACHE_DATE_KEY = 'bearhush_dashboard_date';
-            
-            // 檢查是否有緩存的數據
-            const cached = localStorage.getItem(STORAGE_KEY);
-            const cacheDate = localStorage.getItem(CACHE_DATE_KEY);
-            const today = new Date().toISOString().slice(0, 7); // YYYY-MM
-            
-            // 如果有緩存且是同一天，直接使用
-            if (cached && cacheDate === today) {
-                return JSON.parse(cached);
-            }
-            
-            // 沒有緩存，重新生成
-            const data = [];
-            const now = new Date();
-            
-            for (let i = 11; i >= 0; i--) {
-                const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
-                const monthStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-                
-                // 經濟指標模擬數據（以最新真實數據為基準）
-                const baseGDP = 1.4 + Math.sin(i / 10) * 1.5;  // 最新1.4%
-                const baseCPI = 2.4 + Math.sin(i / 8) * 1.5;    // 最新2.4%
-                const baseUnemp = 4.3 + Math.sin(i / 12) * 1.0; // 最新4.3%
-                const baseFedrate = 3.64 + Math.sin(i / 6) * 2; // 最新3.64%
-                const baseM2 = 22.4 + i * 0.05;  // 最新22.4兆
-                const baseISM = 50.5 + Math.sin(i / 6) * 5 + Math.random() * 2;  // 最新50.5
-                const baseRetail = 0.3 + Math.sin(i / 8) * 0.3 + Math.random() * 0.1;
-                const basePPI = 3.0 + Math.sin(i / 8) * 1.5;
-                const baseDXY = 104 + Math.sin(i / 10) * 8 + Math.random() * 2;
-                const baseVIX = 20 + Math.sin(i / 4) * 8 + Math.random() * 3;  // 最新20
-
-                // 貴金屬模擬數據
-                const baseGold = 1800 + i * 20 + Math.sin(i / 5) * 200;
-                const baseSilver = 22 + i * 0.2 + Math.sin(i / 5) * 5;
-                const basePlatinum = 950 + i * 5 + Math.sin(i / 6) * 100;
-                const basePalladium = 900 + i * 8 + Math.sin(i / 6) * 150;
-
-                // 能源與工業金屬模擬數據
-                const baseOil = 65 + Math.sin(i / 4) * 20 + Math.random() * 10;
-                const baseCopper = 3.8 + i * 0.02 + Math.sin(i / 5) * 0.5;
-                const baseAluminum = 2200 + i * 15 + Math.sin(i / 5) * 300;
-                const baseGas = 2.5 + Math.sin(i / 8) * 1 + Math.random() * 0.5;
-
-                // 農產品模擬數據
-                const baseWheat = 5.5 + Math.sin(i / 6) * 1 + Math.random() * 0.3;
-                const baseCorn = 4.2 + Math.sin(i / 6) * 0.8 + Math.random() * 0.3;
-                const baseCoffee = 2.8 + Math.sin(i / 5) * 0.8 + Math.random() * 0.3;
-                const baseCotton = 0.75 + Math.sin(i / 8) * 0.15 + Math.random() * 0.05;
-                const baseZinc = 2400 + i * 12 + Math.sin(i / 6) * 400;
-                const baseNickel = 15000 + i * 80 + Math.sin(i / 6) * 3000;
-
-                data.push({
-                    month: monthStr,
-                    // 經濟指標
-                    gdp: (baseGDP + (Math.random() - 0.5) * 0.5).toFixed(1),
-                    cpi: (baseCPI + (Math.random() - 0.5) * 0.3).toFixed(1),
-                    unemployment: (baseUnemp + (Math.random() - 0.5) * 0.3).toFixed(1),
-                    fedrate: (baseFedrate + (Math.random() - 0.5) * 0.25).toFixed(2),
-                    m2: baseM2.toFixed(1),
-                    ism: baseISM.toFixed(1),
-                    cci: (baseCCI + (Math.random() - 0.5) * 3).toFixed(1),
-                    retail: (baseRetail + (Math.random() - 0.5) * 0.1).toFixed(1),
-                    ppi: (basePPI + (Math.random() - 0.5) * 0.3).toFixed(1),
-                    dxy: (baseDXY + (Math.random() - 0.5) * 1).toFixed(1),
-                    vix: (baseVIX + (Math.random() - 0.5) * 2).toFixed(1),
-                    // 貴金屬
-                    gold: (baseGold + (Math.random() - 0.5) * 30).toFixed(2),
-                    silver: (baseSilver + (Math.random() - 0.5) * 2).toFixed(2),
-                    platinum: (basePlatinum + (Math.random() - 0.5) * 20).toFixed(2),
-                    palladium: (basePalladium + (Math.random() - 0.5) * 30).toFixed(2),
-                    // 能源與工業金屬
-                    oil: (baseOil + (Math.random() - 0.5) * 5).toFixed(2),
-                    copper: (baseCopper + (Math.random() - 0.5) * 0.2).toFixed(2),
-                    aluminum: (baseAluminum + (Math.random() - 0.5) * 50).toFixed(2),
-                    gas: (baseGas + (Math.random() - 0.5) * 0.3).toFixed(2),
-                    // 農產品
-                    wheat: (baseWheat + (Math.random() - 0.5) * 0.2).toFixed(2),
-                    corn: (baseCorn + (Math.random() - 0.5) * 0.2).toFixed(2),
-                    coffee: (baseCoffee + (Math.random() - 0.5) * 0.2).toFixed(2),
-                    cotton: (baseCotton + (Math.random() - 0.5) * 0.05).toFixed(2),
-                    zinc: (baseZinc + (Math.random() - 0.5) * 50).toFixed(2),
-                    nickel: (baseNickel + (Math.random() - 0.5) * 300).toFixed(2)
-                });
-            }
-            
-            // 緩存數據到 localStorage
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-                localStorage.setItem(CACHE_DATE_KEY, today);
-            } catch (e) {
-                console.log('localStorage save failed:', e);
-            }
-            
-            return data;
-        };
+        
 
         // 圖表配置（帶單位的詳細版本）
         const chartConfig = (ctx, label, data, color, yUnit = '', xLabel = '月份') => {
@@ -1020,92 +901,70 @@
             updateCard('nickel', useData.nickel.value, useData.nickel.change + ' (' + useData.nickel.period + ')', null, '$', false);
 
             // 生成歷史數據
-            const historyData = generateHistoryData();
-            
-            // 更新表格
-            const tbody = document.getElementById('history-body');
-            tbody.innerHTML = historyData.slice(0, 12).map(row => `
-                <tr>
-                    <td>${row.month}</td>
-                    <td class="value ${parseFloat(row.gdp) > 3 ? 'positive' : (parseFloat(row.gdp) < 0 ? 'negative' : 'neutral')}">${row.gdp}%</td>
-                    <td class="value ${parseFloat(row.cpi) > 4 ? 'negative' : (parseFloat(row.cpi) < 2 ? 'positive' : 'neutral')}">${row.cpi}%</td>
-                    <td class="value ${parseFloat(row.unemployment) > 5 ? 'negative' : (parseFloat(row.unemployment) < 4 ? 'positive' : 'neutral')}">${row.unemployment}%</td>
-                    <td class="value">${row.fedrate}%</td>
-                    <td class="value" style="color: #ffd700;">$${row.gold}</td>
-                    <td class="value" style="color: #c0c0c0;">$${row.silver}</td>
-                    <td class="value" style="color: #ff7043;">$${row.oil}</td>
-                </tr>
-            `).join('');
-
-            // 生成圖表（顯示過去12個月）
-            const labels = historyData.slice(-12).map(d => d.month);
-            
-            // 總體經濟指標圖表
-            chartConfig(
                 document.getElementById('gdp-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.gdp), 
+                , 
                 '#667eea', '%', 'GDP'
             );
             chartConfig(
                 document.getElementById('cpi-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.cpi), 
+                , 
                 '#f093fb', '%', 'CPI'
             );
             chartConfig(
                 document.getElementById('unemployment-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.unemployment), 
+                , 
                 '#ff5252', '%', '失業率'
             );
             chartConfig(
                 document.getElementById('fedrate-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.fedrate), 
+                , 
                 '#4fc3f7', '%', '利率'
             );
             chartConfig(
                 document.getElementById('m2-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.m2), 
+                , 
                 '#00e676', '兆美元', 'M2'
             );
             chartConfig(
                 document.getElementById('ism-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.ism), 
+                , 
                 '#ffb74d', '指數', 'ISM'
             );
             // 新經濟指標圖表
             chartConfig(
                 document.getElementById('cci-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.cci), 
+                , 
                 '#ab47bc', '指數', '消費者信心'
             );
             chartConfig(
                 document.getElementById('retail-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.retail), 
+                , 
                 '#26a69a', '%', '零售銷售'
             );
             chartConfig(
                 document.getElementById('ppi-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.ppi), 
+                , 
                 '#ef5350', '%', 'PPI'
             );
             chartConfig(
                 document.getElementById('dxy-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.dxy), 
+                , 
                 '#42a5f5', '指數', '美元指數'
             );
             chartConfig(
                 document.getElementById('vix-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.vix), 
+                , 
                 '#ffa726', '指數', 'VIX'
             );
 
@@ -1113,43 +972,43 @@
             chartConfig(
                 document.getElementById('gold-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.gold), 
+                , 
                 '#ffd700', '$', '黃金'
             );
             chartConfig(
                 document.getElementById('silver-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.silver), 
+                , 
                 '#c0c0c0', '$', '白銀'
             );
             chartConfig(
                 document.getElementById('platinum-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.platinum), 
+                , 
                 '#e5e4e2', '$', '白金'
             );
             chartConfig(
                 document.getElementById('oil-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.oil), 
+                , 
                 '#ff7043', '$', '原油'
             );
             chartConfig(
                 document.getElementById('copper-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.copper), 
+                , 
                 '#b87333', '$', '銅'
             );
             chartConfig(
                 document.getElementById('gas-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.gas), 
+                , 
                 '#4db6ac', '$', '天然氣'
             );
             chartConfig(
                 document.getElementById('aluminum-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.aluminum), 
+                , 
                 '#90a4ae', '$', '鋁'
             );
 
@@ -1157,43 +1016,43 @@
             chartConfig(
                 document.getElementById('wheat-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.wheat), 
+                , 
                 '#f5deb3', '$', '小麥'
             );
             chartConfig(
                 document.getElementById('corn-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.corn), 
+                , 
                 '#ffd54f', '$', '玉米'
             );
             chartConfig(
                 document.getElementById('coffee-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.coffee), 
+                , 
                 '#795548', '$', '咖啡'
             );
             chartConfig(
                 document.getElementById('cotton-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.cotton), 
+                , 
                 '#fff9c4', '$', '棉花'
             );
             chartConfig(
                 document.getElementById('zinc-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.zinc), 
+                , 
                 '#78909c', '$', '鋅'
             );
             chartConfig(
                 document.getElementById('nickel-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.nickel), 
+                , 
                 '#b0bec5', '$', '鎳'
             );
             chartConfig(
                 document.getElementById('palladium-chart'), 
                 labels, 
-                historyData.slice(-12).map(d => d.palladium), 
+                , 
                 '#9c27b0', '$', '鈀金'
             );
         };
