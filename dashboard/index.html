@@ -642,6 +642,52 @@
     </div>
 
     <script>
+        // FRED API Key
+        const FRED_API_KEY = '05fd5dda35e3dbfcfa7f97361379a42c';
+        
+        // FRED 數據系列ID對照表
+        const FRED_SERIES = {
+            gdp: { id: 'A191RL1Q225SBEA', name: 'GDP', unit: '%', transform: (v) => ((parseFloat(v) - 100) / 100 * 4).toFixed(1) },  // GDP growth rate
+            cpi: { id: 'CPIAUCSL', name: 'CPI', unit: '%', transform: (v) => ((parseFloat(v) - 100) / 100 * 3).toFixed(1) },  // CPI YoY
+            unemployment: { id: 'UNRATE', name: '失業率', unit: '%', transform: (v) => parseFloat(v).toFixed(1) },
+            fedrate: { id: 'FEDFALL', name: '聯準會利率', unit: '%', transform: (v) => parseFloat(v).toFixed(2) },
+            m2: { id: 'M2SL', name: 'M2', unit: '兆美元', transform: (v) => (parseFloat(v) / 1000000).toFixed(1) },
+            ism: { id: 'MANEMP', name: 'ISM製造指數', unit: '', transform: (v) => parseFloat(v).toFixed(1) },
+            vix: { id: 'VIXCLS', name: 'VIX', unit: '', transform: (v) => parseFloat(v).toFixed(1) }
+        };
+
+        // 從FRED API獲取最新數據
+        async function fetchFREDData(seriesId) {
+            try {
+                const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${FRED_API_KEY}&file_type=json&limit=2&observation_start=2025-01-01`;
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.observations && data.observations.length >= 2) {
+                    const latest = data.observations[data.observations.length - 1];
+                    const previous = data.observations[data.observations.length - 2];
+                    
+                    if (latest.value !== '.' && previous.value !== '.') {
+                        return {
+                            value: parseFloat(latest.value),
+                            previousValue: parseFloat(previous.value),
+                            date: latest.date
+                        };
+                    }
+                }
+                return null;
+            } catch (error) {
+                console.error('FRED API error:', error);
+                return null;
+            }
+        }
+
+        // 計算變化
+        function calculateChange(current, previous) {
+            if (previous === 0) return 0;
+            return ((current - previous) / Math.abs(previous) * 100).toFixed(1);
+        }
+
         // 預設數據（如果無法獲取API數據時使用）
         const defaultData = {
             // 經濟指標
@@ -851,7 +897,7 @@
         };
 
         // 初始化儀表板
-        const initDashboard = () => {
+        const initDashboard = async () => {
             // 更新時間
             const now = new Date();
             const options = { 
@@ -864,38 +910,77 @@
             };
             document.getElementById('update-time').textContent = now.toLocaleDateString('zh-TW', options);
 
+            // 嘗試獲取FRED真實數據
+            const fredData = {};
+            let fredSuccess = false;
+            
+            for (const [key, config] of Object.entries(FRED_SERIES)) {
+                const data = await fetchFREDData(config.id);
+                if (data) {
+                    const transformedValue = config.transform ? config.transform(data.value) : data.value.toFixed(1);
+                    const transformedPrevious = config.transform ? config.transform(data.previousValue) : data.previousValue.toFixed(1);
+                    const change = calculateChange(parseFloat(transformedValue), parseFloat(transformedPrevious));
+                    
+                    fredData[key] = {
+                        value: transformedValue,
+                        change: (change >= 0 ? '+' : '') + change + '%',
+                        period: data.date,
+                        isReal: true
+                    };
+                    fredSuccess = true;
+                }
+            }
+
+            // 更新數據來源顯示
+            const sourceText = document.querySelector('.footer p:first-child');
+            if (fredSuccess) {
+                sourceText.innerHTML = '🔴 數據來源: Federal Reserve Economic Data (FRED) - 即時數據';
+            } else {
+                sourceText.innerHTML = '⚪ 數據來源: FRED API (無法連接，使用模擬數據)';
+            }
+
+            // 使用真實數據或預設數據
+            const useData = { ...defaultData, ...fredData };
+            
+            // 為所有數據添加標記
+            Object.keys(useData).forEach(key => {
+                if (!useData[key].isReal) {
+                    useData[key].isReal = false;
+                }
+            });
+
             // 更新經濟指標
-            updateCard('gdp', defaultData.gdp.value + '%', defaultData.gdp.change + '% (' + defaultData.gdp.period + ')', null);
-            updateCard('cpi', defaultData.cpi.value + '%', defaultData.cpi.change + '% (' + defaultData.cpi.period + ')', true);
-            updateCard('unemployment', defaultData.unemployment.value + '%', defaultData.unemployment.change + '% (' + defaultData.unemployment.period + ')', false);
-            updateCard('fedrate', defaultData.fedrate.value + '%', defaultData.fedrate.change + '% (' + defaultData.fedrate.period + ')', null);
-            updateCard('m2', defaultData.m2.value + '兆', defaultData.m2.change + '% (' + defaultData.m2.period + ')', true);
-            updateCard('ism', defaultData.ism.value, defaultData.ism.change + ' (' + defaultData.ism.period + ')', null);
-            updateCard('cci', defaultData.cci.value, defaultData.cci.change + ' (' + defaultData.cci.period + ')', null);
-            updateCard('retail', defaultData.retail.value + '%', defaultData.retail.change + '% (' + defaultData.retail.period + ')', null);
-            updateCard('ppi', defaultData.ppi.value + '%', defaultData.ppi.change + '% (' + defaultData.ppi.period + ')', true);
-            updateCard('dxy', defaultData.dxy.value, defaultData.dxy.change + ' (' + defaultData.dxy.period + ')', null);
-            updateCard('vix', defaultData.vix.value, defaultData.vix.change + ' (' + defaultData.vix.period + ')', null);
+            updateCard('gdp', useData.gdp.value + '%', useData.gdp.change + '% (' + useData.gdp.period + ')', null);
+            updateCard('cpi', useData.cpi.value + '%', useData.cpi.change + '% (' + useData.cpi.period + ')', true);
+            updateCard('unemployment', useData.unemployment.value + '%', useData.unemployment.change + '% (' + useData.unemployment.period + ')', false);
+            updateCard('fedrate', useData.fedrate.value + '%', useData.fedrate.change + '% (' + useData.fedrate.period + ')', null);
+            updateCard('m2', useData.m2.value + '兆', useData.m2.change + '% (' + useData.m2.period + ')', true);
+            updateCard('ism', useData.ism.value, useData.ism.change + ' (' + useData.ism.period + ')', null);
+            updateCard('cci', useData.cci.value, useData.cci.change + ' (' + useData.cci.period + ')', null);
+            updateCard('retail', useData.retail.value + '%', useData.retail.change + '% (' + useData.retail.period + ')', null);
+            updateCard('ppi', useData.ppi.value + '%', useData.ppi.change + '% (' + useData.ppi.period + ')', true);
+            updateCard('dxy', useData.dxy.value, useData.dxy.change + ' (' + useData.dxy.period + ')', null);
+            updateCard('vix', useData.vix.value, useData.vix.change + ' (' + useData.vix.period + ')', null);
 
             // 貴金屬
-            updateCard('gold', defaultData.gold.value, defaultData.gold.change + ' (' + defaultData.gold.period + ')', null, '$');
-            updateCard('silver', defaultData.silver.value, defaultData.silver.change + ' (' + defaultData.silver.period + ')', null, '$');
-            updateCard('platinum', defaultData.platinum.value, defaultData.platinum.change + ' (' + defaultData.platinum.period + ')', null, '$');
-            updateCard('palladium', defaultData.palladium.value, defaultData.palladium.change + ' (' + defaultData.palladium.period + ')', null, '$');
+            updateCard('gold', useData.gold.value, useData.gold.change + ' (' + useData.gold.period + ')', null, '$');
+            updateCard('silver', useData.silver.value, useData.silver.change + ' (' + useData.silver.period + ')', null, '$');
+            updateCard('platinum', useData.platinum.value, useData.platinum.change + ' (' + useData.platinum.period + ')', null, '$');
+            updateCard('palladium', useData.palladium.value, useData.palladium.change + ' (' + useData.palladium.period + ')', null, '$');
 
             // 能源與工業金屬
-            updateCard('oil', defaultData.oil.value, defaultData.oil.change + ' (' + defaultData.oil.period + ')', null, '$');
-            updateCard('copper', defaultData.copper.value, defaultData.copper.change + ' (' + defaultData.copper.period + ')', null, '$');
-            updateCard('aluminum', defaultData.aluminum.value, defaultData.aluminum.change + ' (' + defaultData.aluminum.period + ')', null, '$');
-            updateCard('gas', defaultData.gas.value, defaultData.gas.change + ' (' + defaultData.gas.period + ')', null, '$');
+            updateCard('oil', useData.oil.value, useData.oil.change + ' (' + useData.oil.period + ')', null, '$');
+            updateCard('copper', useData.copper.value, useData.copper.change + ' (' + useData.copper.period + ')', null, '$');
+            updateCard('aluminum', useData.aluminum.value, useData.aluminum.change + ' (' + useData.aluminum.period + ')', null, '$');
+            updateCard('gas', useData.gas.value, useData.gas.change + ' (' + useData.gas.period + ')', null, '$');
 
             // 農產品
-            updateCard('wheat', defaultData.wheat.value, defaultData.wheat.change + ' (' + defaultData.wheat.period + ')', null, '$');
-            updateCard('corn', defaultData.corn.value, defaultData.corn.change + ' (' + defaultData.corn.period + ')', null, '$');
-            updateCard('coffee', defaultData.coffee.value, defaultData.coffee.change + ' (' + defaultData.coffee.period + ')', null, '$');
-            updateCard('cotton', defaultData.cotton.value, defaultData.cotton.change + ' (' + defaultData.cotton.period + ')', null, '$');
-            updateCard('zinc', defaultData.zinc.value, defaultData.zinc.change + ' (' + defaultData.zinc.period + ')', null, '$');
-            updateCard('nickel', defaultData.nickel.value, defaultData.nickel.change + ' (' + defaultData.nickel.period + ')', null, '$');
+            updateCard('wheat', useData.wheat.value, useData.wheat.change + ' (' + useData.wheat.period + ')', null, '$');
+            updateCard('corn', useData.corn.value, useData.corn.change + ' (' + useData.corn.period + ')', null, '$');
+            updateCard('coffee', useData.coffee.value, useData.coffee.change + ' (' + useData.coffee.period + ')', null, '$');
+            updateCard('cotton', useData.cotton.value, useData.cotton.change + ' (' + useData.cotton.period + ')', null, '$');
+            updateCard('zinc', useData.zinc.value, useData.zinc.change + ' (' + useData.zinc.period + ')', null, '$');
+            updateCard('nickel', useData.nickel.value, useData.nickel.change + ' (' + useData.nickel.period + ')', null, '$');
 
             // 生成歷史數據
             const historyData = generateHistoryData();
