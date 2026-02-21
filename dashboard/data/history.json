@@ -1,0 +1,48 @@
+{
+  "lastUpdate": "2026-02-21",
+  "economic": {
+    "gdp": {
+      "2025-Q4": { "value": 1.4, "change": -2.2 }
+    },
+    "cpi": {
+      "2026-01": { "value": 2.4, "change": 0.1 }
+    },
+    "unemployment": {
+      "2026-01": { "value": 4.3, "change": -0.1 }
+    },
+    "fedrate": {
+      "2026-01": { "value": 3.64, "change": -0.36 }
+    },
+    "m2": {
+      "2025-12": { "value": 22.4, "change": 0.8 }
+    },
+    "ism": {
+      "2026-01": { "value": 50.5, "change": 1.2 }
+    },
+    "vix": {
+      "2026-02": { "value": 20.23, "change": -0.5 }
+    }
+  },
+  "metals": {
+    "gold": {
+      "2026-02": { "value": 5107, "change": 110.85 }
+    },
+    "silver": {
+      "2026-02": { "value": 84.61, "change": 6.06 }
+    },
+    "platinum": {
+      "2026-02": { "value": 2158, "change": 77.06 }
+    },
+    "palladium": {
+      "2026-02": { "value": 1765, "change": 86.5 }
+    }
+  },
+  "crypto": {
+    "btc": {
+      "2026-02": { "value": 68125, "change": 1.42 }
+    },
+    "eth": {
+      "2026-02": { "value": 1974, "change": 1.40 }
+    }
+  }
+}
