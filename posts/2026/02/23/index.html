@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股新聞彙整 - 2026年2月23日</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-gold: #f59e0b;
+            --border-color: #334155;
+        }
+        body {
+            font-family: 'Noto Sans TC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .header .date { color: var(--accent-gold); font-size: 1.2rem; }
+        
+        .market-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .market-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        .market-card .label { color: var(--text-secondary); font-size: 0.9rem; }
+        .market-card .value { font-size: 1.5rem; font-weight: 700; margin: 5px 0; }
+        .market-card .change { font-size: 0.95rem; }
+        .positive { color: var(--accent-green); }
+        .negative { color: var(--accent-red); }
+        
+        .economic-indicators {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .economic-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .economic-card h3 { 
+            font-size: 1rem; 
+            margin-bottom: 10px; 
+            color: var(--accent-blue);
+        }
+        .economic-card .value { font-size: 1.3rem; font-weight: 700; }
+        .economic-card .note { font-size: 0.85rem; color: var(--text-secondary); margin-top: 5px; }
+        
+        .news-section { margin-bottom: 30px; }
+        .news-section h2 { 
+            font-size: 1.5rem; 
+            margin-bottom: 20px; 
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        .news-item {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+        }
+        .news-item h3 { 
+            font-size: 1.1rem; 
+            margin-bottom: 10px; 
+            color: var(--accent-gold);
+        }
+        .news-item p { color: var(--text-secondary); }
+        .news-item .source { 
+            font-size: 0.85rem; 
+            color: var(--accent-blue); 
+            margin-top: 10px;
+        }
+        
+        .earnings-section {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+        }
+        .earnings-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+        }
+        .earnings-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .earnings-item {
+            background: var(--bg-dark);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .earnings-item .company { font-weight: 600; }
+        .earnings-item .date { font-size: 0.85rem; color: var(--text-secondary); }
+        
+        .footer { 
+            text-align: center; 
+            margin-top: 40px; 
+            color: var(--text-secondary); 
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 美股新聞彙整</h1>
+            <div class="date">🗓️ 2026年2月23日（週一）</div>
+        </div>
+
+        <!-- Market Summary -->
+        <div class="market-summary">
+            <div class="market-card">
+                <div class="label">S&P 500</div>
+                <div class="value">6,909.51</div>
+                <div class="change positive">+0.69% ▲</div>
+            </div>
+            <div class="market-card">
+                <div class="label">道瓊</div>
+                <div class="value">49,625.97</div>
+                <div class="change positive">+0.47% ▲</div>
+            </div>
+            <div class="market-card">
+                <div class="label">納斯達克</div>
+                <div class="value">22,886.07</div>
+                <div class="change positive">+0.90% ▲</div>
+            </div>
+            <div class="market-card">
+                <div class="label">VIX</div>
+                <div class="value">16.42</div>
+                <div class="change negative">-3.08% ▼</div>
+            </div>
+        </div>
+
+        <!-- Economic Indicators -->
+        <div class="economic-indicators">
+            <div class="economic-card">
+                <h3>失業率</h3>
+                <div class="value">4.0%</div>
+                <div class="note">最新數據</div>
+            </div>
+            <div class="economic-card">
+                <h3>CPI 年增率</h3>
+                <div class="value">2.9%</div>
+                <div class="note">1月數據</div>
+            </div>
+            <div class="economic-card">
+                <h3>Fed 利率</h3>
+                <div class="value">4.25%-4.50%</div>
+                <div class="note">維持不變</div>
+            </div>
+            <div class="economic-card">
+                <h3>降息預期</h3>
+                <div class="value">43%</div>
+                <div class="note">3次以上降息機率</div>
+            </div>
+        </div>
+
+        <!-- Key Events This Week -->
+        <div class="earnings-section">
+            <h3>📅 本週關鍵事件 (2/24-2/28)</h3>
+            <div class="earnings-list">
+                <div class="earnings-item">
+                    <div class="company">Home Depot</div>
+                    <div class="date">2/24 (二)</div>
+                </div>
+                <div class="earnings-item">
+                    <div class="company">Salesforce</div>
+                    <div class="date">2/26 (四)</div>
+                </div>
+                <div class="earnings-item">
+                    <div class="company">Nvidia</div>
+                    <div class="date">2/27 (五)</div>
+                </div>
+                <div class="earnings-item">
+                    <div class="company">PPI 數據</div>
+                    <div class="date">2/26 (四)</div>
+                </div>
+                <div class="earnings-item">
+                    <div class="company">芝加哥 PMI</div>
+                    <div class="date">2/26 (四)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- News Section -->
+        <div class="news-section">
+            <h2>📰 今日重點新聞</h2>
+            
+            <div class="news-item">
+                <h3>1. 最高法院推翻川普關稅措施</h3>
+                <p>華爾街週五收漲，Alphabet、Amazon 等科技巨頭領漲。美國最高法院推翻川普政府對進口商品加徵的全球關稅措施，市場將此視為經濟利好，三大指數全面走揚。儘管川普表示將透過其他途徑施加關稅，但投資人對裁決仍表示歡迎。</p>
+                <div class="source">來源：Reuters, Livemint</div>
+            </div>
+
+            <div class="news-item">
+                <h3>2. 科技股反彈 納斯達克終結5週跌勢</h3>
+                <p>納斯達克指數結束2022年5月以來最長的連續週線下滑。投資人情緒好轉，科技股反彈帶動整體市場氛圍改善。專家指出2月26日可能成為市場重要轉折點，屆時將公布多項經濟數據和企業財報。</p>
+                <div class="source">來源：Stock Market Watch</div>
+            </div>
+
+            <div class="news-item">
+                <h3>3. 預測市場閃爍修正警告</h3>
+                <p>華爾街仍保持樂觀， 分析師預估S&P 500企業獲利將在2026年成長15%，創五年最快增速。但預測市場已發出股票市場修正警告，歷史經驗顯示S&P 500可能進一步下跌，投資人需保持謹慎。</p>
+                <div class="source">來源：The Motley Fool</div>
+            </div>
+
+            <div class="news-item">
+                <h3>4. Fed 年內降息預期升溫</h3>
+                <p>根據Fed Funds Futures市場數據，2026年進行3次以上降息的機率達43%，較一個月前的25.6%大幅上升。市場預期Fed將在經濟放緩壓力下繼續寬鬆貨幣政策。</p>
+                <div class="source">來源：The Motley Fool</div>
+            </div>
+
+            <div class="news-item">
+                <h3>5. Nvidia 財報倒數 市場聚焦AI需求</h3>
+                <p>Nvidia將於2月27日公布財報，華爾街預期FY2026（截至2026年1月）營收將成長57%。即使股價近期波動，分析師仍看好AI晶片需求持續強勁，預估本益比合理反映成長潛力。</p>
+                <div class="source">來源：The Motley Fool</div>
+            </div>
+
+            <div class="news-item">
+                <h3>6. 美伊緊張局勢仍是隱憂</h3>
+                <p>本週需持續關注美國與伊朗之間的地緣政治緊張局勢。專家指出這可能影響能源市場走勢，並為股市增添不確定性。投資人應密切關注相關消息。</p>
+                <div class="source">來源：Livemint</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📊 數據來源：市場公開資訊 | ⚠️ 投資有風險，僅供參考</p>
+            <p>🦸 小熊抱美股部落格 | https://drwolf0701.github.io/stock-blog/</p>
+        </div>
+    </div>
+</body>
+</html>
