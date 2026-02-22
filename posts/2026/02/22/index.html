@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股新聞彙整 - 2026年2月22日</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-dark: #0f172a;
+            --primary-blue: #1e40af;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-gold: #f59e0b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+        body {
+            font-family: 'Noto Sans TC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+            min-height: 100vh;
+            color: var(--text-light);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .header .date { color: var(--accent-gold); font-size: 1.2rem; }
+        .market-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .market-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        .market-card .label { color: var(--text-muted); font-size: 0.9rem; }
+        .market-card .value { font-size: 1.5rem; font-weight: 700; margin: 5px 0; }
+        .market-card .change { font-size: 0.95rem; }
+        .positive { color: var(--accent-green); }
+        .negative { color: var(--accent-red); }
+        .news-section { margin-bottom: 30px; }
+        .news-section h2 { 
+            font-size: 1.5rem; 
+            margin-bottom: 20px; 
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+        .news-item {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+        }
+        .news-item h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--accent-gold); }
+        .news-item p { color: var(--text-muted); }
+        .footer { text-align: center; margin-top: 40px; color: var(--text-muted); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 美股新聞彙整</h1>
+            <div class="date">🗓️ 2026年2月22日（週日）</div>
+        </div>
+
+        <div class="market-summary">
+            <div class="market-card">
+                <div class="label">S&P 500</div>
+                <div class="value">6,909.51</div>
+                <div class="change positive">+0.69% ▲</div>
+            </div>
+            <div class="market-card">
+                <div class="label">道瓊</div>
+                <div class="value">49,625.97</div>
+                <div class="change positive">+0.47% ▲</div>
+            </div>
+            <div class="market-card">
+                <div class="label">納斯達克</div>
+                <div class="value">22,886.07</div>
+                <div class="change positive">+0.90% ▲</div>
+            </div>
+            <div class="market-card">
+                <div class="label">VIX</div>
+                <div class="value">16.42</div>
+                <div class="change negative">-3.08% ▼</div>
+            </div>
+        </div>
+
+        <div class="news-section">
+            <h2>📰 今日重點新聞</h2>
+            
+            <div class="news-item">
+                <h3>1. 最高法院推翻川普關稅措施</h3>
+                <p>最高法院裁定推翻川普政府對進口商品加徵的關稅措施，市場將此視為經濟禮物，三大指數全面收漲。這項裁決有望促進經濟成長，消費者將從中受益。</p>
+            </div>
+
+            <div class="news-item">
+                <h3>2. 納斯達克終結5週跌勢</h3>
+                <p>納斯達克指數結束2022年5月以來最長的連續週線下滑，投資人情緒好轉。科技股反彈帶動整體市場氛圍改善。</p>
+            </div>
+
+            <div class="news-item">
+                <h3>3. 資安族群重挫</h3>
+                <p>CrowdStrike暴跌8%，受Anthropic新AI工具衝擊資安市場。Okta也下跌9.2%，投資人擔心AI技術可能顛覆傳統資安產業。</p>
+            </div>
+
+            <div class="news-item">
+                <h3>4. 2月26日將是關鍵日期</h3>
+                <p>華爾街分析師指出2月26日可能成為市場重要轉折點，屆時將公布多項經濟數據和企業財報，可能影響未來走勢。</p>
+            </div>
+
+            <div class="news-item">
+                <h3>5. Nvidia財報展望樂觀</h3>
+                <p>華爾街預期Nvidia FY2026營收將成長57%，儘管股價近期波動，分析師仍看好AI晶片需求持續強勁。</p>
+            </div>
+
+            <div class="news-item">
+                <h3>6. 市場仍存修正風險</h3>
+                <p>預測市場閃爍股票市場修正警告。歷史經驗顯示S&P 500可能進一步下跌。分析師預期2026年企業獲利將成長15%，但市場已反映部分利多。</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📊 數據來源：市場公開資訊 | ⚠️ 投資有風險，僅供參考</p>
+            <p>🦸 小熊抱美股部落格 | https://drwolf0701.github.io/stock-blog/</p>
+        </div>
+    </div>
+</body>
+</html>
