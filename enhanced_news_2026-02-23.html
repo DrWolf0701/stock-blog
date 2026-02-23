@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小熊抱美股新聞 - 2026年2月23日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            -webkit-background-clip: text; color: #ffd700;
+            -webkit-text-fill-color: #ffd700;
+        }
+        
+        .header .date {
+            font-size: 1.5em;
+            color: #9ca3af;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            color: #60a5fa;
+            margin-top: 15px;
+        }
+        
+        /* Market Summary */
+        .market-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .market-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .market-card .name {
+            font-size: 0.9em;
+            color: #9ca3af;
+            margin-bottom: 8px;
+        }
+        
+        .market-card .value {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .market-card .change {
+            font-size: 1.1em;
+        }
+        
+        .positive { color: #4ade80; }
+        .negative { color: #f87171; }
+        
+        /* Hot Stocks */
+        .hot-stocks {
+            background: linear-gradient(135deg, #0d2818 0%, #14532d 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(74,222,128,0.3);
+        }
+        
+        .hot-stocks h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+        
+        .stock-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+        
+        .stock-item {
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .stock-item .symbol {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .stock-item .price {
+            font-size: 1em;
+            margin: 5px 0;
+        }
+        
+        /* News Section */
+        .news-section {
+            margin-bottom: 30px;
+        }
+        
+        .news-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ffd700;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
+        }
+        
+        .news-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ffd700;
+        }
+        
+        .news-item .tag {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+        
+        .news-item .tag.red { background: #ef4444; }
+        .news-item .tag.green { background: #10b981; }
+        .news-item .tag.yellow { background: #f59e0b; }
+        
+        .news-item h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .news-item .summary {
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .news-item .impact {
+            background: rgba(255,215,0,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 3px solid #ffd700;
+        }
+        
+        .news-item .impact-title {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .news-item .impact-content {
+            color: #e5e7eb;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        /* Deep Analysis */
+        .deep-analysis {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(139,92,246,0.3);
+        }
+        
+        .deep-analysis h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #c084fc;
+        }
+        
+        .analysis-item {
+            margin-bottom: 25px;
+        }
+        
+        .analysis-item h3 {
+            color: #ffd700;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .analysis-item p {
+            color: #e5e7eb;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        
+        .analysis-item .timeline {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .timeline-item {
+            flex: 1;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .timeline-item .period {
+            color: #c084fc;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+            font-size: 0.9em;
+        }
+        
+        .disclaimer {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            color: #9ca3af;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .market-summary { grid-template-columns: repeat(2, 1fr); }
+            .stock-grid { grid-template-columns: repeat(2, 1fr); }
+            .timeline { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🐻 小熊抱美股新聞</h1>
+            <div class="date">2026年2月23日 星期日</div>
+            <div class="subtitle">專業財經分析 · AI 為您主播</div>
+        </div>
+        
+        <!-- Market Summary -->
+        <div class="market-summary">
+            <div class="market-card">
+                <div class="name">S&P 500</div>
+                <div class="value">6,909.51</div>
+                <div class="change positive">+0.69%</div>
+            </div>
+            <div class="market-card">
+                <div class="name">納斯達克</div>
+                <div class="value">22,886.07</div>
+                <div class="change positive">+0.90%</div>
+            </div>
+            <div class="market-card">
+                <div class="name">道瓊</div>
+                <div class="value">49,625.97</div>
+                <div class="change positive">+0.47%</div>
+            </div>
+            <div class="market-card">
+                <div class="name">VIX</div>
+                <div class="value">16.42</div>
+                <div class="change negative">-3.08%</div>
+            </div>
+        </div>
+        
+        <!-- Hot Stocks -->
+        <div class="hot-stocks">
+            <h2>📈 熱門個股</h2>
+            <div class="stock-grid">
+                <div class="stock-item">
+                    <div class="symbol">NVDA</div>
+                    <div class="price">$189.82</div>
+                    <div class="change positive">+2.5%</div>
+                </div>
+                <div class="stock-item">
+                    <div class="symbol">AAPL</div>
+                    <div class="price">$264.58</div>
+                    <div class="change positive">+0.8%</div>
+                </div>
+                <div class="stock-item">
+                    <div class="symbol">TSLA</div>
+                    <div class="price">$411.82</div>
+                    <div class="change negative">-1.2%</div>
+                </div>
+                <div class="stock-item">
+                    <div class="symbol">MSFT</div>
+                    <div class="price">$397.23</div>
+                    <div class="change positive">+1.1%</div>
+                </div>
+                <div class="stock-item">
+                    <div class="symbol">GOOGL</div>
+                    <div class="price">$314.98</div>
+                    <div class="change positive">+0.5%</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- News Section -->
+        <div class="news-section">
+            <h2>🔥 今日新聞頭條</h2>
+            
+            <!-- News 1 -->
+            <div class="news-item">
+                <span class="tag red">重大政策</span>
+                <h3>🏛️ 最高法院推翻川普關稅計畫</h3>
+                <div class="summary">
+                    美國最高法院裁定川普政府廣泛的關稅計畫缺乏明確法律授權，市場視此為重大利多，三大股指全面收漲。
+                </div>
+                <div class="impact">
+                    <div class="impact-title">💥 市場影響</div>
+                    <div class="impact-content">
+                        • 短期：股市大漲，不確定性消除<br>
+                        • 中期：進口成本下降，有利消費者<br>
+                        • 長期：貿易政策可預測性提升<br>
+                        • 預期：川普可能提上訴或達成和解
+                    </div>
+                </div>
+            </div>
+            
+            <!-- News 2 -->
+            <div class="news-item">
+                <span class="tag green">科技股</span>
+                <h3>📱 科技股反彈，納斯達克終結5週跌勢</h3>
+                <div class="summary">
+                    納斯達克指數結束2022年5月以來最長的週線下滑，投資人情緒明顯好轉。
+                </div>
+                <div class="impact">
+                    <div class="impact-title">💥 市場影響</div>
+                    <div class="impact-content">
+                        • AI 族群重新獲得資金青睞<br>
+                        • 科技股估值修復行情啟動<br>
+                        • 投資人風險偏好回升
+                    </div>
+                </div>
+            </div>
+            
+            <!-- News 3 -->
+            <div class="news-item">
+                <span class="tag yellow">Fed 政策</span>
+                <h3>🏦 Fed 降息預期升溫</h3>
+                <div class="summary">
+                    期貨市場顯示交易員押注6月降息，3次以上降息機率升至43%。
+                </div>
+                <div class="impact">
+                    <div class="impact-title">💥 市場影響</div>
+                    <div class="impact-content">
+                        • 公債殖利率下降<br>
+                        • 科技股和成長股受惠<br>
+                        • 美元可能走弱<br>
+                        • 黃金等避險資產支撐
+                    </div>
+                </div>
+            </div>
+            
+            <!-- News 4 -->
+            <div class="news-item">
+                <span class="tag red">地緣政治</span>
+                <h3>🗺️ 美伊緊張局勢升溫</h3>
+                <div class="summary">
+                    美軍大規模集結中東，特朗普給伊朗10天時間達成協議，否則將發動軍事打擊。
+                </div>
+                <div class="impact">
+                    <div class="impact-title">💥 市場影響</div>
+                    <div class="impact-content">
+                        • 原油價格飆升至6個月高位<br>
+                        • 能源股和國防股受惠<br>
+                        • 市場波動率可能上升<br>
+                        • 黃金避險需求增加
+                    </div>
+                </div>
+            </div>
+            
+            <!-- News 5 -->
+            <div class="news-item">
+                <span class="tag green">財報</span>
+                <h3>📊 Nvidia 財報倒數</h3>
+                <div class="summary">
+                    市場預期2/27公佈的財報將顯示營收成長57%，AI 晶片需求持續強勁。
+                </div>
+                <div class="impact">
+                    <div class="impact-title">💥 市場影響</div>
+                    <div class="impact-content">
+                        • 資料中心營收是焦點<br>
+                        • Blackwell 晶片出貨量<br>
+                        • 對中國出口限制影響<br>
+                        • 預期：可能再次超標
+                    </div>
+                </div>
+            </div>
+            
+            <!-- News 6 -->
+            <div class="news-item">
+                <span class="tag">經濟數據</span>
+                <h3>📉 經濟數據參差</h3>
+                <div class="summary">
+                    PCE通膨略高於預期，但GDP增速放緩，出現「通膨偏熱+成長放緩」的滯脹疑慮。
+                </div>
+                <div class="impact">
+                    <div class="impact-title">💥 市場影響</div>
+                    <div class="impact-content">
+                        • 聯準會決策難度增加<br>
+                        • 市場已淡化數據影響<br>
+                        • 焦點转向政策和企業財報
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Deep Analysis -->
+        <div class="deep-analysis">
+            <h2>🔍 深度趨勢分析</h2>
+            
+            <div class="analysis-item">
+                <h3>📌 川普關稅事件的深層解讀</h3>
+                <p>
+                    最高法院的裁決不僅是法律問題，更展現了美國三權分立的制衡機制。雖然川普可能提出上訴或透過行政命令繞過，但市場已經看到了明確的政策底線。
+                </p>
+                <p>
+                    值得注意的是，裁決後市場快速拉升但隨即回落，顯示投資人仍在評估政策的實際影響。川普提出的「10%全球加徵」替代方案雖然較低，但路徑更明確，這反而讓市場感到安心。
+                </p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="period">📅 短期（1-2週）</div>
+                        <p>市場波動回歸常態，關注川普反應和國會動態</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="period">📅 中期（1-3個月）</div>
+                        <p>貿易談判達成機率高，出口企業壓力緩解</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="period">📅 長期（6個月+）</div>
+                        <p>政策可預測性提升，有利企業長期規劃</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="analysis-item">
+                <h3>📌 AI 族群後市展望</h3>
+                <p>
+                    經過數週的回調，AI 族群再度獲得資金青睞。Nvidia 即將公佈的財報將是關鍵觀察點。市場預期營收成長57%，但真正的焦點在於：
+                </p>
+                <p>
+                    1) 資料中心營收能否持續爆發<br>
+                    2) Blackwell 晶片量產進度<br>
+                    3) 中國出口限制的影響程度<br>
+                    4) 雲端服務商的資本支出規劃
+                </p>
+                <p>
+                    儘管估值偏高，但需求端的強勁表現仍可能支撐股價。建議關注財報後的股價反應。
+                </p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>📊 數據來源：Yahoo Finance, FRED | 分析僅供參考，不構成投資建議</p>
+            <div class="disclaimer">
+                ⚠️ 投資有風險，入市需謹慎。本報告內容僅供參考，不構成任何投資建議。
+                過去表現不代表未來結果。請自行評估風險並諮詢專業人士。
+            </div>
+            <p style="margin-top: 20px;">
+                🐻 小熊抱美股新聞 | 感謝您的閱讀
+            </p>
+        </div>
+    </div>
+</body>
+</html>
