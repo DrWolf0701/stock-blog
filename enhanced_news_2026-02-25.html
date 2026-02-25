@@ -28,10 +28,11 @@
         
         .hot-sectors { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); border-radius: 20px; padding: 30px; margin-bottom: 30px; border: 1px solid rgba(139,92,246,0.3); }
         .hot-sectors h2 { font-size: 1.8em; margin-bottom: 20px; color: #c084fc; }
-        .sector-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .sector-item { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 15px; text-align: center; }
-        .sector-item .name { font-size: 1.1em; margin-bottom: 8px; }
+        .sector-list { display: flex; flex-direction: column; gap: 10px; }
+        .sector-item { display: flex; justify-content: space-between; background: rgba(0,0,0,0.3); border-radius: 10px; padding: 15px 20px; }
+        .sector-item .name { font-size: 1.1em; }
         
+        .news-section { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 20px; padding: 30px; margin-bottom: 30px; }
         .news-section h2 { font-size: 2em; margin-bottom: 20px; color: #ffd700; border-bottom: 2px solid #ffd700; padding-bottom: 10px; }
         .news-item { background: rgba(255,255,255,0.05); border-radius: 15px; padding: 25px; margin-bottom: 20px; border-left: 4px solid #ffd700; }
         .news-item .tag { display: inline-block; background: #3b82f6; color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8em; margin-bottom: 10px; }
@@ -40,7 +41,6 @@
         .news-item .summary { color: #d1d5db; line-height: 1.6; margin-bottom: 15px; }
         .news-item .impact { background: rgba(255,215,0,0.1); border-radius: 10px; padding: 15px; border-left: 3px solid #ffd700; }
         .news-item .impact-title { color: #ffd700; font-weight: bold; margin-bottom: 8px; }
-        .news-item .impact-content { color: #e5e7eb; font-size: 0.95em; line-height: 1.6; }
         
         .deep-analysis { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); border-radius: 20px; padding: 30px; margin-bottom: 30px; border: 1px solid rgba(139,92,246,0.3); }
         .deep-analysis h2 { font-size: 1.8em; margin-bottom: 20px; color: #c084fc; }
@@ -54,7 +54,7 @@
         .footer { text-align: center; padding: 30px; color: #6b7280; font-size: 0.9em; }
         .disclaimer { background: rgba(0,0,0,0.3); border-radius: 10px; padding: 20px; margin-top: 20px; color: #9ca3af; }
         
-        @media (max-width: 768px) { .market-summary { grid-template-columns: repeat(2, 1fr); } .stock-grid, .sector-grid { grid-template-columns: repeat(2, 1fr); } .timeline { flex-direction: column; } }
+        @media (max-width: 768px) { .market-summary { grid-template-columns: repeat(2, 1fr); } .stock-grid { grid-template-columns: repeat(2, 1fr); } .timeline { flex-direction: column; } }
     </style>
 </head>
 <body>
@@ -64,154 +64,171 @@
             <div class="date">2026年02月25日 星期二</div>
         </div>
         
+        <!-- 市場指數 -->
         <div class="market-summary">
-            
-    <div class="market-card">
-        <div class="name">S&P 500</div>
-        <div class="value">6,890.07</div>
-        <div class="change positive">+0.77%</div>
-    </div>
-    <div class="market-card">
-        <div class="name">納斯達克</div>
-        <div class="value">22,863.68</div>
-        <div class="change positive">+1.04%</div>
-    </div>
-    <div class="market-card">
-        <div class="name">道瓊</div>
-        <div class="value">49,174.50</div>
-        <div class="change positive">+0.76%</div>
-    </div>
-    <div class="market-card">
-        <div class="name">VIX</div>
-        <div class="value">19.55</div>
-        <div class="change negative">-6.95%</div>
-    </div>
+            <div class="market-card">
+                <div class="name">S&P 500</div>
+                <div class="value">6,890.07</div>
+                <div class="change positive">+0.77%</div>
+            </div>
+            <div class="market-card">
+                <div class="name">納斯達克</div>
+                <div class="value">22,863.68</div>
+                <div class="change positive">+1.04%</div>
+            </div>
+            <div class="market-card">
+                <div class="name">道瓊</div>
+                <div class="value">49,174.50</div>
+                <div class="change positive">+0.76%</div>
+            </div>
+            <div class="market-card">
+                <div class="name">VIX</div>
+                <div class="value">19.45</div>
+                <div class="change negative">-0.51%</div>
+            </div>
         </div>
         
+        <!-- 熱門個股 -->
         <div class="hot-stocks">
             <h2>📈 熱門個股</h2>
             <div class="stock-grid">
-                
-        <div class="stock-item">
-            <div class="symbol">NVDA</div>
-            <div class="price">$192.85</div>
-            <div class="change" style="color:#4ade80">+0.68%</div>
-        </div>
-        <div class="stock-item">
-            <div class="symbol">AAPL</div>
-            <div class="price">$272.14</div>
-            <div class="change" style="color:#4ade80">+2.24%</div>
-        </div>
-        <div class="stock-item">
-            <div class="symbol">TSLA</div>
-            <div class="price">$409.38</div>
-            <div class="change" style="color:#4ade80">+2.39%</div>
-        </div>
-        <div class="stock-item">
-            <div class="symbol">MSFT</div>
-            <div class="price">$389.0</div>
-            <div class="change" style="color:#4ade80">+1.18%</div>
-        </div>
-        <div class="stock-item">
-            <div class="symbol">GOOGL</div>
-            <div class="price">$310.9</div>
-            <div class="change" style="color:#f87171">-0.19%</div>
-        </div>
-        <div class="stock-item">
-            <div class="symbol">AMD</div>
-            <div class="price">$213.84</div>
-            <div class="change" style="color:#4ade80">+8.77%</div>
-        </div>
-        <div class="stock-item">
-            <div class="symbol">META</div>
-            <div class="price">$639.3</div>
-            <div class="change" style="color:#4ade80">+0.32%</div>
-        </div>
-        <div class="stock-item">
-            <div class="symbol">AMZN</div>
-            <div class="price">$208.56</div>
-            <div class="change" style="color:#4ade80">+1.60%</div>
-        </div>
+                <div class="stock-item"><div class="symbol">AMD</div><div class="price">$213.84</div><div class="change positive">+8.77%</div></div>
+                <div class="stock-item"><div class="symbol">SOUN</div><div class="price">$8.36</div><div class="change positive">+6.77%</div></div>
+                <div class="stock-item"><div class="symbol">LCID</div><div class="price">$9.92</div><div class="change positive">+5.08%</div></div>
+                <div class="stock-item"><div class="symbol">CRM</div><div class="price">$185.42</div><div class="change positive">+4.07%</div></div>
+                <div class="stock-item"><div class="symbol">ORCL</div><div class="price">$146.14</div><div class="change positive">+3.42%</div></div>
+                <div class="stock-item"><div class="symbol">NFLX</div><div class="price">$78.04</div><div class="change positive">+2.66%</div></div>
+                <div class="stock-item"><div class="symbol">TSLA</div><div class="price">$409.38</div><div class="change positive">+2.39%</div></div>
+                <div class="stock-item"><div class="symbol">AAPL</div><div class="price">$272.14</div><div class="change positive">+2.24%</div></div>
+                <div class="stock-item"><div class="symbol">AMZN</div><div class="price">$208.56</div><div class="change positive">+1.60%</div></div>
+                <div class="stock-item"><div class="symbol">MSFT</div><div class="price">$389.00</div><div class="change positive">+1.18%</div></div>
+                <div class="stock-item"><div class="symbol">NVDA</div><div class="price">$192.85</div><div class="change positive">+0.68%</div></div>
+                <div class="stock-item"><div class="symbol">META</div><div class="price">$639.30</div><div class="change positive">+0.32%</div></div>
+                <div class="stock-item"><div class="symbol">GOOGL</div><div class="price">$310.90</div><div class="change negative">-0.19%</div></div>
+                <div class="stock-item"><div class="symbol">PLTR</div><div class="price">$128.84</div><div class="change negative">-1.35%</div></div>
+                <div class="stock-item"><div class="symbol">AVGO</div><div class="price">$325.49</div><div class="change negative">-1.47%</div></div>
             </div>
         </div>
         
+        <!-- 熱門板塊 -->
         <div class="hot-sectors">
             <h2>🔥 熱門板塊</h2>
-            <div class="sector-grid">
-                
-        <div class="sector-item">
-            <div class="name">科技股</div>
-            <div class="change" style="color:#9ca3af">N/A</div>
-        </div>
-        <div class="sector-item">
-            <div class="name">AI族群</div>
-            <div class="change" style="color:#9ca3af">N/A</div>
-        </div>
-        <div class="sector-item">
-            <div class="name">能源股</div>
-            <div class="change" style="color:#9ca3af">N/A</div>
-        </div>
-        <div class="sector-item">
-            <div class="name">金融股</div>
-            <div class="change" style="color:#9ca3af">N/A</div>
-        </div>
+            <div class="sector-list">
+                <div class="sector-item"><span class="name">消費</span><span class="change positive">+1.52%</span></div>
+                <div class="sector-item"><span class="name">科技</span><span class="change positive">+1.30%</span></div>
+                <div class="sector-item"><span class="name">公用事業</span><span class="change positive">+1.11%</span></div>
+                <div class="sector-item"><span class="name">必需消費</span><span class="change positive">+0.87%</span></div>
+                <div class="sector-item"><span class="name">原物料</span><span class="change positive">+0.76%</span></div>
+                <div class="sector-item"><span class="name">通訊服務</span><span class="change positive">+0.69%</span></div>
+                <div class="sector-item"><span class="name">金融</span><span class="change positive">+0.49%</span></div>
+                <div class="sector-item"><span class="name">不動產</span><span class="change positive">+0.28%</span></div>
+                <div class="sector-item"><span class="name">能源</span><span class="change negative">-0.09%</span></div>
+                <div class="sector-item"><span class="name">醫療</span><span class="change negative">-0.42%</span></div>
             </div>
         </div>
         
+        <!-- 新聞 -->
         <div class="news-section">
-            <h2>🔥 今日新聞頭條</h2>
+            <h2>📰 今日新聞頭條</h2>
             
-        <div class="news-item">
-            <span class="tag green">市場概況</span>
-            <h3>📈 美股大幅📈</h3>
-            <div class="summary">美股今日📈。道瓊指數+0.76%，S&P 500 +0.77%。</div>
-            <div class="impact">
-                <div class="impact-title">💥 市場影響</div>
-                <div class="impact-content">• 短期：市場波動投資人觀望<br>• 中期：關注經濟數據和Fed政策<br>• 長期：趨勢取決於總體經濟</div>
+            <div class="news-item">
+                <span class="tag green">科技股反彈</span>
+                <h3>軟體股領漲！美股三大指數全面反彈</h3>
+                <div class="summary">軟體股在週一大跌後週二反彈，帶動三大指數上漲。投資人在科技股大幅拋售後逢低買進，Nvidia 財報即將公布，市場觀望氣氛浓厚。</div>
+                <div class="impact">
+                    <div class="impact-title">💥 市場影響</div>
+                    <div>• 短期：科技股反彈，市場情緒好轉<br>• 中期：關注 Nvidia 財報表現<br>• 長期：AI 投資熱潮持續</div>
+                </div>
             </div>
-        </div>
-        <div class="news-item">
-            <span class="tag green">AI科技</span>
-            <h3>🤖 AI族群後市展望</h3>
-            <div class="summary">AI相關個股近期波動加大，Nvidia財報將是關鍵觀察點。</div>
-            <div class="impact">
-                <div class="impact-title">💥 市場影響</div>
-                <div class="impact-content">• 短期：財報前觀望<br>• 中期：AI營收成長動能<br>• 長期：AI應用場景持續擴大</div>
+            
+            <div class="news-item">
+                <span class="tag green">個股動態</span>
+                <h3>AMD 大漲 8.77%！AI 晶片需求強勁</h3>
+                <div class="summary">AMD 股價大漲 8.77%，市場看好其 AI 晶片與 Nvidia 競爭的潛力。分析師上調目標價。</div>
+                <div class="impact">
+                    <div class="impact-title">💥 市場影響</div>
+                    <div>• 短期：AMD 引領晶片股上漲<br>• 中期：AI 晶片市場競爭加劇<br>• 長期：AMD 市佔率提升</div>
+                </div>
             </div>
-        </div>
-        <div class="news-item">
-            <span class="tag ">Fed政策</span>
-            <h3>🏦 聯準會利率走向</h3>
-            <div class="summary">市場關注聯準會未來利率決策，經濟數據將影響政策方向。</div>
-            <div class="impact">
-                <div class="impact-title">💥 市場影響</div>
-                <div class="impact-content">• 短期：殖利率波動<br>• 中期：降息預期<br>• 長期：利率政策經濟影響</div>
+            
+            <div class="news-item">
+                <span class="tag">Fed 政策</span>
+                <h3>聯準會觀望！利率決策前夕市場觀望</h3>
+                <div class="summary">市場等待聯準會利率決策，經濟數據將影響政策走向。目前預期 Fed 將維持利率不變。</div>
+                <div class="impact">
+                    <div class="impact-title">💥 市場影響</div>
+                    <div>• 短期：殖利率波動<br>• 中期：降息預期支撐股市<br>• 長期：利率政策影響景氣</div>
+                </div>
             </div>
-        </div>
+            
+            <div class="news-item">
+                <span class="tag red">能源</span>
+                <h3>能源股承壓！油價下跌影響</h3>
+                <div class="summary">能源類股今日表現落後大盤，原油價格下跌影響類股表現。投資人觀望本週庫存數據。</div>
+                <div class="impact">
+                    <div class="impact-title">💥 市場影響</div>
+                    <div>• 短期：能源股承壓<br>• 中期：油價走勢關鍵<br>• 長期：能源轉型影響產業</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <span class="tag red">個股</span>
+                <h3>CoStar 暴跌 8%！財測不如預期</h3>
+                <div class="summary">CoStar 股價暴跌 8%，第一季財測低於預期。Cava Group 逆勢大漲 8%，財測超標。</div>
+                <div class="impact">
+                    <div class="impact-title">💥 市場影響</div>
+                    <div>• 短期：個股財測影響股價<br>• 中期：優於預期者將受青睞<br>• 長期：基本面為王</div>
+                </div>
+            </div>
         </div>
         
+        <!-- 深度趨勢分析 -->
         <div class="deep-analysis">
             <h2>🔍 深度趨勢分析</h2>
             
-    <div class="analysis-item">
-        <h3>📊 今日市場總結</h3>
-        <p>本報告使用即時市場數據生成。數據來源：Yahoo Finance。</p>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="period">📅 每日更新</div>
-                <p>本報告每日自動更新</p>
+            <div class="analysis-item">
+                <h3>📊 AI 股反彈能持續嗎？</h3>
+                <p>軟體股在週一大跌後強勁反彈，市場逢低買入 AI 相關股票。雖然短期波動加大，但長期趨勢仍然看好。</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="period">📅 短期（1-4週）</div>
+                        <div>波動加大，謹慎操作，關注財報</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="period">📅 中期（1-3個月）</div>
+                        <div>AI 應用場景持續擴大，營收成長動能強</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="period">📅 長期（6-12個月）</div>
+                        <div>AI 熱潮不會消退，持續看好科技股</div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+            
+            <div class="analysis-item">
+                <h3>📈 美股後市展望</h3>
+                <p>在 Fed 利率政策明朗之前，市場將維持區間震盪。經濟數據和企業獲利將是關鍵指引。</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="period">📅 短期（1-4週）</div>
+                        <div>觀望 Fed 利率決策，波動整理</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="period">📅 中期（1-3個月）</div>
+                        <div>降息預期支撐股市，仍有上漲空間</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="period">📅 長期（6-12個月）</div>
+                        <div>經濟軟著陸預期，股市溫和上漲</div>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <div class="footer">
-            <p>📊 數據來源：Yahoo Finance, FRED | 分析僅供參考，不構成投資建議</p>
-            <div class="disclaimer">
-                ⚠️ 投資有風險，入市需謹慎。本報告內容僅供參考，不構成任何投資建議。
-            </div>
-            <p style="margin-top:20px">🐻 小熊抱美股新聞 | 感謝您的閱讀</p>
-        </div>
+        <footer>
+            <p>📈 數據來源：Yahoo Finance</p>
+            <p>由 AI 自動生成 · 僅供參考不構成投資建議</p>
+        </footer>
     </div>
 </body>
 </html>
