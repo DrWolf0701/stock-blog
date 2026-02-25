@@ -110,14 +110,59 @@
         
         .news-item h3 { font-size: 1.25em; margin-bottom: 12px; line-height: 1.4; }
         .news-item .desc { color: #cbd5e1; line-height: 1.7; font-size: 0.95em; }
-        .news-item .read-more {
+        
+        .impact {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 3px solid #3b82f6;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .impact strong { color: #60a5fa; }
+        .impact ul { margin: 10px 0 0 20px; color: #cbd5e1; }
+        .impact li { margin: 5px 0; }
+        
+        .trend-item {
+            background: linear-gradient(145deg, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        .trend-item h3 { 
+            font-size: 1.3em; 
+            margin-bottom: 15px; 
+            color: #a78bfa;
+        }
+        .trend-item p { color: #cbd5e1; line-height: 1.7; }
+        .trend-item ul { margin: 15px 0 15px 20px; color: #cbd5e1; }
+        .trend-item li { margin: 8px 0; }
+        
+        .trend-forecast {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .trend-forecast span {
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+        .short-term { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .mid-term { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .long-term { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        
+        .news-item .read-more, .trend-item .read-more {
             display: inline-block;
             color: #60a5fa;
             text-decoration: none;
             font-weight: 500;
             margin-top: 12px;
         }
-        .news-item .read-more:hover { text-decoration: underline; }
         
         footer {
             text-align: center;
@@ -133,6 +178,7 @@
             h1 { font-size: 2em; }
             .stocks-grid { grid-template-columns: repeat(3, 1fr); }
             .indices-grid { grid-template-columns: repeat(2, 1fr); }
+            .trend-forecast { flex-direction: column; }
         }
     </style>
 </head>
@@ -146,177 +192,292 @@
         <section class="section">
             <h2 class="section-title">🌍 全球市場指數</h2>
             <div class="indices-grid">
-                
-        <div class="index-card">
-            <div class="name">S&P 500</div>
-            <div class="value">6,890.07</div>
-            <div class="change" style="color:#22c55e">+0.77%</div>
-        </div>
-        <div class="index-card">
-            <div class="name">納斯達克</div>
-            <div class="value">22,863.68</div>
-            <div class="change" style="color:#22c55e">+1.04%</div>
-        </div>
-        <div class="index-card">
-            <div class="name">道瓊</div>
-            <div class="value">49,174.50</div>
-            <div class="change" style="color:#22c55e">+0.76%</div>
-        </div>
-        <div class="index-card">
-            <div class="name">VIX 恐慌指數</div>
-            <div class="value">19.55</div>
-            <div class="change" style="color:#ef4444">-6.95%</div>
-        </div>
-        <div class="index-card">
-            <div class="name">羅素2000</div>
-            <div class="value">2,652.33</div>
-            <div class="change" style="color:#22c55e">+1.20%</div>
-        </div>
+                <div class="index-card">
+                    <div class="name">S&P 500</div>
+                    <div class="value">6,890.07</div>
+                    <div class="change" style="color:#22c55e">+0.77%</div>
+                </div>
+                <div class="index-card">
+                    <div class="name">納斯達克</div>
+                    <div class="value">22,863.68</div>
+                    <div class="change" style="color:#22c55e">+1.04%</div>
+                </div>
+                <div class="index-card">
+                    <div class="name">道瓊</div>
+                    <div class="value">49,174.50</div>
+                    <div class="change" style="color:#22c55e">+0.76%</div>
+                </div>
+                <div class="index-card">
+                    <div class="name">VIX 恐慌指數</div>
+                    <div class="value">19.55</div>
+                    <div class="change" style="color:#ef4444">-6.95%</div>
+                </div>
+                <div class="index-card">
+                    <div class="name">羅素2000</div>
+                    <div class="value">2,024.50</div>
+                    <div class="change" style="color:#22c55e">+1.20%</div>
+                </div>
             </div>
         </section>
         
         <section class="section">
             <h2 class="section-title">🔥 熱門板塊漲跌</h2>
             <div class="sectors">
-                
-        <div class="sector-item">
-            <span class="name">醫療</span>
-            <span class="change" style="color:#ef4444">-0.42%</span>
-        </div>
-        <div class="sector-item">
-            <span class="name">能源</span>
-            <span class="change" style="color:#ef4444">-0.09%</span>
-        </div>
-        <div class="sector-item">
-            <span class="name">消費</span>
-            <span class="change" style="color:#22c55e">+1.52%</span>
-        </div>
-        <div class="sector-item">
-            <span class="name">科技</span>
-            <span class="change" style="color:#22c55e">+1.30%</span>
-        </div>
-        <div class="sector-item">
-            <span class="name">公用事業</span>
-            <span class="change" style="color:#22c55e">+1.11%</span>
-        </div>
-        <div class="sector-item">
-            <span class="name">必需消費</span>
-            <span class="change" style="color:#22c55e">+0.87%</span>
-        </div>
-        <div class="sector-item">
-            <span class="name">原物料</span>
-            <span class="change" style="color:#22c55e">+0.76%</span>
-        </div>
-        <div class="sector-item">
-            <span class="name">通訊服務</span>
-            <span class="change" style="color:#22c55e">+0.69%</span>
-        </div>
-        <div class="sector-item">
-            <span class="name">金融</span>
-            <span class="change" style="color:#22c55e">+0.49%</span>
-        </div>
-        <div class="sector-item">
-            <span class="name">不動產</span>
-            <span class="change" style="color:#22c55e">+0.28%</span>
-        </div>
+                <div class="sector-item">
+                    <span class="name">醫療</span>
+                    <span class="change" style="color:#ef4444">-0.42%</span>
+                </div>
+                <div class="sector-item">
+                    <span class="name">能源</span>
+                    <span class="change" style="color:#ef4444">-0.09%</span>
+                </div>
+                <div class="sector-item">
+                    <span class="name">消費</span>
+                    <span class="change" style="color:#22c55e">+1.52%</span>
+                </div>
+                <div class="sector-item">
+                    <span class="name">科技</span>
+                    <span class="change" style="color:#22c55e">+1.30%</span>
+                </div>
+                <div class="sector-item">
+                    <span class="name">通訊服務</span>
+                    <span class="change" style="color:#22c55e">+1.11%</span>
+                </div>
+                <div class="sector-item">
+                    <span class="name">必需消費</span>
+                    <span class="change" style="color:#22c55e">+0.87%</span>
+                </div>
+                <div class="sector-item">
+                    <span class="name">原物料</span>
+                    <span class="change" style="color:#22c55e">+0.76%</span>
+                </div>
+                <div class="sector-item">
+                    <span class="name">通訊</span>
+                    <span class="change" style="color:#22c55e">+0.69%</span>
+                </div>
+                <div class="sector-item">
+                    <span class="name">金融</span>
+                    <span class="change" style="color:#22c55e">+0.49%</span>
+                </div>
+                <div class="sector-item">
+                    <span class="name">不動產</span>
+                    <span class="change" style="color:#22c55e">+0.28%</span>
+                </div>
             </div>
         </section>
         
         <section class="section">
             <h2 class="section-title">💰 熱門個股行情</h2>
             <div class="stocks-grid">
-                
-        <div class="stock-card">
-            <div class="symbol">AVGO</div>
-            <div class="price">$325.49</div>
-            <div class="change" style="color:#ef4444">-1.47%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">PLTR</div>
-            <div class="price">$128.84</div>
-            <div class="change" style="color:#ef4444">-1.35%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">GOOGL</div>
-            <div class="price">$310.9</div>
-            <div class="change" style="color:#ef4444">-0.19%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">AMD</div>
-            <div class="price">$213.84</div>
-            <div class="change" style="color:#22c55e">+8.77%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">SOUN</div>
-            <div class="price">$8.36</div>
-            <div class="change" style="color:#22c55e">+6.77%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">LCID</div>
-            <div class="price">$9.92</div>
-            <div class="change" style="color:#22c55e">+5.08%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">CRM</div>
-            <div class="price">$185.42</div>
-            <div class="change" style="color:#22c55e">+4.07%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">ORCL</div>
-            <div class="price">$146.14</div>
-            <div class="change" style="color:#22c55e">+3.42%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">NFLX</div>
-            <div class="price">$78.04</div>
-            <div class="change" style="color:#22c55e">+2.66%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">TSLA</div>
-            <div class="price">$409.38</div>
-            <div class="change" style="color:#22c55e">+2.39%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">AAPL</div>
-            <div class="price">$272.14</div>
-            <div class="change" style="color:#22c55e">+2.24%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">AMZN</div>
-            <div class="price">$208.56</div>
-            <div class="change" style="color:#22c55e">+1.60%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">SMCI</div>
-            <div class="price">$31.13</div>
-            <div class="change" style="color:#22c55e">+1.37%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">MSFT</div>
-            <div class="price">$389.0</div>
-            <div class="change" style="color:#22c55e">+1.18%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">AMAT</div>
-            <div class="price">$377.93</div>
-            <div class="change" style="color:#22c55e">+1.17%</div>
-        </div>
-        <div class="stock-card">
-            <div class="symbol">COIN</div>
-            <div class="price">$162.03</div>
-            <div class="change" style="color:#22c55e">+1.12%</div>
-        </div>
+                <div class="stock-card">
+                    <div class="symbol">AVGO</div>
+                    <div class="price">$325.49</div>
+                    <div class="change" style="color:#ef4444">-1.47%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">PLTR</div>
+                    <div class="price">$128.84</div>
+                    <div class="change" style="color:#ef4444">-1.35%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">GOOGL</div>
+                    <div class="price">$310.90</div>
+                    <div class="change" style="color:#ef4444">-0.19%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">AMD</div>
+                    <div class="price">$213.84</div>
+                    <div class="change" style="color:#22c55e">+8.77%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">SOUN</div>
+                    <div class="price">$8.36</div>
+                    <div class="change" style="color:#22c55e">+6.77%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">LCID</div>
+                    <div class="price">$9.92</div>
+                    <div class="change" style="color:#22c55e">+5.08%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">CRM</div>
+                    <div class="price">$185.42</div>
+                    <div class="change" style="color:#22c55e">+4.07%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">ORCL</div>
+                    <div class="price">$146.14</div>
+                    <div class="change" style="color:#22c55e">+3.42%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">NFLX</div>
+                    <div class="price">$78.04</div>
+                    <div class="change" style="color:#22c55e">+2.66%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">TSLA</div>
+                    <div class="price">$409.38</div>
+                    <div class="change" style="color:#22c55e">+2.39%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">AAPL</div>
+                    <div class="price">$272.14</div>
+                    <div class="change" style="color:#22c55e">+2.24%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">AMZN</div>
+                    <div class="price">$208.56</div>
+                    <div class="change" style="color:#22c55e">+1.60%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">SMCI</div>
+                    <div class="price">$31.13</div>
+                    <div class="change" style="color:#22c55e">+1.37%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">MSFT</div>
+                    <div class="price">$389.00</div>
+                    <div class="change" style="color:#22c55e">+1.18%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">AMAT</div>
+                    <div class="price">$377.93</div>
+                    <div class="change" style="color:#22c55e">+1.17%</div>
+                </div>
+                <div class="stock-card">
+                    <div class="symbol">COIN</div>
+                    <div class="price">$162.03</div>
+                    <div class="change" style="color:#22c55e">+1.12%</div>
+                </div>
             </div>
         </section>
         
         <section class="section">
             <h2 class="section-title">📰 今日要聞</h2>
             
-        <div class="news-item">
-            <span class="tag gray">📰 新聞</span>
-            <h3>今日市場反彈，科技股領漲</h3>
-            <p class="desc">美股今日全面反彈，投資人對經濟前景保持樂觀。科技股領漲，AI相關族群表現強勁。</p>
-        </div>
+            <div class="news-item">
+                <span class="tag purple">🤖 AI/科技</span>
+                <h3>NVDA 財報來襲！明 (2/25) 盤後公布 Q4 2026 財報</h3>
+                <p class="desc">Nvidia 將於明日下午收盤後公布第四季 2026 財報。市場預期 AI GPU 需求持續強勁，投資人密切關注是否能延續 AI 動能。</p>
+                <div class="impact">
+                    <strong>💥 市場影響：</strong>
+                    <ul>
+                        <li>短期：財報前觀望，股價波動加劇</li>
+                        <li>中期：資料中心營收是關鍵焦點</li>
+                        <li>長期：AI 晶片需求動能備受矚目</li>
+                    </ul>
+                </div>
+                <a href="https://www.tipranks.com/news/nvidia-stock-forecast-ahead-of-earnings-heres-what-to-expect" target="_blank" class="read-more">閱讀更多 →</a>
+            </div>
+            
+            <div class="news-item">
+                <span class="tag orange">📈 大盤</span>
+                <h3>美股反彈！S&P 500 在 6,800 支撐處止穩</h3>
+                <p class="desc">經歷「週一關稅衝擊」後，市場逐漸回穩。科技股反彈帶動大盤回升，投資人情緒受到消費者信心改善支撐。</p>
+                <div class="impact">
+                    <strong>💥 市場影響：</strong>
+                    <ul>
+                        <li>短期：市場恐慌緩解，指數回穩</li>
+                        <li>中期：關稅不確定性仍存</li>
+                        <li>長期：6,800 支撐成為關鍵觀察點</li>
+                    </ul>
+                </div>
+                <a href="https://www.bloomberg.com/news/articles/2026-02-23/stock-market-today-dow-s-p-live-updates" target="_blank" class="read-more">閱讀更多 →</a>
+            </div>
+            
+            <div class="news-item">
+                <span class="tag blue">🏦 央行</span>
+                <h3>川普關稅衝擊淡化，市場逐漸復原</h3>
+                <p class="desc">川普宣布新關稅引發週一市場恐慌，但投資人逐漸消化利空。科技股領漲，消費類股也獲得支撐。</p>
+                <div class="impact">
+                    <strong>💥 市場影響：</strong>
+                    <ul>
+                        <li>短期：市場情緒改善，逢低買盤進場</li>
+                        <li>中期：關稅政策仍是隱憂</li>
+                        <li>長期：貿易談判結果將決定方向</li>
+                    </ul>
+                </div>
+                <a href="https://www.fool.com/investing/2026/02/24/why-the-sp-500-dow-jones-and-nasdaq-are-up-today/" target="_blank" class="read-more">閱讀更多 →</a>
+            </div>
+            
+            <div class="news-item">
+                <span class="tag red">💊 醫藥</span>
+                <h3>減肥藥族群動盪！Novo Nordisk 暴跌 16%，Eli Lilly 漲 5%</h3>
+                <p class="desc">減肥藥市場出現劇烈波動。Novo Nordisk 美股暴跌超過 16%，而 Eli Lilly 股價上漲近 5%。市場競爭加劇。</p>
+                <div class="impact">
+                    <strong>💥 市場影響：</strong>
+                    <ul>
+                        <li>短期：減肥藥族群股價劇烈波動</li>
+                        <li>中期：市場份額競爭加劇</li>
+                        <li>長期：GLP-1 市場格局可能重塑</li>
+                    </ul>
+                </div>
+                <a href="https://www.cnbc.com/2026/02/24/5-things-to-know-before-the-market-opens.html" target="_blank" class="read-more">閱讀更多 →</a>
+            </div>
+            
+            <div class="news-item">
+                <span class="tag green">📰 個股</span>
+                <h3>CoStar 暴跌 8%，Cava 餐廳財報靚漲 8%</h3>
+                <p class="desc">CoStar 季報展望不如預期，股價重挫 8%。反觀 Cava 餐廳連鎖店第四季財報亮眼，2026 展望超標。</p>
+                <div class="impact">
+                    <strong>💥 市場影響：</strong>
+                    <ul>
+                        <li>短期：個股表現分化</li>
+                        <li>中期：消費類股基本面仍是關鍵</li>
+                        <li>長期：餐飲業景氣復甦可期</li>
+                    </ul>
+                </div>
+                <a href="https://www.cnbc.com/2026/02/24/stock-market-today-live-updates.html" target="_blank" class="read-more">閱讀更多 →</a>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">🔍 深度趨勢分析</h2>
+            
+            <div class="trend-item">
+                <h3>📌 NVDA 財報：AI 牛市的多空關鍵</h3>
+                <p>Nvidia 將於明日盤後公布 Q4 2026 財報，這將是 AI 族群的重要考驗。市場預期營收將年增超過 60%，但關鍵在於：</p>
+                <ul>
+                    <li><strong>資料中心營收：</strong> 能否持續超預期</li>
+                    <li><strong>中國出口限制：</strong> 是否影響未來展望</li>
+                    <li><strong>Blackwell 晶片：</strong> 產能與需求規劃</li>
+                </ul>
+                <div class="trend-forecast">
+                    <span class="short-term">📅 短期：波動加劇，財報後可能大幅反應</span>
+                    <span class="mid-term">📅 中期：AI 基礎設施需求仍強，回調是機會</span>
+                    <span class="long-term">📅 長期：AI 晶片龍頭地位穩固，維持看好</span>
+                </div>
+            </div>
+            
+            <div class="trend-item">
+                <h3>📌 減肥藥大戰：Novo Nordisk 與 Eli Lilly 的世紀對決</h3>
+                <p>減肥藥市場今日出現戲劇性走勢。Novo Nordisk 暴跌 16% 而 Eli Lilly 逆勢漲 5%，顯示市場正在重新定價這兩家公司的競爭態勢。</p>
+                <ul>
+                    <li><strong>Novo Nordisk：</strong> 供應鏈問題導致短缺，市場份額流失</li>
+                    <li><strong>Eli Lilly：</strong> 產能擴張順利，市場信心增強</li>
+                    <li><strong>競爭格局：</strong> 雙雄稱霸，但新進入者虎視眈眈</li>
+                </ul>
+                <div class="trend-forecast">
+                    <span class="short-term">📅 短期：股價波動持續，觀察供應鏈改善</span>
+                    <span class="mid-term">📅 中期：GLP-1 市場規模持續擴大</span>
+                    <span class="long-term">📅 長期：減肥藥成為下一個千億美元市場</span>
+                </div>
+            </div>
+            
+            <div class="trend-item">
+                <h3>📌 關稅衝擊淡化但未結束</h3>
+                <p>川普關稅政策的影響逐漸被市場吸收，但投資人仍需關注後續發展。</p>
+                <ul>
+                    <li><strong>短期：</strong> 市場逐漸回穩，恐慌情緒緩解</li>
+                    <li><strong>中期：</strong> 關稅談判進展是關鍵</li>
+                    <li><strong>長期：</strong> 供應鏈遷移不可逆</li>
+                </ul>
+                <div class="trend-forecast">
+                    <span class="short-term">📅 短期：S&P 500 在 6,800 有支撐</span>
+                    <span class="mid-term">📅 中期：若關稅緩和，指數有望挑戰前高</span>
+                    <span class="long-term">📅 長期：貿易新規則確立後回歸基本面</span>
+                </div>
+            </div>
         </section>
         
         <footer>
