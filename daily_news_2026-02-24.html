@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>美股新聞簡報 - 2026-02-24</title>
+    <style>
+        body { font-family: 'PingFang TC', 'Microsoft JhengHei', Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
+        .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 20px; }
+        .header h1 { margin: 0 0 10px 0; font-size: 28px; }
+        .header .date { color: #ccc; font-size: 14px; }
+        .market { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
+        .market-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .market-card h3 { margin: 0 0 10px 0; color: #666; font-size: 14px; }
+        .market-card .price { font-size: 24px; font-weight: bold; color: #1a1a2e; }
+        .market-card .change { font-size: 16px; margin-top: 5px; }
+        .positive { color: #4ade80; }
+        .negative { color: #f87171; }
+        .stocks { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .stocks h2 { margin: 0 0 15px 0; color: #1a1a2e; }
+        .stock-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .stock-item { text-align: center; padding: 15px; background: #f9f9f9; border-radius: 8px; }
+        .stock-item .symbol { font-weight: bold; color: #1a1a2e; }
+        .stock-item .price { font-size: 18px; margin: 5px 0; }
+        .news { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .news h2 { margin: 0 0 15px 0; color: #1a1a2e; }
+        .news-item { padding: 15px 0; border-bottom: 1px solid #eee; }
+        .news-item:last-child { border-bottom: none; }
+        .news-item .title { font-weight: bold; color: #1a1a2e; margin-bottom: 5px; }
+        .news-item .desc { color: #666; font-size: 14px; }
+        .footer { text-align: center; margin-top: 30px; color: #999; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📈 美股新聞簡報</h1>
+        <div class="date">2026-02-24</div>
+    </div>
+    
+    <div class="market">
+        <div class="market-card">
+            <h3>S&P 500</h3>
+            <div class="price">6837.75</div>
+            <div class="change negative">-1.04%</div>
+        </div>
+        <div class="market-card">
+            <h3>NASDAQ</h3>
+            <div class="price">22627.27</div>
+            <div class="change negative">-1.13%</div>
+        </div>
+        <div class="market-card">
+            <h3>DOW</h3>
+            <div class="price">48804.06</div>
+            <div class="change negative">-1.66%</div>
+        </div>
+    </div>
+    
+    <div class="stocks">
+        <h2>🔥 熱門個股</h2>
+        <div class="stock-grid">
+
+            <div class="stock-item">
+                <div class="symbol">NVDA</div>
+                <div class="price">$191.55</div>
+                <div class="change positive">+0.91%</div>
+            </div>
+
+            <div class="stock-item">
+                <div class="symbol">AAPL</div>
+                <div class="price">$266.18</div>
+                <div class="change positive">+0.60%</div>
+            </div>
+
+            <div class="stock-item">
+                <div class="symbol">TSLA</div>
+                <div class="price">$399.83</div>
+                <div class="change negative">-2.91%</div>
+            </div>
+
+            <div class="stock-item">
+                <div class="symbol">MSFT</div>
+                <div class="price">$384.47</div>
+                <div class="change negative">-3.21%</div>
+            </div>
+
+            <div class="stock-item">
+                <div class="symbol">GOOGL</div>
+                <div class="price">$311.49</div>
+                <div class="change negative">-1.11%</div>
+            </div>
+
+            <div class="stock-item">
+                <div class="symbol">AMD</div>
+                <div class="price">$196.6</div>
+                <div class="change negative">-1.77%</div>
+            </div>
+
+            <div class="stock-item">
+                <div class="symbol">META</div>
+                <div class="price">$637.25</div>
+                <div class="change negative">-2.81%</div>
+            </div>
+
+            <div class="stock-item">
+                <div class="symbol">AMZN</div>
+                <div class="price">$205.27</div>
+                <div class="change negative">-2.30%</div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="news">
+        <h2>📰 今日重點新聞</h2>
+        <div class="news-item">
+            <div class="title">川普關稅風暴再現</div>
+            <div class="desc">川普政府再度推出關稅政策，引發市場擔憂。分析師認為這將影響全球供應鏈。</div>
+        </div>
+        <div class="news-item">
+            <div class="title">AI 族群全面崩跌</div>
+            <div class="desc">受到關稅影響，AI相關族群股價全面下挫。投資人觀望後續發展。</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>🤖 小熊抱美股新聞 • 每日更新</p>
+    </div>
+</body>
+</html>
