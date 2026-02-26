@@ -110,6 +110,20 @@
         
         .news-item h3 { font-size: 1.25em; margin-bottom: 12px; line-height: 1.4; }
         .news-item .desc { color: #cbd5e1; line-height: 1.7; font-size: 0.95em; }
+        .news-item .impact {
+            background: rgba(255,215,0,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 3px solid #ffd700;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .news-item .impact-title {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
         .news-item .read-more {
             display: inline-block;
             color: #60a5fa;
@@ -118,6 +132,41 @@
             margin-top: 12px;
         }
         .news-item .read-more:hover { text-decoration: underline; }
+        
+        .deep-analysis {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(139,92,246,0.3);
+        }
+        .deep-analysis h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #c084fc;
+        }
+        .deep-analysis p {
+            color: #e5e7eb;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .timeline {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .timeline-item {
+            flex: 1;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .timeline-item .period {
+            color: #c084fc;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
         
         footer {
             text-align: center;
@@ -314,38 +363,99 @@
             
         <div class="news-item">
             <span class="tag purple">🤖 AI/科技</span>
-            <h3>Stock market today: Dow, S&P 500, Nasdaq futures wobble after Nvidia's big earnings, forecast beats</h3>
-            <p class="desc">With all eyes on AI darling Nvidia's earnings report, the company didn't disappoint, handily beating Wall Street expectations.</p>
-            <a href="https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-futures-wobble-after-nvidias-big-earnings-forecast-beats-234839641.html?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
-        </div>
-        <div class="news-item">
-            <span class="tag purple">🤖 AI/科技</span>
-            <h3>Dow Jones Futures Fall Despite Strong Nvidia Earnings After S&P 500 Reclaims Key Level</h3>
-            <p class="desc">Dow futures fall as Nvidia turned lower late despite strong earnings and guidance. The S&P 500 is back above its 50-day line.</p>
+            <h3>道瓊 Jones Futures Fall Despite Strong 輝達 Earnings After S&P 500 Reclaims Key Level</h3>
+            <p class="desc">道瓊 期貨 跌 as 輝達 turned lower late despite strong 財報 and guidance. The S&P 500 is back above its 50-day line.</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>• 短期：AI 晶片需求持續強勁<br>• 中期：輝達引領晶片股上漲<br>• 長期：AI 硬體長期成長趨勢確立</div>
+            </div>
             <a href="https://finance.yahoo.com/m/b2f582be-cac7-331a-8d69-c23217166dc3/dow-jones-futures-fall.html?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
         </div>
         <div class="news-item">
+            <span class="tag purple">🤖 AI/科技</span>
+            <h3>Stock market 今日: 道瓊, S&P 500, 那斯達克 期貨 wobble 後 輝達's big 財報, forecast beats</h3>
+            <p class="desc">With all eyes on AI darling 輝達's 財報 報告, the company didn't disappoint, handily beating 華爾街 expectations.</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>• 短期：AI 晶片需求持續強勁<br>• 中期：輝達引領晶片股上漲<br>• 長期：AI 硬體長期成長趨勢確立</div>
+            </div>
+            <a href="https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-futures-wobble-after-nvidias-big-earnings-forecast-beats-234839641.html?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
+        </div>
+        <div class="news-item">
             <span class="tag orange">📈 大盤</span>
-            <h3>Stock Market Today, Feb. 25: Novo Nordisk Dips After Announcing $2.1 Billion Partnership With Vivtex</h3>
-            <p class="desc">Investors weigh steep GLP‑1 price cuts against a multibillion‑dollar oral obesity push, fresh analyst caution, and a new partnership, today, Feb. 25, 2026.</p>
+            <h3>Stock 市場 Today, Feb. 25: Novo Nordisk Dips After Announcing $2.1 Billion Partnership With Vivtex</h3>
+            <p class="desc">Investors weigh steep GLP‑1 price cuts a漲t a multibillion‑dollar oral obesity push, fresh analyst caution, and a new partnership, 今日, Feb. 25, 2026.</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>• 短期：市場關注<br>• 中期：持續追蹤<br>• 長期：趨勢觀察中</div>
+            </div>
             <a href="https://www.fool.com/coverage/stock-market-today/2026/02/25/stock-market-today-feb-25-novo-nordisk-dips-after-announcing-usd2-1-billion-partnership-with-vivtex-for-oral-drug-delivery-technologies/?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
         </div>
         <div class="news-item">
             <span class="tag purple">🤖 AI/科技</span>
-            <h3>Stock Market Today, Feb. 25: Nasdaq Gains 1.3% As Nvidia Reignites AI Optimism</h3>
-            <p class="desc">Today, Feb. 25, 2026, Nvidia surges and AI enthusiasm steadies broader U.S. stock indexes.</p>
+            <h3>Stock 市場 Today, Feb. 25: 那斯達克 Gains 1.3% As 輝達 Reignites AI Optimism</h3>
+            <p class="desc">Today, Feb. 25, 2026, 輝達 surges and AI enthusiasm steadies broader U.S. stock indexes.</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>• 短期：AI 晶片需求持續強勁<br>• 中期：輝達引領晶片股上漲<br>• 長期：AI 硬體長期成長趨勢確立</div>
+            </div>
             <a href="https://www.fool.com/coverage/stock-market-today/2026/02/25/stock-market-today-feb-25-nasdaq-gains-1-3-as-nvidia-reignites-ai-optimism/?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
         </div>
         <div class="news-item">
             <span class="tag purple">🤖 AI/科技</span>
-            <h3>Wall Street extends tech-powered rally as AI; Nvidia reports</h3>
-            <p class="desc"><body><p>STORY: U.S. stocks ended higher on Wednesday, with the Dow gaining about six-tenths of a percent, the S&P 500 adding eight-tenths of a percent and the tech-heavy Nasdaq climbing roughly one-and-a-quarter percent.</p><p>The tech-led rally cam</p>
+            <h3>華爾街 extends 科技-powered 上漲 as AI; 輝達 報告s</h3>
+            <p class="desc"><body><p>STORY: U.S. stocks ended higher on Wednesday, with the 道瓊 漲ing about six-tenths of a %, the S&P 500 adding eight-tenths of a % and the 科技-heavy 那斯達克 climbing roughly one-and-a-quarter %.</p><p>The 科技-led 上漲 cam</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>• 短期：AI 晶片需求持續強勁<br>• 中期：輝達引領晶片股上漲<br>• 長期：AI 硬體長期成長趨勢確立</div>
+            </div>
             <a href="https://finance.yahoo.com/video/wall-street-extends-tech-powered-230332847.html?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
         </div>
         </section>
         
+        <section class="section">
+            <h2 class="section-title">🔍 深度趨勢分析</h2>
+            
+        <div class="deep-analysis">
+            <h2>🤖 AI 投資熱潮持續</h2>
+            <p>從輝達財報可見 AI 硬體需求依然強勁，雖然短期股價波動，但長期趨勢仍看好。</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="period">短期 (1-3個月)</div>
+                    <div>AI 族群持續發燒</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="period">中期 (3-12個月)</div>
+                    <div>關注財報季表現</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="period">長期 (1年以上)</div>
+                    <div>AI 將持續顛覆各產業</div>
+                </div>
+            </div>
+        </div>
+        <div class="deep-analysis">
+            <h2>📈 市場展望正向</h2>
+            <p>美股在科技股帶動下持續走高，投資人信心回穩。</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="period">短期 (1-3個月)</div>
+                    <div>股市持續上漲</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="period">中期 (3-12個月)</div>
+                    <div>關注經濟數據</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="period">長期 (1年以上)</div>
+                    <div>多頭格局延續</div>
+                </div>
+            </div>
+        </div>
+        </section>
+        
         <footer>
-            <p>📈 數據來源：Yahoo Finance + Brave Search</p>
+            <p>📈 數據來源：Yahoo Finance + RSS</p>
             <p>由 AI 自動生成 · 僅供參考不構成投資建議</p>
         </footer>
     </div>
