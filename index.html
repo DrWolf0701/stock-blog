@@ -817,13 +817,9 @@
             
             <!-- 訪客計數器 -->
             <div style="margin-top: 15px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <!-- 本地計數器 (localStorage) -->
+                <!-- 計數器 -->
                 <div class="visitor-counter">
-                    <i class="fas fa-user"></i> 您的訪問: <span id="local-views">1</span> 次
-                </div>
-                <!-- 全球計數器 -->
-                <div class="visitor-counter">
-                    <i class="fas fa-globe"></i> 訪問: <a href="https://www.freecounter.com" target="_blank"><img src="https://counter.digits.net/counter.php?u=drwolf0701&c=1" alt="free counter" border="0"></a> 次
+                    <i class="fas fa-users"></i> 訪問次數: <span id="local-views">1</span> 次
                 </div>
             </div>
         </footer>
@@ -862,37 +858,6 @@
             localCount++;
             localStorage.setItem(storageKey, localCount.toString());
             document.getElementById('local-views').textContent = localCount.toLocaleString();
-            
-            // 全球計數器 - 使用 freecounterstat (共用 ID)
-            const globalContainer = document.getElementById('global-views');
-            
-            // 嘗試載入 freecounterstat (共用示範 ID)
-            try {
-                // 方法1: 使用圖片載入
-                const img = document.createElement('img');
-                img.src = 'https://counter2.optistats.ovh/private/freecounterstat.php?c=y1ch262dj49m411rs59h684eh4zmw4el';
-                img.alt = 'hits';
-                img.style.verticalAlign = 'middle';
-                img.onload = function() { globalContainer.innerHTML = ''; globalContainer.appendChild(img); };
-                img.onerror = function() { globalContainer.textContent = '🌐 謝謝訪問'; };
-                
-                // 方法2: 使用 script (非同步)
-                const script = document.createElement('script');
-                script.src = 'https://counter2.optistats.ovh/private/counter.js?c=y1ch262dj49m411rs59h684eh4zmw4el&down=async';
-                script.async = true;
-                script.onload = function() { globalContainer.textContent = '🌐 謝謝訪問'; };
-                script.onerror = function() { globalContainer.textContent = '🌐 謝謝訪問'; };
-                document.head.appendChild(script);
-            } catch(e) {
-                globalContainer.textContent = '🌐 謝謝訪問';
-            }
-            
-            // 備用顯示
-            setTimeout(() => {
-                if (globalContainer.textContent === '載入中...') {
-                    globalContainer.textContent = '🌐 謝謝訪問';
-                }
-            }, 2000);
         })();
     </script>
 </body>
