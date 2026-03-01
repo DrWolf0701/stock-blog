@@ -519,6 +519,31 @@
         .article-card:nth-child(3) { animation-delay: 0.3s; }
         .article-card:nth-child(4) { animation-delay: 0.4s; }
         .article-card:nth-child(5) { animation-delay: 0.5s; }
+        /* 浮動 Top 按鈕 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(240, 147, 251, 0.6);
+        }
+
     </style>
 </head>
 <body>
@@ -867,5 +892,8 @@
             document.getElementById('local-views').textContent = localCount.toLocaleString();
         })();
     </script>
+<!-- 浮動 Top 按鈕 -->
+    <a href="#" class="back-to-top" title="回到頂部">⬆️</a>
+
 </body>
 </html>
