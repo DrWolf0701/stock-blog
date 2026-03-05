@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股新聞簡報 - 2026年03月06日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        h1 { font-size: 2.8em; margin-bottom: 15px; letter-spacing: 2px; }
+        .date { color: #94a3b8; font-size: 1.2em; }
+        
+        .section { margin-bottom: 45px; }
+        .section-title {
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 4px solid #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .indices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+        .index-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .index-card .name { color: #94a3b8; font-size: 0.85em; text-transform: uppercase; letter-spacing: 1px; }
+        .index-card .value { font-size: 1.5em; font-weight: 800; margin: 12px 0; }
+        .index-card .change { font-size: 1.15em; font-weight: 600; }
+        
+        .sectors { 
+            background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+            border-radius: 16px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+        .sector-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .sector-item:last-child { border: none; }
+        .sector-item .name { font-weight: 500; }
+        .sector-item .change { font-weight: 600; }
+        
+        .stocks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 12px;
+        }
+        .stock-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.04) 100%);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .stock-card .symbol { font-weight: 700; color: #60a5fa; font-size: 1.1em; }
+        .stock-card .price { font-size: 1.25em; margin: 10px 0; font-weight: 600; }
+        .stock-card .change { font-size: 0.95em; }
+        
+        .news-item {
+            background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.04) 100%);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .tag {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .tag.gray { background: #6b7280; }
+        .tag.green { background: #10b981; }
+        .tag.red { background: #ef4444; }
+        .tag.blue { background: #3b82f6; }
+        .tag.purple { background: #8b5cf6; }
+        .tag.orange { background: #f59e0b; }
+        
+        .news-item h3 { font-size: 1.25em; margin-bottom: 12px; line-height: 1.4; }
+        .news-item .desc { color: #cbd5e1; line-height: 1.7; font-size: 0.95em; }
+        .news-item .impact {
+            background: rgba(255,215,0,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 3px solid #ffd700;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .news-item .impact-title {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        .news-item .read-more {
+            display: inline-block;
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 12px;
+        }
+        .news-item .read-more:hover { text-decoration: underline; }
+        
+        .deep-analysis {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(139,92,246,0.3);
+        }
+        .deep-analysis h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #c084fc;
+        }
+        .deep-analysis p {
+            color: #e5e7eb;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .timeline {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .timeline-item {
+            flex: 1;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .timeline-item .period {
+            color: #c084fc;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+        footer p { margin: 8px 0; }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .stocks-grid { grid-template-columns: repeat(3, 1fr); }
+            .indices-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 美股新聞簡報</h1>
+            <div class="date">2026年03月06日 · 美股收盤即時更新</div>
+        </header>
+        
+        <section class="section">
+            <h2 class="section-title">🌍 全球市場指數</h2>
+            <div class="indices-grid">
+                
+        <div class="index-card">
+            <div class="name">S&P 500</div>
+            <div class="value">6,830.71</div>
+            <div class="change" style="color:#ef4444">-0.56%</div>
+        </div>
+        <div class="index-card">
+            <div class="name">納斯達克</div>
+            <div class="value">22,748.99</div>
+            <div class="change" style="color:#ef4444">-0.26%</div>
+        </div>
+        <div class="index-card">
+            <div class="name">道瓊</div>
+            <div class="value">47,954.74</div>
+            <div class="change" style="color:#ef4444">-1.61%</div>
+        </div>
+        <div class="index-card">
+            <div class="name">VIX 恐慌指數</div>
+            <div class="value">23.75</div>
+            <div class="change" style="color:#22c55e">+12.29%</div>
+        </div>
+        <div class="index-card">
+            <div class="name">羅素2000</div>
+            <div class="value">2,585.57</div>
+            <div class="change" style="color:#ef4444">-1.91%</div>
+        </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">🔥 熱門板塊漲跌</h2>
+            <div class="sectors">
+                
+        <div class="sector-item">
+            <span class="name">原物料</span>
+            <span class="change" style="color:#ef4444">-2.10%</span>
+        </div>
+        <div class="sector-item">
+            <span class="name">必需消費</span>
+            <span class="change" style="color:#ef4444">-2.01%</span>
+        </div>
+        <div class="sector-item">
+            <span class="name">醫療</span>
+            <span class="change" style="color:#ef4444">-2.00%</span>
+        </div>
+        <div class="sector-item">
+            <span class="name">不動產</span>
+            <span class="change" style="color:#ef4444">-0.96%</span>
+        </div>
+        <div class="sector-item">
+            <span class="name">公用事業</span>
+            <span class="change" style="color:#ef4444">-0.78%</span>
+        </div>
+        <div class="sector-item">
+            <span class="name">金融</span>
+            <span class="change" style="color:#ef4444">-0.52%</span>
+        </div>
+        <div class="sector-item">
+            <span class="name">通訊服務</span>
+            <span class="change" style="color:#ef4444">-0.29%</span>
+        </div>
+        <div class="sector-item">
+            <span class="name">能源</span>
+            <span class="change" style="color:#22c55e">+0.52%</span>
+        </div>
+        <div class="sector-item">
+            <span class="name">科技</span>
+            <span class="change" style="color:#22c55e">+0.24%</span>
+        </div>
+        <div class="sector-item">
+            <span class="name">消費</span>
+            <span class="change" style="color:#22c55e">+0.14%</span>
+        </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">💰 熱門個股行情</h2>
+            <div class="stocks-grid">
+                
+        <div class="stock-card">
+            <div class="symbol">MSTR</div>
+            <div class="price">$139.81</div>
+            <div class="change" style="color:#ef4444">-4.53%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">LCID</div>
+            <div class="price">$9.84</div>
+            <div class="change" style="color:#ef4444">-4.19%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">AMAT</div>
+            <div class="price">$346.53</div>
+            <div class="change" style="color:#ef4444">-3.14%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">COIN</div>
+            <div class="price">$205.71</div>
+            <div class="change" style="color:#ef4444">-1.54%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">AMD</div>
+            <div class="price">$199.45</div>
+            <div class="change" style="color:#ef4444">-1.30%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">SMCI</div>
+            <div class="price">$32.24</div>
+            <div class="change" style="color:#ef4444">-1.26%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">META</div>
+            <div class="price">$660.57</div>
+            <div class="change" style="color:#ef4444">-1.07%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">AAPL</div>
+            <div class="price">$260.29</div>
+            <div class="change" style="color:#ef4444">-0.85%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">GOOGL</div>
+            <div class="price">$300.88</div>
+            <div class="change" style="color:#ef4444">-0.74%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">PLTR</div>
+            <div class="price">$152.67</div>
+            <div class="change" style="color:#ef4444">-0.29%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">TSLA</div>
+            <div class="price">$405.55</div>
+            <div class="change" style="color:#ef4444">-0.10%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">AVGO</div>
+            <div class="price">$332.77</div>
+            <div class="change" style="color:#22c55e">+4.80%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">CRM</div>
+            <div class="price">$201.39</div>
+            <div class="change" style="color:#22c55e">+4.30%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">RIVN</div>
+            <div class="price">$15.19</div>
+            <div class="change" style="color:#22c55e">+1.81%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">ORCL</div>
+            <div class="price">$154.79</div>
+            <div class="change" style="color:#22c55e">+1.59%</div>
+        </div>
+        <div class="stock-card">
+            <div class="symbol">MSFT</div>
+            <div class="price">$410.68</div>
+            <div class="change" style="color:#22c55e">+1.35%</div>
+        </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">📰 今日要聞</h2>
+            
+        <div class="news-item">
+            <span class="tag purple">🤖 AI/科技</span>
+            <h3>Stock Market Today, March 5: The Trade Desk Soars on Reports of OpenAI Ad Sales Talks and Insider Bu</h3>
+            <p class="desc">OpenAI ad-sales talks and a major insider buy are reshaping how investors view this digital ad platform, today, March 5, 2026.</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>此消息將影響相關族群股價表現，投資人需關注後續發展。</div>
+            </div>
+            <a href="https://www.fool.com/coverage/stock-market-today/2026/03/05/stock-market-today-march-5-the-trade-desk-soars-on-reports-of-openai-ad-sales-talks-and-insider-buying/?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
+        </div>
+        <div class="news-item">
+            <span class="tag purple">🤖 AI/科技</span>
+            <h3>Stock Market Today, March 5: American Airlines Group Falls on Downgrade Citing Jet Fuel Risk</h3>
+            <p class="desc">On March 5, 2026, Wall Street weighed jet fuel risks and fresh Venezuela routes in reassessing this airline.</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>市場對此消息反應激烈，短期波動難免。</div>
+            </div>
+            <a href="https://www.fool.com/coverage/stock-market-today/2026/03/05/stock-market-today-march-5-american-airlines-group-falls-on-downgrade-citing-jet-fuel-risk/?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
+        </div>
+        <div class="news-item">
+            <span class="tag purple">🤖 AI/科技</span>
+            <h3>Heard on the Street Recap: Yields, Oil Jump Again</h3>
+            <p class="desc">What Happened in Markets Today Stocks tumbled as the Middle East conflict widened, with Israel and Iran exchanging strikes. The S&P 500 dropped 0.6%, and the Nasdaq Composite fell 0.3%. The Dow Jones Industrial Average shed 784 points, or 1.</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>此議題引發市場討論，長期影響值得關注。</div>
+            </div>
+            <a href="https://finance.yahoo.com/m/53e95ce8-fbcb-312b-a45c-52a5f88d8ffc/heard-on-the-street-recap%3A.html?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
+        </div>
+        <div class="news-item">
+            <span class="tag orange">📈 大盤</span>
+            <h3>Dow Logs Worst Day Since Late February as US Crude Briefly Tops $80 Amid Iran Conflict</h3>
+            <p class="desc">The Dow Jones Industrial Average fell the most since late February on Thursday, while US crude price</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>相關類股將受到直接影響，建議密切關注。</div>
+            </div>
+            <a href="https://finance.yahoo.com/news/dow-logs-worst-day-since-215904669.html?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
+        </div>
+        <div class="news-item">
+            <span class="tag orange">📈 大盤</span>
+            <h3>US Equity Indexes Decline Amid Surging Crude Oil, Treasury Yields</h3>
+            <p class="desc">US equity indexes fell while government bond yields jumped on Thursday as the Middle East war escala</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>這將影響投資人情緒，市場可能出現波動。</div>
+            </div>
+            <a href="https://finance.yahoo.com/news/us-equity-indexes-decline-amid-215814518.html?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
+        </div>
+        <div class="news-item">
+            <span class="tag gray">📰 新聞</span>
+            <h3>Which U.S. Treasury ETF Is the Better Buy? Here's How VGIT Compares to IEI</h3>
+            <p class="desc">Explore how these two Treasury ETFs differ on fees, yield, and portfolio approach.</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>此消息將影響相關族群股價表現，投資人需關注後續發展。</div>
+            </div>
+            <a href="https://www.fool.com/coverage/etfs/2026/03/05/which-u-s-treasury-etf-is-the-better-buy-here-s-how-vgit-compares-to-iei/?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
+        </div>
+        <div class="news-item">
+            <span class="tag orange">📈 大盤</span>
+            <h3>This Fund Bet $39 Million on The Andersons as Stock Surges Over 50% This Past Year</h3>
+            <p class="desc">This agribusiness firm delivers grain, ethanol, and plant nutrient solutions to U.S. and global markets through integrated operations.</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>此消息將影響相關族群股價表現，投資人需關注後續發展。</div>
+            </div>
+            <a href="https://www.fool.com/coverage/filings/2026/03/05/this-fund-bet-usd39-million-on-the-andersons-as-stock-surges-over-50-this-past-year/?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
+        </div>
+        <div class="news-item">
+            <span class="tag green">🚗 電動車</span>
+            <h3>Investor Builds $42 Million Position in Marex Amid 38% Revenue Jump</h3>
+            <p class="desc">This financial services firm delivers liquidity, market access, and risk management solutions to institutional clients worldwide.</p>
+            <div class="impact">
+                <div class="impact-title">💥 市場影響</div>
+                <div>此消息將影響相關族群股價表現，投資人需關注後續發展。</div>
+            </div>
+            <a href="https://www.fool.com/coverage/filings/2026/03/05/investor-builds-usd42-million-position-in-marex-amid-38-revenue-jump/?.tsrc=rss" target="_blank" class="read-more">閱讀更多 →</a>
+        </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">🔍 深度趨勢分析</h2>
+            
+        <div class="deep-analysis">
+            <h2>🤖 AI 投資熱潮</h2>
+            <p>AI 產業持續火熱，相關個股和ETF表現亮眼。</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="period">短期</div>
+                    <div>持續看好AI族群</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="period">中期</div>
+                    <div>關注財報季表現</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="period">長期</div>
+                    <div>AI 顛覆各產業</div>
+                </div>
+            </div>
+        </div>
+        <div class="deep-analysis">
+            <h2>🏛️ 政策與宏觀經濟</h2>
+            <p>政策變化影響市場走勢，投資人需密切關注。</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="period">短期</div>
+                    <div>政策消息影響市場</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="period">中期</div>
+                    <div>關注貿易政策</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="period">長期</div>
+                    <div>全球供應鏈重組</div>
+                </div>
+            </div>
+        </div>
+        </section>
+        
+        <footer>
+            <p>📈 數據來源：Yahoo Finance + RSS</p>
+            <p>由 AI 自動生成 · 僅供參考不構成投資建議</p>
+        </footer>
+    </div>
+</body>
+</html>
