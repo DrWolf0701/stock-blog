@@ -12,8 +12,9 @@ Before doing anything else:
 
 1. Read `SOUL.md` — this is who you are
 2. Read `USER.md` — this is who you're helping
-3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
-4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
+3. Read `RECOVERY.md` — 緊急恢復指南（如果存在）
+4. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
+5. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
 
 Don't ask permission. Just do it.
 
@@ -44,6 +45,64 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - When you learn a lesson → update AGENTS.md, TOOLS.md, or the relevant skill
 - When you make a mistake → document it so future-you doesn't repeat it
 - **Text > Brain** 📝
+
+### ✅ 任務完成後必做 - 記錄關鍵細節
+
+每次完成任務後，**必須**記錄以下資訊到 `memory/YYYY-MM-DD.md`：
+
+## 📜 小熊操作日誌（2026-03-08 新增）
+
+所有小熊存儲/修改/刪除記憶時，必須記錄到日誌！
+
+### 日誌格式
+```python
+from datetime import datetime
+
+LOG_FILE = "/Users/yu-tsehsiao/.openclaw/workspace/lancedb_monitor.log"
+
+def bear_log(bear_name, action, details=""):
+    """小熊們存記憶時呼叫這個函數"""
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    log_entry = f"[{timestamp}] [{bear_name}] {action}: - {details}\n"
+    with open(LOG_FILE, "a") as f:
+        f.write(log_entry)
+```
+
+### 使用範例
+```python
+# 存新記憶
+bear_log("投資小熊", "STORE", "category=fact, importance=0.9")
+
+# 更新記憶
+bear_log("影片小熊", "UPDATE", "category=decision")
+
+# 刪除記憶
+bear_log("管家小熊", "DELETE", "record_id=xxx")
+```
+
+### 查看日誌
+在 Streamlit 網頁：http://localhost:8502 可以看到所有操作日誌
+
+---
+- 下載任何檔案（音樂、圖片、影片）→ 記錄來源 URL
+- 安裝/修復環境 → 記錄版本號、安裝指令
+- 使用新 API → 記錄 API Key 來源
+- 生成重要檔案 → 記錄路徑、參數
+
+**記錄格式範例：**
+```
+## 背景音樂下載
+- URL: https://example.com/music.mp3
+- 指令: yt-dlp -f bestaudio "URL" --extract-audio -o "bgm.mp3"
+
+## 環境修復（Yenora TTS）
+- Python: 3.11
+- torch: 2.1.0
+- transformers: 4.36.0
+- 環境路徑: ~/.openclaw/venv_xtts
+```
+
+**為什麼：** 對話會被壓縮會忘記細節，但硬碟裡的記憶檔案不會！
 
 ## Safety
 
@@ -124,6 +183,45 @@ Skills provide your tools. When you need one, check its `SKILL.md`. Keep local n
 - **Discord/WhatsApp:** No markdown tables! Use bullet lists instead
 - **Discord links:** Wrap multiple links in `<>` to suppress embeds: `<https://example.com>`
 - **WhatsApp:** No headers — use **bold** or CAPS for emphasis
+
+
+## Rule 1 — 双层记忆存储（铁律）
+
+Every pitfall/lesson learned → IMMEDIATELY store TWO memories to LanceDB before moving on:
+
+- **Technical layer**: Pitfall: [symptom]. Cause: [root cause]. Fix: [solution]. Prevention: [how to avoid]
+  (category: fact, importance ≥ 0.8)
+- **Principle layer**: Decision principle ([tag]): [behavioral rule]. Trigger: [when it applies]. Action: [what to do]
+  (category: decision, importance ≥ 0.85)
+- After each store, immediately `memory_recall` with anchor keywords to verify retrieval.
+  If not found, rewrite and re-store.
+- Missing either layer = incomplete.
+  Do NOT proceed to next topic until both are stored and verified.
+- Also update relevant SKILL.md files to prevent recurrence.
+
+## Rule 2 — LanceDB 卫生
+
+Entries must be short and atomic (< 500 chars). Never store raw conversation summaries, large blobs, or duplicates.
+Prefer structured format with keywords for retrieval.
+
+## Rule 3 — Recall before retry
+
+On ANY tool failure, repeated error, or unexpected behavior, ALWAYS `memory_recall` with relevant keywords
+(error message, tool name, symptom) BEFORE retrying. LanceDB likely already has the fix.
+Blind retries waste time and repeat known mistakes.
+
+## Rule 4 — 编辑前确认目标代码库
+
+When working on memory plugins, confirm you are editing the intended package
+(e.g., `memory-lancedb-pro` vs built-in `memory-lancedb`) before making changes;
+use `memory_recall` + filesystem search to avoid patching the wrong repo.
+
+## Rule 5 — 插件代码变更必须清 jiti 缓存（MANDATORY）
+
+After modifying ANY `.ts` file under `plugins/`, MUST run `rm -rf /tmp/jiti/` BEFORE `openclaw gateway restart`.
+jiti caches compiled TS; restart alone loads STALE code. This has caused silent bugs multiple times.
+Config-only changes do NOT need cache clearing.
+
 
 ## 💓 Heartbeats - Be Proactive!
 
@@ -210,3 +308,21 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+---
+
+## 短影音 Workspace（2026-02-25 新增）
+
+### 位置
+- 路徑：`~/openclaw_影片/`
+- Profile: video_bear
+- Port: 18790
+
+### 用途
+專門製作短影音（費曼學習法、NVIDIA 財報、美股新聞等）
+
+### 指令
+```bash
+# 啟動短影音 Gateway
+node /opt/homebrew/lib/node_modules/openclaw/dist/entry.js gateway --port 18790 &
+```
