@@ -18,6 +18,11 @@ jobs:
         with:
           submodules: false
           fetch-depth: 1
+          persist-credentials: false
+      - name: Disable submodule processing
+        run: |
+          git config --global submodule.recurse false
+          git config --global diff.ignoreSubmodules dirty
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
