@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>經濟指標看板 | 投資小熊</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            color: #e94560;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            color: #888;
+            font-size: 1.1em;
+        }
+        .update-time {
+            color: #4ecca3;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .section-title {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e94560;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .emoji {
+            font-size: 1.2em;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(233,69,96,0.2);
+        }
+        .card-title {
+            font-size: 1.1em;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+        .card-value {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .card-change {
+            font-size: 1em;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .positive {
+            color: #4ecca3;
+            background: rgba(78,204,163,0.2);
+        }
+        .negative {
+            color: #e94560;
+            background: rgba(233,69,96,0.2);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .footer a {
+            color: #e94560;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .card-value {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 經濟指標看板</h1>
+            <p class="subtitle">全球金融市場一目了然</p>
+            <p class="update-time" id="updateTime">最後更新載入中...</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">₿</span> 加密貨幣</h2>
+            <div class="grid" id="cryptoGrid"></div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">🥇</span> 貴金屬</h2>
+            <div class="grid" id="metalsGrid"></div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">⛽</span> 能源</h2>
+            <div class="grid" id="energyGrid"></div>
+        </div>
+
+        <div class="footer">
+            <p>🐻 投資小熊出品 | 資料僅供參考，不構成投資建議</p>
+            <p><a href="/stock-blog/">← 返回部落格首頁</a></p>
+        </div>
+    </div>
+
+    <script>
+        const emojiMap = {
+            btc: '₿',
+            eth: 'Ξ',
+            gold: '🥇',
+            silver: '🥈',
+            platinum: '🥉',
+            palladium: '⚡',
+            oil: '🛢️',
+            natural_gas: '💨'
+        };
+
+        const nameMap = {
+            btc: '比特幣 Bitcoin',
+            eth: '以太坊 Ethereum',
+            gold: '黃金 Gold',
+            silver: '白銀 Silver',
+            platinum: '鉑 Platinum',
+            palladium: '鈀 Palladium',
+            oil: '原油 WTI',
+            natural_gas: '天然氣 Natural Gas'
+        };
+
+        const unitMap = {
+            btc: 'USD',
+            eth: 'USD',
+            gold: 'USD/oz',
+            silver: 'USD/oz',
+            platinum: 'USD/oz',
+            palladium: 'USD/oz',
+            oil: 'USD/bbl',
+            natural_gas: 'USD/MMBtu'
+        };
+
+        async function loadData() {
+            try {
+                const response = await fetch('data/history.json');
+                const data = await response.json();
+                document.getElementById('updateTime').textContent = `最後更新：${data.lastUpdate}`;
+
+                renderSection('cryptoGrid', data.crypto);
+                renderSection('metalsGrid', data.metals);
+                renderSection('energyGrid', data.energy);
+            } catch (error) {
+                console.error('載入資料失敗:', error);
+                document.getElementById('updateTime').textContent = '資料載入失敗';
+            }
+        }
+
+        function renderSection(gridId, sectionData) {
+            const grid = document.getElementById(gridId);
+            for (const [key, item] of Object.entries(sectionData)) {
+                const date = Object.keys(item)[0];
+                const values = item[date];
+                const change = values.change;
+                const isPositive = change >= 0;
+                const emoji = emojiMap[key] || '📈';
+                const name = nameMap[key] || key;
+                const unit = unitMap[key] || 'USD';
+
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-title">${emoji} ${name}</div>
+                    <div class="card-value">${formatNumber(values.value)}</div>
+                    <div class="card-value" style="font-size:0.8em;color:#888">${unit}</div>
+                    <span class="card-change ${isPositive ? 'positive' : 'negative'}">
+                        ${isPositive ? '▲' : '▼'} ${Math.abs(change)}%
+                    </span>
+                `;
+                grid.appendChild(card);
+            }
+        }
+
+        function formatNumber(num) {
+            if (num >= 1000) {
+                return num.toLocaleString('en-US', { maximumFractionDigits: 2 });
+            }
+            return num.toFixed(2);
+        }
+
+        loadData();
+    </script>
+</body>
+</html>
