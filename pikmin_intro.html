@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>皮克敏系列 - 遊戲介紹</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: #f8f9fa;
+      color: #1a1a2e;
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #ff6b6b 0%, #ffa502 50%, #ffd93d 100%);
+      border-radius: 24px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "🍊";
+      font-size: 80px;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      margin-bottom: 16px;
+    }
+
+    .hero .subtitle {
+      font-size: 20px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.25);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 14px;
+      margin-top: 20px;
+      color: #fff;
+    }
+
+    /* Section */
+    .section {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #1a1a2e;
+    }
+
+    .section-title .icon {
+      font-size: 28px;
+    }
+
+    /* Intro Box */
+    .intro-box {
+      background: linear-gradient(135deg, #fff5f5, #fff);
+      border-left: 4px solid #ff6b6b;
+      border-radius: 12px;
+      padding: 20px 24px;
+      font-size: 17px;
+      color: #495057;
+    }
+
+    /* Pikmin Types Grid */
+    .pikmin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+    }
+
+    .pikmin-card {
+      background: #f8f9fa;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+      border: 1px solid #e9ecef;
+    }
+
+    .pikmin-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .pikmin-card .emoji {
+      font-size: 48px;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .pikmin-card .name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #1a1a2e;
+    }
+
+    .pikmin-card .feature {
+      font-size: 13px;
+      color: #6c757d;
+    }
+
+    /* Red */
+    .pikmin-red { border-top: 3px solid #ff4757; }
+    /* Blue */
+    .pikmin-blue { border-top: 3px solid #3742fa; }
+    /* Yellow */
+    .pikmin-yellow { border-top: 3px solid #ffa502; }
+    /* Rock */
+    .pikmin-rock { border-top: 3px solid #a4b0be; }
+    /* Wing */
+    .pikmin-wing { border-top: 3px solid #ff6bcb; }
+    /* Ice */
+    .pikmin-ice { border-top: 3px solid #7bed9f; }
+    /* Purple */
+    .pikmin-purple { border-top: 3px solid #9c88ff; }
+    /* White */
+    .pikmin-white { border-top: 3px solid #dfe6e9; }
+
+    /* Game Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #9c88ff);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -26px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      background: #4d96ff;
+      border-radius: 50%;
+      border: 2px solid #1a1a2e;
+    }
+
+    .timeline-item .year {
+      font-size: 14px;
+      color: #e67e22;
+      font-weight: 700;
+    }
+
+    .timeline-item .title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 4px 0;
+      color: #1a1a2e;
+    }
+
+    .timeline-item .desc {
+      font-size: 14px;
+      color: #6c757d;
+    }
+
+    /* Feature List */
+    .feature-list {
+      list-style: none;
+    }
+
+    .feature-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #e9ecef;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list .emoji {
+      font-size: 24px;
+    }
+
+    /* Platform Badges */
+    .platforms {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .platform-badge {
+      background: #e3f2fd;
+      border: 1px solid #bbdefb;
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 14px;
+      color: #1976d2;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #adb5bd;
+      font-size: 14px;
+    }
+
+    /* Page break for PDF */
+    .page-break {
+      page-break-after: always;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+      <h1>皮克敏系列</h1>
+      <p class="subtitle">Pikmin — 任天堂經典即時戰略遊戲</p>
+      <span class="badge">🎮 Nintendo Switch | GameCube | Wii U</span>
+    </div>
+
+    <!-- 什麼是皮克敏 -->
+    <div class="section">
+      <h2 class="section-title"><span class="icon">🌱</span>什麼是皮克敏？</h2>
+      <div class="intro-box">
+        <strong>皮克敏</strong>（日語：ピクミン，英語：Pikmin）是由任天堂傳奇製作人<strong>宮本茂</strong>設計的即時戰略遊戲系列。遊戲中，玩家指揮一群名為「皮克敏」的植物般生物，在微觀世界中收集道具、破壞障礙，並與巨大怪物戰鬥。
+        <br><br>
+        皮克敏結合了策略思考與即時動作，玩家必須在時間限制內有效地運用不同種類皮克敏的特殊能力，帶領他們完成各種挑戰。這個系列以獨特的世界觀、可愛的角色設計與富有深度的遊戲機制聞名。
+      </div>
+    </div>
+
+    <!-- 皮克敏類型 -->
+    <div class="section">
+      <h2 class="section-title"><span class="icon">🍊</span>皮克敏的種類</h2>
+      <p style="color: #a0a0c0; margin-bottom: 20px;">皮克敏共有 7 種基本類型，每種都有獨特的能力與特徵：</p>
+      <div class="pikmin-grid">
+
+        <div class="pikmin-card pikmin-red">
+          <span class="emoji">🔴</span>
+          <div class="name">紅色皮克敏</div>
+          <div class="feature">耐火 / 攻擊力強<br>最基本的戰鬥單位</div>
+        </div>
+
+        <div class="pikmin-card pikmin-blue">
+          <span class="emoji">🔵</span>
+          <div class="name">藍色皮克敏</div>
+          <div class="feature">能在水中行動<br>唯一可下水域的類型</div>
+        </div>
+
+        <div class="pikmin-card pikmin-yellow">
+          <span class="emoji">🟡</span>
+          <div class="name">黃色皮克敏</div>
+          <div class="feature">能丟得更高<br>可拾取炸藥等特殊道具</div>
+        </div>
+
+        <div class="pikmin-card pikmin-rock">
+          <span class="emoji">🪨</span>
+          <div class="name">岩石皮克敏</div>
+          <div class="feature">攻击力穿透障碍物<br>可破坏玻璃和墙壁</div>
+        </div>
+
+        <div class="pikmin-card pikmin-wing">
+          <span class="emoji">🩷</span>
+          <div class="name">翅膀皮克敏</div>
+          <div class="feature">飛行能力<br>可將道具帶到任何地方</div>
+        </div>
+
+        <div class="pikmin-card pikmin-ice">
+          <span class="emoji">🧊</span>
+          <div class="name">冰凍皮克敏</div>
+          <div class="feature">能冰凍敵人或水面<br>創造冰之道路</div>
+        </div>
+
+        <div class="pikmin-card pikmin-purple">
+          <span class="emoji">🟣</span>
+          <div class="name">紫色皮克敏</div>
+          <div class="feature">力大無窮<br>一次搬運多個道具</div>
+        </div>
+
+        <div class="pikmin-card pikmin-white">
+          <span class="emoji">⚪</span>
+          <div class="name">白色皮克敏</div>
+          <div class="feature">速度快 / 抗毒<br>能發現地下寶物</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 遊戲特色 -->
+    <div class="section">
+      <h2 class="section-title"><span class="icon">⭐</span>遊戲特色</h2>
+      <ul class="feature-list">
+        <li><span class="emoji">⏱️</span><strong>時間限制</strong> — 遊戲以「天」為單位，玩家必须在日落前完成任務，否則皮克敏會被敵人吃掉</li>
+        <li><span class="emoji">🌳</span><strong>微觀世界</strong> — 探索縮小後的花園世界，充滿巨大障礙與危險生物</li>
+        <li><span class="emoji">🧠</span><strong>即時戰略</strong> — 同時管理多種類型的皮克敏，運用各自特长完成任务</li>
+        <li><span class="emoji">💀</span><strong>敵人與障礙</strong> — 巨大昆蟲、機關陷阱，考驗玩家的策略與反應</li>
+        <li><span class="emoji">💎</span><strong>寶物收集</strong> — 尋找散落在世界各地的寶物，建設你的收藏</li>
+        <li><span class="emoji">🐾</span><strong>同伴系統</strong> — 皮克敏會跟隨、依赖你，培養出獨特的情感連結</li>
+      </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- 系列作品 -->
+    <div class="section">
+      <h2 class="section-title"><span class="icon">🎮</span>系列作品年表</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="year">2001 年 10 月</div>
+          <div class="title">《皮克敏》</div>
+          <div class="desc">系列首作，登陸任天堂 GameCube。玩家扮演太空人歐利瑪，在未知星球生存並收集寶物。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">2004 年 4 月</div>
+          <div class="title">《皮克敏 2》</div>
+          <div class="desc">登陸 Game Cube，新增兩種皮克敏（紫、白）、双人合作模式，以及更多的地下關卡與寶物。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">2008 / 2009 年</div>
+          <div class="title">《皮克敏》《皮克敏 2》Wii 版</div>
+          <div class="desc">移植至 Wii 平台，支援 Wii 遙控器操作，適合新玩家入手。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">2013 年 7 月</div>
+          <div class="title">《皮克敏 3》</div>
+          <div class="desc">登陸 Wii U，主角變為三人團隊。新增三種皮克敏（岩石、翅膀、冰凍），玩法更加豐富。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">2017 年</div>
+          <div class="title">《Hey! 皮克敏》</div>
+          <div class="desc">3DS 專用作品，採用橫向卷軸玩法，與正作大地圖即時戰略不同。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">2020 年 10 月</div>
+          <div class="title">《皮克敏 3 豪華版》</div>
+          <div class="desc">Switch 版本，新增新角色、新關卡，並首次支援繁體中文！</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">2021 年</div>
+          <div class="title">《皮克敏 Bloom》</div>
+          <div class="desc">與 Niantic 合作的手機 AR 遊戲，類似 Pokémon GO 的擴增實境玩法。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">2023 年 7 月</div>
+          <div class="title">《皮克敏 4》</div>
+          <div class="desc">最新作，登陸 Nintendo Switch。新增救援犬「歐慶」同行，大幅降低新手門檻。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 平台 -->
+    <div class="section">
+      <h2 class="section-title"><span class="icon">🎯</span>支援平台</h2>
+      <div class="platforms">
+        <span class="platform-badge">🎮 Nintendo GameCube</span>
+        <span class="platform-badge">🎮 Wii</span>
+        <span class="platform-badge">🎮 Wii U</span>
+        <span class="platform-badge">🎮 Nintendo 3DS</span>
+        <span class="platform-badge">🎮 Nintendo Switch</span>
+        <span class="platform-badge">📱 iOS / Android</span>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>🍊 皮克敏系列 — 任天堂出品 | 資料來源：維基百科</p>
+      <p style="margin-top: 8px;">整理：小熊抱 🧸 | 2026.04.28</p>
+    </div>
+
+  </div>
+</body>
+</html>
